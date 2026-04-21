@@ -1,0 +1,26 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+body{background:radial-gradient(#040F24 0%,#1F4C69 0%,#081C2C 100%);padding:20px;margin:0;font-family:Nunito;color:#fff}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(20px);box-shadow:0 8px 24px rgba(0,0,0,0.25);border-radius:20px;padding:14px 16px 16px 16px}
+.sec{font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);margin-bottom:10px}
+.about{font-size:13px;color:rgba(255,255,255,0.7);line-height:1.45}
+.row{display:flex;justify-content:space-between;font-size:13px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.05)}
+.time{font-weight:700;font-variant-numeric:tabular-nums}
+.label{color:rgba(255,255,255,0.7)}
+</style></head>
+<body>
+<div class="grid">
+  <div class="card">
+    <div class="sec">About</div>
+    <div class="about">Describe your event here by explaining what the event is about and who it is intended for.</div>
+  </div>
+  <div class="card">
+    <div class="sec">Schedule</div>
+    <div class="row"><span class="time">14:30</span><span class="label">Product Reveal & Sampling</span></div>
+    <div class="row"><span class="time">15:30</span><span class="label">Our Talk</span></div>
+    <div class="row" style="border:none"><span class="time">17:00</span><span class="label">Giveaway Draw</span></div>
+  </div>
+</div>
+</body></html>

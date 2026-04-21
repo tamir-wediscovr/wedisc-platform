@@ -1,0 +1,131 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>weDISCOVR · Demo Story Arc</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; font-family: Nunito; background: #F7F8FB; color: #0B1220; }
+  a { text-decoration: none; color: inherit; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 60px 40px 80px; }
+  .hero { margin-bottom: 60px; }
+  .hero h1 { font-size: 56px; margin: 0; letter-spacing: -0.03em; font-weight: 700; }
+  .hero p { font-size: 18px; color: #5B6476; margin: 16px 0 0; max-width: 720px; line-height: 1.5; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: 0.12em; color: #0066FF; margin-bottom: 18px; }
+  .acts { display: flex; flex-direction: column; gap: 24px; }
+  .act { background: #fff; border: 1px solid #E3E6ED; border-radius: 20px; padding: 32px; display: grid; grid-template-columns: 100px 1fr auto; gap: 28px; align-items: center; transition: all 200ms; }
+  .act:hover { border-color: #0066FF; box-shadow: 0 8px 24px rgba(0,102,255,0.08); }
+  .num { font-size: 72px; font-weight: 800; color: #E3E6ED; letter-spacing: -0.04em; line-height: 1; }
+  .act.active .num { color: #0066FF; }
+  .act h2 { margin: 0; font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
+  .act .role { display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: 0.08em; padding: 4px 10px; border-radius: 999px; margin-bottom: 10px; }
+  .act p { margin: 8px 0 12px; color: #5B6476; font-size: 14px; line-height: 1.55; }
+  .act .link { font-size: 13px; font-weight: 700; color: #0066FF; }
+  .act .arrow { width: 48px; height: 48px; border-radius: 24px; background: #F3F5F9; color: #0B1220; display: flex; align-items: center; justify-content: center; font-size: 22px; transition: all 200ms; }
+  .act:hover .arrow { background: #0066FF; color: #fff; transform: translateX(4px); }
+  .r-curator { background: rgba(105,104,203,0.12); color: #6968CB; }
+  .r-space { background: rgba(126,217,87,0.18); color: #3C8F2C; }
+  .r-brand { background: rgba(255,85,1,0.12); color: #FF5501; }
+  .r-multi { background: linear-gradient(90deg, rgba(126,217,87,0.18), rgba(255,85,1,0.12)); color: #0B1220; }
+  .r-onboarding { background: rgba(0,102,255,0.1); color: #0066FF; }
+  .sidebar { margin-top: 60px; padding: 32px; border-radius: 20px; background: #0B1220; color: #fff; }
+  .sidebar h3 { margin: 0 0 18px; font-size: 16px; font-weight: 700; letter-spacing: 0.02em; }
+  .all-prototypes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .proto { padding: 16px; border-radius: 12px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); }
+  .proto strong { font-size: 13px; font-weight: 700; }
+  .proto span { display: block; font-size: 11px; color: rgba(255,255,255,0.55); margin-top: 4px; line-height: 1.4; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <div class="tag">WEDISCOVR · INVESTOR DEMO SCRIPT</div>
+      <h1>BRLO's Friday Night.</h1>
+      <p>A 6-act story that walks an investor through weDISCOVR's full platform — from a curator's idea to a self-sponsored event with a measurable ROI report. Click each act to launch its prototype.</p>
+    </div>
+
+    <div class="acts">
+      <a class="act" href="platform/index.html#curator-create" onclick="localStorage.setItem('wd_platform_tweaks', JSON.stringify({role:'curator',shellVariant:'hybrid',density:'airy',wsiVariant:'bars'})); localStorage.setItem('wd_platform_page','create');">
+        <div class="num">01</div>
+        <div>
+          <span class="role r-curator">CURATOR · DJ KLEO</span>
+          <h2>A curator has an idea.</h2>
+          <p>DJ Kleo drafts "Midsommar Listening" — a vinyl night with an Ableton preview. She picks BRLO Brwhouse as the space and submits the brief.</p>
+          <span class="link">→ Curator · Create Event wizard</span>
+        </div>
+        <div class="arrow">→</div>
+      </a>
+
+      <a class="act" href="platform/index.html#brlo-inbox" onclick="localStorage.setItem('wd_platform_tweaks', JSON.stringify({role:'brlo',shellVariant:'hybrid',density:'airy',wsiVariant:'bars'})); localStorage.setItem('wd_platform_page','dashboard');">
+        <div class="num">02</div>
+        <div>
+          <span class="role r-multi">BRLO · SPACE + BRAND</span>
+          <h2>BRLO wears the Space hat.</h2>
+          <p>The request lands in BRLO's unified inbox — color-coded green for Space. One click accepts. The dashboard shows both hats side-by-side: taproom calendar <em>and</em> active sponsor campaigns.</p>
+          <span class="link">→ BRLO multi-capability dashboard</span>
+        </div>
+        <div class="arrow">→</div>
+      </a>
+
+      <a class="act" href="platform/index.html#brlo-handoff" onclick="localStorage.setItem('wd_platform_tweaks', JSON.stringify({role:'brlo',shellVariant:'hybrid',density:'airy',wsiVariant:'bars'})); localStorage.setItem('wd_platform_page','dashboard'); localStorage.setItem('wd_demo_handoff','1');">
+        <div class="num">03</div>
+        <div>
+          <span class="role r-multi">CROSS-CAPABILITY</span>
+          <h2>The two hats talk.</h2>
+          <p>Acceptance triggers a handoff: <em>"DJ Kleo's audience drinks craft beer. Also sponsor this? +€1,200 wEID value, 3× margin vs. hosting alone."</em> BRLO clicks yes. This is the magic moment — the thing competitors can't replicate.</p>
+          <span class="link">→ Cross-capability handoff modal</span>
+        </div>
+        <div class="arrow">→</div>
+      </a>
+
+      <a class="act" href="platform/index.html#brlo-recall" onclick="localStorage.setItem('wd_platform_tweaks', JSON.stringify({role:'brlo',shellVariant:'hybrid',density:'airy',wsiVariant:'bars'})); localStorage.setItem('wd_platform_page','recall');">
+        <div class="num">04</div>
+        <div>
+          <span class="role r-brand">BRAND · RECALL STUDIO</span>
+          <h2>BRLO builds the activation.</h2>
+          <p>Seconds later, BRLO is in Recall Studio configuring a tap-to-reveal "1 free pint" offer. Assets pre-loaded. wSI floor set. Live preview on an Explorer device.</p>
+          <span class="link">→ Recall Creative Studio (AR setup)</span>
+        </div>
+        <div class="arrow">→</div>
+      </a>
+
+      <a class="act" href="platform/index.html#brlo-report" onclick="localStorage.setItem('wd_platform_tweaks', JSON.stringify({role:'brlo',shellVariant:'hybrid',density:'airy',wsiVariant:'bars'})); localStorage.setItem('wd_platform_page','report');">
+        <div class="num">05</div>
+        <div>
+          <span class="role r-brand">POST-EVENT · MEASURABLE ROI</span>
+          <h2>The report lands.</h2>
+          <p>Event goes live. Attention Insurance honored. The campaign report shows zero-PII attribution from IRL exposure all the way to Drops purchases. Self-sponsored hybrid delivered 3× the margin of a plain hosted night.</p>
+          <span class="link">→ Campaign Report with wEID trail</span>
+        </div>
+        <div class="arrow">→</div>
+      </a>
+
+      <a class="act" href="platform/index.html#onboarding" onclick="localStorage.setItem('wd_demo_onboarding','1');">
+        <div class="num">06</div>
+        <div>
+          <span class="role r-onboarding">FLASHBACK · HOW BRLO GOT HERE</span>
+          <h2>Onboarding, briefly.</h2>
+          <p>Close the loop: show the 4-step onboarding where a new entity picks one or more capabilities. Single-role users get a focused dashboard. Multi-cap users get BRLO's unified view.</p>
+          <span class="link">→ Entity onboarding wizard</span>
+        </div>
+        <div class="arrow">→</div>
+      </a>
+    </div>
+
+    <div class="sidebar">
+      <h3>Every prototype in the project</h3>
+      <div class="all-prototypes">
+        <a class="proto" href="platform/index.html" onclick="localStorage.setItem('wd_platform_tweaks', JSON.stringify({role:'curator',shellVariant:'hybrid',density:'airy',wsiVariant:'bars'})); localStorage.setItem('wd_platform_page','dashboard');"><strong>Curator Dashboard</strong><span>DJ Kleo · event pipeline + earnings</span></a>
+        <a class="proto" href="platform/index.html" onclick="localStorage.setItem('wd_platform_tweaks', JSON.stringify({role:'curator',shellVariant:'hybrid',density:'airy',wsiVariant:'bars'})); localStorage.setItem('wd_platform_page','create');"><strong>Create Event wizard</strong><span>4-step brief → space → submit</span></a>
+        <a class="proto" href="platform/index.html" onclick="localStorage.setItem('wd_platform_tweaks', JSON.stringify({role:'curator',shellVariant:'hybrid',density:'airy',wsiVariant:'bars'})); localStorage.setItem('wd_platform_page','earnings');"><strong>Curator Earnings</strong><span>Monthly reconciled payouts</span></a>
+        <a class="proto" href="platform/index.html" onclick="localStorage.setItem('wd_platform_tweaks', JSON.stringify({role:'brand',shellVariant:'hybrid',density:'airy',wsiVariant:'bars'})); localStorage.setItem('wd_platform_page','feed');"><strong>Sponsor Feed</strong><span>Amazingy · match-scored feed</span></a>
+        <a class="proto" href="platform/index.html" onclick="localStorage.setItem('wd_platform_tweaks', JSON.stringify({role:'brand',shellVariant:'hybrid',density:'airy',wsiVariant:'bars'})); localStorage.setItem('wd_platform_page','recall');"><strong>Recall Studio</strong><span>AR activation builder</span></a>
+        <a class="proto" href="platform/index.html" onclick="localStorage.setItem('wd_platform_tweaks', JSON.stringify({role:'brand',shellVariant:'hybrid',density:'airy',wsiVariant:'bars'})); localStorage.setItem('wd_platform_page','report');"><strong>Campaign Report</strong><span>wEID trail, zero PII</span></a>
+        <a class="proto" href="platform/index.html" onclick="localStorage.setItem('wd_platform_tweaks', JSON.stringify({role:'space',shellVariant:'hybrid',density:'airy',wsiVariant:'bars'})); localStorage.setItem('wd_platform_page','calendar');"><strong>Space Calendar</strong><span>Urban Spree · slots + requests</span></a>
+        <a class="proto" href="platform/index.html" onclick="localStorage.setItem('wd_platform_tweaks', JSON.stringify({role:'ops',shellVariant:'hybrid',density:'airy',wsiVariant:'bars'})); localStorage.setItem('wd_platform_page','qa');"><strong>Ops QA Queue</strong><span>weDISCOVR review</span></a>
+        <a class="proto" href="platform/index.html" onclick="localStorage.setItem('wd_platform_tweaks', JSON.stringify({role:'brlo',shellVariant:'hybrid',density:'airy',wsiVariant:'bars'})); localStorage.setItem('wd_platform_page','dashboard');"><strong>BRLO Multi-cap</strong><span>Space + Brand merged</span></a>
+        <a class="proto" href="platform/index.html" onclick="localStorage.setItem('wd_demo_onboarding','1');"><strong>Onboarding wizard</strong><span>Single + multi-cap</span></a>
+        <a class="proto" href="platform/index.html" onclick="localStorage.setItem('wd_platform_tweaks', JSON.stringify({role:'brlo',shellVariant:'hybrid',density:'airy',wsiVariant:'bars'})); localStorage.setItem('wd_platform_page','profile');"><strong>BRLO Public Profile</strong><span>Both capabilities public</span></a>
+        <a class="proto" href="explorer.html"><strong>Explorer app UI kit</strong><span>Consumer mobile side</span></a>
+      </div>
+    </div>
+  </div>
+</body></html>

@@ -1,0 +1,81 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>The Platform · weDISCOVR B2B</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+
+<!-- Curator portraits -->
+<meta name="ext-resource-dependency" content="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=320&h=320&fit=crop&q=75" data-resource-id="cur_c1" />
+<meta name="ext-resource-dependency" content="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=320&h=320&fit=crop&q=75" data-resource-id="cur_c2" />
+<meta name="ext-resource-dependency" content="https://images.unsplash.com/photo-1583195764036-6dc248ac07d9?w=320&h=320&fit=crop&q=75" data-resource-id="cur_c3" />
+<meta name="ext-resource-dependency" content="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=320&h=320&fit=crop&q=75" data-resource-id="cur_c4" />
+<meta name="ext-resource-dependency" content="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=320&h=320&fit=crop&q=75" data-resource-id="cur_c5" />
+<meta name="ext-resource-dependency" content="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=320&h=320&fit=crop&q=75" data-resource-id="cur_c6" />
+
+<!-- Space thumbnails -->
+<meta name="ext-resource-dependency" content="https://images.unsplash.com/photo-1493612276216-ee3925520721?w=800&h=500&fit=crop&q=75" data-resource-id="sp_s1" />
+<meta name="ext-resource-dependency" content="https://images.unsplash.com/photo-1518176258769-f227c798150e?w=800&h=500&fit=crop&q=75" data-resource-id="sp_s2" />
+<meta name="ext-resource-dependency" content="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=800&h=500&fit=crop&q=75" data-resource-id="sp_s3" />
+<meta name="ext-resource-dependency" content="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=500&fit=crop&q=75" data-resource-id="sp_s4" />
+<meta name="ext-resource-dependency" content="https://images.unsplash.com/photo-1545389336-cf090694435e?w=800&h=500&fit=crop&q=75" data-resource-id="sp_s5" />
+
+<!-- Recall Studio preview -->
+<meta name="ext-resource-dependency" content="https://images.unsplash.com/photo-1612817288484-6f916006741a?w=600&h=900&fit=crop&q=80" data-resource-id="recall_preview" />
+
+<style>
+  html, body { margin: 0; padding: 0; background: #F7F8FB; font-family: Nunito; color: #0B1220; min-height: 100vh; }
+  #root { min-height: 100vh; }
+  button, input, textarea, select { font-family: Nunito; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  .pulse { animation: pulse 1.8s infinite; }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-thumb { background: #D7DBE4; border-radius: 5px; }
+  ::-webkit-scrollbar-thumb:hover { background: #BFC5D1; }
+</style>
+
+<template id="__bundler_thumbnail" data-bg-color="#0066FF">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#0066FF"/>
+    <g transform="translate(600 400)" text-anchor="middle" fill="#fff" font-family="Nunito, sans-serif" font-weight="800">
+      <text y="-40" font-size="180" letter-spacing="-8">wD</text>
+      <text y="70" font-size="38" letter-spacing="6" opacity="0.85">WEDISCOVR · PLATFORM</text>
+    </g>
+  </svg>
+</template>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script>
+    // Defensive shim: before bundling, window.__resources is undefined.
+    // After bundling, the host injects it. This just keeps data.js safe if ever loaded un-bundled.
+    window.__resources = window.__resources || {};
+  </script>
+
+  <script src="./data_standalone.js"></script>
+  <script src="./data_brlo.js"></script>
+  <script type="text/babel" src="./Icons.jsx"></script>
+  <script type="text/babel" src="./Primitives.jsx"></script>
+  <script type="text/babel" src="./WSI.jsx"></script>
+  <script type="text/babel" src="./Shell.jsx"></script>
+  <script type="text/babel" src="./Curator/Dashboard.jsx"></script>
+  <script type="text/babel" src="./Curator/CreateEvent.jsx"></script>
+  <script type="text/babel" src="./Curator/Earnings.jsx"></script>
+  <script type="text/babel" src="./Brand/SponsorFeed.jsx"></script>
+  <script type="text/babel" src="./Brand/Recall_standalone.jsx"></script>
+  <script type="text/babel" src="./Brand/Report.jsx"></script>
+  <script type="text/babel" src="./Space/Calendar.jsx"></script>
+  <script type="text/babel" src="./Ops/QAQueue.jsx"></script>
+  <script type="text/babel" src="./BRLO/Shell.jsx"></script>
+  <script type="text/babel" src="./BRLO/Dashboard.jsx"></script>
+  <script type="text/babel" src="./BRLO/Inbox.jsx"></script>
+  <script type="text/babel" src="./BRLO/Profile.jsx"></script>
+  <script type="text/babel" src="./BRLO/Onboarding.jsx"></script>
+  <script type="text/babel" src="./BRLO/CapabilityExpand.jsx"></script>
+  <script type="text/babel" src="./BRLO/Handoff.jsx"></script>
+  <script type="text/babel" src="./DemoNav.jsx"></script>
+  <script type="text/babel" src="./App.jsx"></script>
+</body></html>

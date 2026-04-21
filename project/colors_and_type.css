@@ -1,0 +1,287 @@
+/* ──────────────────────────────────────────────────────────────────
+ * weDISCOVR — Design Tokens
+ * Source of truth. Do not define raw colors elsewhere.
+ * Phase 1 — Foundations.
+ * ────────────────────────────────────────────────────────────────── */
+
+/* Nunito — the only face in the system. Served from local brand files. */
+@font-face {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 200 1000;
+  font-display: swap;
+  src: url("./fonts/Nunito-VariableFont_wght.ttf") format("truetype-variations"),
+       url("./fonts/Nunito-VariableFont_wght.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Nunito";
+  font-style: italic;
+  font-weight: 200 1000;
+  font-display: swap;
+  src: url("./fonts/Nunito-Italic-VariableFont_wght.ttf") format("truetype-variations"),
+       url("./fonts/Nunito-Italic-VariableFont_wght.ttf") format("truetype");
+}
+
+:root {
+  /* ─── Primary ─────────────────────────────────────────────── */
+  --wd-blue:       #0066FF;           /* primary action, identity */
+  --wd-blue-ink:   #0047E0;           /* deep blue, gradient stop */
+  --wd-blue-sky:   #40A6FF;           /* lighter blue, gradient start */
+  --wd-blue-glow:  rgba(0,102,255,0.45);
+  --wd-white:      #FFFFFF;
+  --wd-dark:       #222222;           /* pure token from brand doc */
+
+  /* ─── Surfaces (blue-black, not pure black) ───────────────── */
+  --wd-surface-0:  #050A14;           /* status bar, deepest */
+  --wd-surface-1:  #0A1628;           /* card ground */
+  --wd-surface-2:  #081C2C;           /* radial corner */
+  --wd-surface-3:  #1F4C69;           /* radial center teal */
+  --wd-surface-4:  #040F24;           /* radial origin */
+
+  /* Signature screen background */
+  --wd-bg-app:     radial-gradient(#040F24 0%, #1F4C69 0%, #081C2C 100%);
+  --wd-bg-sheet:   radial-gradient(#050A14 0%, #0A1628 100%);
+
+  /* ─── Secondary / Semantic ────────────────────────────────── */
+  --wd-purple:     #6968CB;           /* XP · levels · Explorer · Music · CURATED */
+  --wd-orange:     #FF5501;           /* rewards · unlocks · energy · Food · AR Hunt */
+  --wd-gold:       #FAC938;           /* DISC points · debit card · premium · Beauty */
+  --wd-green:      #7ED957;           /* success · live · Fitness/Yoga (FILLS ONLY on white) */
+  --wd-sky:        #2C9CE4;           /* location · map · AR · Next:[day] */
+  --wd-red:        #FA2E2E;           /* notification dot — not a category */
+
+  /* ─── Accessible ink variants ─────────────────────────────
+   * #7ED957 and #FAC938 fail AA on white (1.8:1, 1.6:1).
+   * Use these darker siblings anywhere color carries TEXT meaning
+   * (numbers, labels, small icons inside sentences). The originals
+   * stay for large fills, bar charts, avatar backgrounds, etc. */
+  --wd-green-ink:  #2F7A1A;           /* 6.1:1 on white — AA */
+  --wd-gold-ink:   #8A6500;           /* 6.2:1 on white — AA */
+  --wd-orange-ink: #C43D00;           /* 5.1:1 on white — AA, for orange text on light */
+
+  /* ─── Category map (locked) ───────────────────────────────── */
+  --wd-cat-music:   var(--wd-purple);
+  --wd-cat-beauty:  var(--wd-gold);
+  --wd-cat-food:    var(--wd-orange);
+  --wd-cat-fitness: var(--wd-green);
+  --wd-cat-next:    var(--wd-sky);
+
+  /* ─── Text ────────────────────────────────────────────────── */
+  --wd-fg:          #FFFFFF;
+  --wd-fg-strong:   rgba(255,255,255,1);
+  --wd-fg-muted:    rgba(255,255,255,0.70);
+  --wd-fg-soft:     rgba(255,255,255,0.50);
+  --wd-fg-faint:    rgba(255,255,255,0.32);
+  --wd-fg-ghost:    rgba(255,255,255,0.18);
+  --wd-fg-inv:      #050A14;          /* on light fills */
+
+  /* ─── Glass ────────────────────────────────────────────────
+   * Fill 8–12% white, Blur 20px, Radius 30px (brand spec).
+   * Primitive recipe — use via --wd-glass-fill + backdrop-filter. */
+  --wd-glass-fill-low:  rgba(255,255,255,0.06);
+  --wd-glass-fill-med:  rgba(255,255,255,0.09);
+  --wd-glass-fill-high: rgba(255,255,255,0.12);
+  --wd-glass-border:    rgba(255,255,255,0.10);
+  --wd-glass-border-hi: rgba(255,255,255,0.20);
+  --wd-glass-blur:      20px;
+  --wd-glass-blur-nav:  28px;
+
+  /* ─── Category tints (pill backgrounds, 12–20% on dark) ───── */
+  --wd-tint-purple:  rgba(105,104,203,0.20);
+  --wd-tint-orange:  rgba(255, 85,  1,0.18);
+  --wd-tint-gold:    rgba(250,201, 56,0.14);
+  --wd-tint-green:   rgba(126,217, 87,0.18);
+  --wd-tint-sky:     rgba( 44,152,228,0.18);
+  --wd-tint-blue:    rgba(  0,102,255,0.18);
+
+  /* ─── Border tints (semantic pill strokes) ────────────────── */
+  --wd-stroke-purple: rgba(105,104,203,0.55);
+  --wd-stroke-orange: rgba(255, 85,  1,0.55);
+  --wd-stroke-gold:   rgba(250,201, 56,0.55);
+  --wd-stroke-green:  rgba(126,217, 87,0.65);
+  --wd-stroke-sky:    rgba( 44,152,228,0.55);
+  --wd-stroke-blue:   rgba(  0,102,255,0.60);
+
+  /* ─── Shadows ─────────────────────────────────────────────── */
+  --wd-shadow-card:       0 8px 24px rgba(0,0,0,0.25);
+  --wd-shadow-card-hover: 0 10px 28px rgba(0,0,0,0.35);
+  --wd-shadow-cta-blue:   0 6px 16px rgba(0,107,255,0.45);
+  --wd-shadow-cta-orange: 0 2px 10px rgba(255,102,0,0.50);
+  --wd-shadow-cta-gold:   0 4px 14px rgba(250,153, 0,0.45);
+  --wd-shadow-cta-green:  0 0 10px 2px rgba(126,217,87,0.45);
+  --wd-shadow-inset-hi:   inset 0 1px 0 rgba(255,255,255,0.20);
+
+  /* ─── Gradients ───────────────────────────────────────────── */
+  --wd-grad-cta:      linear-gradient(#006BFF 0%, #7852F2 100%);     /* blue → violet */
+  --wd-grad-cta-alt:  linear-gradient(#40A6FF 0%, #0047E0 100%);     /* sky → deep */
+  --wd-grad-hunt:     linear-gradient(rgba(255,85,1,0.92) 0%, rgba(250,201,56,0.92) 100%);
+  --wd-grad-protect:  linear-gradient(rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.32) 40%, rgba(0,0,0,0.92) 100%);
+  --wd-grad-moments-fade: linear-gradient(rgba(5,10,20,0) 0%, rgb(5,10,20) 100%);
+
+  /* ─── Radii ───────────────────────────────────────────────── */
+  --wd-radius-xs:    6px;   /* tiny badges */
+  --wd-radius-sm:    8px;
+  --wd-radius-md:   14px;   /* thumbnails, inline tags */
+  --wd-radius-lg:   18px;
+  --wd-radius-xl:   20px;   /* standard card */
+  --wd-radius-2xl: 24px;    /* hero card, sheet */
+  --wd-radius-cta: 26px;    /* primary CTA */
+  --wd-radius-pill: 9999px;
+  --wd-radius-glass: 30px;  /* brand primitive spec */
+
+  /* ─── Spacing ─────────────────────────────────────────────── */
+  --wd-space-1: 4px;
+  --wd-space-2: 8px;
+  --wd-space-3: 12px;
+  --wd-space-4: 16px;  /* screen side margin */
+  --wd-space-5: 20px;  /* section internal padding */
+  --wd-space-6: 24px;  /* major block gap */
+  --wd-space-8: 32px;
+  --wd-space-10: 40px;
+
+  --wd-margin-screen:  16px;
+  --wd-padding-block:  20px;
+  --wd-padding-card:   14px 16px 16px 16px;
+
+  /* ─── Device ──────────────────────────────────────────────── */
+  --wd-viewport-w: 402px;
+  --wd-viewport-h: 874px;
+  --wd-statusbar-h: 48px;
+  --wd-tabbar-h:    83px;
+
+  /* ─── Type scale (Nunito) ─────────────────────────────────── */
+  --wd-font: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Display / hero */
+  --wd-display-size: 28px;
+  --wd-display-weight: 700;
+  --wd-display-lh: 100%;
+
+  /* Screen title */
+  --wd-title-size: 22px;
+  --wd-title-weight: 700;
+  --wd-title-lh: 100%;
+
+  /* Card / sheet heading */
+  --wd-h1-size: 18px;
+  --wd-h1-weight: 700;
+  --wd-h1-lh: 100%;
+
+  /* Section heading (above content blocks) */
+  --wd-h2-size: 16px;
+  --wd-h2-weight: 700;
+  --wd-h2-lh: 100%;
+
+  /* Bold inline label */
+  --wd-h3-size: 14px;
+  --wd-h3-weight: 700;
+  --wd-h3-lh: 100%;
+
+  /* Body */
+  --wd-body-size: 13px;
+  --wd-body-weight: 400;
+  --wd-body-lh: 140%;
+
+  /* Meta (under headings, card subtitles) */
+  --wd-meta-size: 12px;
+  --wd-meta-weight: 400;
+  --wd-meta-lh: 100%;
+
+  /* Micro-label (pill captions, tiny meta) */
+  --wd-micro-size: 11px;
+  --wd-micro-weight: 600;
+  --wd-micro-lh: 100%;
+
+  /* Overline / pill (UPPERCASE, tracked) */
+  --wd-overline-size: 10px;
+  --wd-overline-weight: 700;
+  --wd-overline-lh: 100%;
+  --wd-overline-track: 0.08em;
+
+  /* Pico — tab labels, the very small stuff */
+  --wd-pico-size: 9px;
+  --wd-pico-weight: 700;
+
+  /* ─── Motion ──────────────────────────────────────────────── */
+  --wd-ease:         cubic-bezier(0.22, 0.61, 0.36, 1);
+  --wd-ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+  --wd-dur-tap:      220ms;
+  --wd-dur-sheet:    320ms;
+  --wd-dur-reward:   480ms;
+}
+
+/* ─── Reset + base ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html, body {
+  margin: 0; padding: 0;
+  font-family: var(--wd-font);
+  color: var(--wd-fg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ─── Semantic type classes ────────────────────────────────── */
+.wd-display  { font-family: var(--wd-font); font-weight: var(--wd-display-weight);  font-size: var(--wd-display-size);  line-height: var(--wd-display-lh); letter-spacing: -0.01em; }
+.wd-title    { font-family: var(--wd-font); font-weight: var(--wd-title-weight);    font-size: var(--wd-title-size);    line-height: var(--wd-title-lh); }
+.wd-h1       { font-family: var(--wd-font); font-weight: var(--wd-h1-weight);       font-size: var(--wd-h1-size);       line-height: var(--wd-h1-lh); }
+.wd-h2       { font-family: var(--wd-font); font-weight: var(--wd-h2-weight);       font-size: var(--wd-h2-size);       line-height: var(--wd-h2-lh); }
+.wd-h3       { font-family: var(--wd-font); font-weight: var(--wd-h3-weight);       font-size: var(--wd-h3-size);       line-height: var(--wd-h3-lh); }
+.wd-body     { font-family: var(--wd-font); font-weight: var(--wd-body-weight);     font-size: var(--wd-body-size);     line-height: var(--wd-body-lh); }
+.wd-meta     { font-family: var(--wd-font); font-weight: var(--wd-meta-weight);     font-size: var(--wd-meta-size);     line-height: var(--wd-meta-lh); color: var(--wd-fg-soft); }
+.wd-micro    { font-family: var(--wd-font); font-weight: var(--wd-micro-weight);    font-size: var(--wd-micro-size);    line-height: var(--wd-micro-lh); }
+.wd-overline { font-family: var(--wd-font); font-weight: var(--wd-overline-weight); font-size: var(--wd-overline-size); line-height: var(--wd-overline-lh); letter-spacing: var(--wd-overline-track); text-transform: uppercase; }
+.wd-pico     { font-family: var(--wd-font); font-weight: var(--wd-pico-weight);     font-size: var(--wd-pico-size); }
+
+/* ─── B2B / Platform tokens (light mode) ───────────────────
+ * Used by ui_kits/platform — the internal OS for Curators,
+ * Spaces, Brands, and weDISCOVR ops. Light is primary;
+ * hybrid/dark available as a surface mode. */
+:root {
+  --wd-pg:       #F7F8FB;  /* page background */
+  --wd-pg-2:     #EEF1F6;  /* subtle panels, hover */
+  --wd-surface:  #FFFFFF;  /* cards */
+  --wd-line:     #E5E8EF;  /* hairline dividers */
+  --wd-line-2:   #D7DBE4;  /* stronger dividers */
+  --wd-line-3:   #BFC5D1;  /* strong */
+
+  --wd-ink:      #0B1220;  /* near-black for headings */
+  --wd-ink-2:    #2A3346;  /* body */
+  --wd-ink-3:    #5B6476;  /* secondary */
+  --wd-ink-4:    #8892A4;  /* tertiary / meta */
+  --wd-ink-5:    #B0B7C6;  /* placeholder */
+
+  --wd-tint-blue-lt:   rgba(  0,102,255,0.08);
+  --wd-tint-purple-lt: rgba(105,104,203,0.10);
+  --wd-tint-orange-lt: rgba(255, 85,  1,0.10);
+  --wd-tint-gold-lt:   rgba(250,201, 56,0.18);
+  --wd-tint-green-lt:  rgba(126,217, 87,0.18);
+  --wd-tint-sky-lt:    rgba( 44,152,228,0.10);
+
+  /* hybrid mode uses dark sidebar + light content */
+  --wd-nav-bg:       #0B1220;
+  --wd-nav-fg:       rgba(255,255,255,0.72);
+  --wd-nav-fg-hi:    #FFFFFF;
+  --wd-nav-hover:    rgba(255,255,255,0.06);
+  --wd-nav-active:   rgba(0,102,255,0.18);
+}
+
+/* ─── Primitive helpers ───────────────────────────────────── */
+.wd-glass {
+  background: var(--wd-glass-fill-low);
+  border: 1px solid var(--wd-glass-border);
+  backdrop-filter: blur(var(--wd-glass-blur));
+  -webkit-backdrop-filter: blur(var(--wd-glass-blur));
+  border-radius: var(--wd-radius-xl);
+  box-shadow: var(--wd-shadow-card);
+}
+
+.wd-screen {
+  width: var(--wd-viewport-w);
+  height: var(--wd-viewport-h);
+  background: var(--wd-bg-app);
+  position: relative;
+  overflow: hidden;
+  color: var(--wd-fg);
+  font-family: var(--wd-font);
+}
