@@ -1,46 +1,3529 @@
 <!doctype html>
-<html><head><meta charset="utf-8">
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>The Platform · weDISCOVR B2B</title>
-<link rel="stylesheet" href="../../colors_and_type.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
 <style>
-  html, body { margin: 0; padding: 0; background: #F7F8FB; font-family: Nunito; color: #0B1220; min-height: 100vh; }
-  #root { min-height: 100vh; }
-  button, input, textarea, select { font-family: Nunito; }
-  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-  .pulse { animation: pulse 1.8s infinite; }
-  ::-webkit-scrollbar { width: 10px; height: 10px; }
-  ::-webkit-scrollbar-thumb { background: #D7DBE4; border-radius: 5px; }
-  ::-webkit-scrollbar-thumb:hover { background: #BFC5D1; }
+:root {
+  --wd-blue: #0066FF; --wd-blue-ink: #0047E0; --wd-blue-sky: #40A6FF;
+  --wd-purple: #6968CB; --wd-orange: #FF5501; --wd-gold: #FAC938;
+  --wd-green: #7ED957; --wd-sky: #2C9CE4; --wd-red: #FA2E2E;
+  --wd-green-ink: #2F7A1A; --wd-gold-ink: #8A6500; --wd-orange-ink: #C43D00;
+  --wd-pg: #F7F8FB; --wd-pg-2: #EEF1F6; --wd-surface: #FFFFFF;
+  --wd-line: #E5E8EF; --wd-line-2: #D7DBE4; --wd-line-3: #BFC5D1;
+  --wd-ink: #0B1220; --wd-ink-2: #2A3346; --wd-ink-3: #5B6476;
+  --wd-ink-4: #8892A4; --wd-ink-5: #B0B7C6;
+  --wd-nav-bg: #0B1220; --wd-nav-fg: rgba(255,255,255,0.72);
+  --wd-nav-fg-hi: #FFFFFF; --wd-nav-hover: rgba(255,255,255,0.06);
+  --wd-nav-active: rgba(0,102,255,0.18);
+  --wd-font: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --wd-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body {
+  margin: 0; padding: 0; background: var(--wd-pg);
+  font-family: var(--wd-font); color: var(--wd-ink); min-height: 100vh;
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+#root { min-height: 100vh; }
+button, input, textarea, select { font-family: var(--wd-font); }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+.pulse { animation: pulse 1.8s infinite; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: #D7DBE4; border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: #BFC5D1; }
 </style>
 </head>
 <body>
-  <div id="root"></div>
+<div id="root"></div>
 
-  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"></script>
 
-  <script src="./data.js"></script>
-  <script src="./data_brlo.js"></script>
-  <script type="text/babel" src="./Icons.jsx"></script>
-  <script type="text/babel" src="./Primitives.jsx"></script>
-  <script type="text/babel" src="./WSI.jsx"></script>
-  <script type="text/babel" src="./Shell.jsx"></script>
-  <script type="text/babel" src="./Curator/Dashboard.jsx"></script>
-  <script type="text/babel" src="./Curator/CreateEvent.jsx"></script>
-  <script type="text/babel" src="./Curator/Earnings.jsx"></script>
-  <script type="text/babel" src="./Brand/SponsorFeed.jsx"></script>
-  <script type="text/babel" src="./Brand/Recall.jsx"></script>
-  <script type="text/babel" src="./Brand/Report.jsx"></script>
-  <script type="text/babel" src="./Space/Calendar.jsx"></script>
-  <script type="text/babel" src="./Ops/QAQueue.jsx"></script>
-  <script type="text/babel" src="./BRLO/Shell.jsx"></script>
-  <script type="text/babel" src="./BRLO/Dashboard.jsx"></script>
-  <script type="text/babel" src="./BRLO/Inbox.jsx"></script>
-  <script type="text/babel" src="./BRLO/Profile.jsx"></script>
-  <script type="text/babel" src="./BRLO/Onboarding.jsx"></script>
-  <script type="text/babel" src="./BRLO/CapabilityExpand.jsx"></script>
-  <script type="text/babel" src="./BRLO/Handoff.jsx"></script>
-  <script type="text/babel" src="./DemoNav.jsx"></script>
-  <script type="text/babel" src="./App.jsx"></script>
-</body></html>
+<!-- source: data.js -->
+<script>
+// Shared sample data for the Platform UI kit.
+// All money in EUR. Avatars use solid category-color blocks by design.
+
+const CATEGORIES = {
+  music:   { name: "Music",   color: "#6968CB", tintLt: "rgba(105,104,203,0.10)" },
+  food:    { name: "Food",    color: "#FF5501", tintLt: "rgba(255, 85,  1,0.10)" },
+  beauty:  { name: "Beauty",  color: "#FAC938", tintLt: "rgba(250,201, 56,0.18)" },
+  fitness: { name: "Fitness", color: "#7ED957", tintLt: "rgba(126,217, 87,0.18)" },
+  culture: { name: "Culture", color: "#2C9CE4", tintLt: "rgba( 44,152,228,0.10)" },
+  talk:    { name: "Talk",    color: "#0066FF", tintLt: "rgba(  0,102,255,0.08)" },
+};
+
+const FORMATS = [
+  { id: "talk",      name: "Talk",             dur: "60–90 min", cap: "30–80",   desc: "Fireside, panel, or lecture" },
+  { id: "walk",      name: "Walk",             dur: "90–120 min", cap: "10–30",  desc: "Guided route with stops" },
+  { id: "tasting",   name: "Tasting",          dur: "90 min",    cap: "20–60",   desc: "Food or drink curation" },
+  { id: "listening", name: "Listening Session", dur: "120 min",  cap: "40–120",  desc: "Album preview, vinyl, DJ" },
+  { id: "club",      name: "Club Night",       dur: "5–8 hrs",   cap: "120–400", desc: "Full venue takeover" },
+  { id: "workshop",  name: "Workshop",         dur: "2–3 hrs",   cap: "10–25",   desc: "Hands-on, skills-based" },
+  { id: "wellness",  name: "Wellness",         dur: "60–90 min", cap: "15–40",   desc: "Yoga, sound bath, breathwork" },
+  { id: "screening", name: "Screening",        dur: "90–180 min", cap: "40–200", desc: "Film, documentary, premiere" },
+];
+
+const CURATORS = [
+  { id: "c1", name: "DJ Kleo",     handle: "@djkleo",     city: "Neukölln",  cat: "music",   events: 14, rating: 4.8, followers: "18.2k", cpi: 86, color: "#6968CB", bio: "House & techno. Resident at Watergate.",
+    img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=320&h=320&fit=crop&q=75" },
+  { id: "c2", name: "Lena Marx",   handle: "@lenam",      city: "Mitte",     cat: "fitness", events:  9, rating: 4.9, followers: "6.4k",  cpi: 82, color: "#7ED957", bio: "Yoga + breathwork, 10-year practice.",
+    img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=320&h=320&fit=crop&q=75" },
+  { id: "c3", name: "Chef Rico",   handle: "@ricocooks",  city: "Kreuzberg", cat: "food",    events: 22, rating: 4.7, followers: "31.0k", cpi: 90, color: "#FF5501", bio: "Supper clubs. Slow food.",
+    img: "https://images.unsplash.com/photo-1583195764036-6dc248ac07d9?w=320&h=320&fit=crop&q=75" },
+  { id: "c4", name: "Anya Reis",   handle: "@anyareis",   city: "Mitte",     cat: "beauty",  events:  6, rating: 4.6, followers: "12.1k", cpi: 74, color: "#FAC938", bio: "Clean beauty curator, Amazingy alum.",
+    img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=320&h=320&fit=crop&q=75" },
+  { id: "c5", name: "Devonte Ali", handle: "@devonte",    city: "Friedrichshain", cat: "culture", events: 18, rating: 4.9, followers: "24.7k", cpi: 88, color: "#2C9CE4", bio: "Afro-German film nights + conversations.",
+    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=320&h=320&fit=crop&q=75" },
+  { id: "c6", name: "Tamir Ofek",  handle: "@tamir",      city: "Prenzlauer Berg", cat: "talk", events: 11, rating: 4.8, followers: "9.3k", cpi: 79, color: "#0066FF", bio: "Design, systems, cultural tech panels.",
+    img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=320&h=320&fit=crop&q=75" },
+];
+
+const SPACES = [
+  { id: "s1", name: "Urban Spree",  n: "Friedrichshain", cap: 450, type: "Gallery / Club", svi: 84, revenueBaseline: "€3.8k avg night", permits: ["Events","Alcohol","Noise 02:00"], color: "#6968CB", equipment: ["Sound","Lights","AV","Bar"],
+    img: "https://images.unsplash.com/photo-1493612276216-ee3925520721?w=800&h=500&fit=crop&q=75" },
+  { id: "s2", name: "BRLO Brwhouse", n: "Kreuzberg",     cap: 280, type: "Brewery",        svi: 78, revenueBaseline: "€2.4k avg night", permits: ["Events","Alcohol"],             color: "#FF5501", equipment: ["Sound","Kitchen","Bar","Outdoor"],
+    img: "https://images.unsplash.com/photo-1518176258769-f227c798150e?w=800&h=500&fit=crop&q=75" },
+  { id: "s3", name: "Tree House",   n: "Neukölln",       cap: 120, type: "Gallery / Bar",  svi: 71, revenueBaseline: "€980 avg night",  permits: ["Events","Alcohol"],             color: "#7ED957", equipment: ["Sound","AV","Bar"],
+    img: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=800&h=500&fit=crop&q=75" },
+  { id: "s4", name: "NIO House",    n: "Mitte",          cap: 200, type: "Showroom",       svi: 82, revenueBaseline: "€1.4k avg night", permits: ["Events"],                       color: "#2C9CE4", equipment: ["AV","Coffee","Retail"],
+    img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=500&fit=crop&q=75" },
+  { id: "s5", name: "Sports Hub",   n: "Wedding",        cap:  60, type: "Studio",         svi: 68, revenueBaseline: "€540 avg day",    permits: ["Events"],                       color: "#FAC938", equipment: ["Mats","Sound","Showers"],
+    img: "https://images.unsplash.com/photo-1545389336-cf090694435e?w=800&h=500&fit=crop&q=75" },
+];
+
+const BRANDS = [
+  { id: "b1", name: "Amazingy",   cat: "beauty",  budget: "€24,000", color: "#FAC938", industry: "Clean beauty", bsi: 81 },
+  { id: "b2", name: "Ableton",    cat: "music",   budget: "€60,000", color: "#6968CB", industry: "Music tech",   bsi: 87 },
+  { id: "b3", name: "Veganz",     cat: "food",    budget: "€18,500", color: "#FF5501", industry: "Plant-based",  bsi: 74 },
+  { id: "b4", name: "Allbirds",   cat: "fitness", budget: "€32,000", color: "#7ED957", industry: "Apparel",      bsi: 79 },
+  { id: "b5", name: "BMW i",      cat: "culture", budget: "€120,000", color: "#2C9CE4", industry: "Mobility",    bsi: 92 },
+  { id: "b6", name: "Aesop",      cat: "beauty",  budget: "€28,000", color: "#FAC938", industry: "Skincare",     bsi: 84 },
+];
+
+const EVENTS = [
+  { id: "e1", title: "Midsommar Listening Session", curator: "c1", space: "s1", brand: "b2", cat: "music",
+    date: "Apr 27 · Fri 20:00", cap: 280, rsvps: 214, ticket: "€18",
+    status: "live", wsi: 87, audienceFit: 92, revenue: 78, track: 86, venue: 84, depth: 82, halo: 72, completeness: 95,
+    desc: "Ableton preview + DJ Kleo plays the new Moog + Push session. Vinyl after.",
+    schedule: [["20:00","Doors"],["20:45","Listening set"],["22:00","DJ Kleo B2B"],["02:00","Close"]] },
+  { id: "e2", title: "Amazingy Beauty Drop",        curator: "c4", space: "s4", brand: "b1", cat: "beauty",
+    date: "Apr 27 · Sat 14:00", cap: 200, rsvps: 156, ticket: "Free",
+    status: "live", wsi: 82, audienceFit: 85, revenue: 68, track: 74, venue: 82, depth: 78, halo: 64, completeness: 90,
+    desc: "SPF30 launch + founder talk + sampling booth. AR Drop enabled.",
+    schedule: [["14:00","Doors"],["14:30","Product reveal"],["15:30","Founder talk"],["17:00","Giveaway"],["18:00","Close"]] },
+  { id: "e3", title: "Kreuzberg Supper Pass",       curator: "c3", space: "s2", brand: null, cat: "food",
+    date: "May 03 · Sat 19:00", cap: 40, rsvps: 38, ticket: "€65",
+    status: "confirmed", wsi: 74, audienceFit: 70, revenue: 82, track: 90, venue: 76, depth: 71, halo: 81, completeness: 88,
+    desc: "6-course seasonal tasting, open kitchen format." },
+  { id: "e4", title: "Sound Bath at Sports Hub",    curator: "c2", space: "s5", brand: "b4", cat: "fitness",
+    date: "May 05 · Sun 11:00", cap: 30, rsvps: 24, ticket: "€22",
+    status: "confirmed", wsi: 76, audienceFit: 80, revenue: 62, track: 82, venue: 68, depth: 85, halo: 58, completeness: 92,
+    desc: "90-min breathwork + sound bath. Allbirds sampling." },
+  { id: "e5", title: "Afro-Futures Film Night",     curator: "c5", space: "s3", brand: null, cat: "culture",
+    date: "May 10 · Fri 19:30", cap: 120, rsvps: 71, ticket: "€12",
+    status: "published", wsi: 79, audienceFit: 75, revenue: 60, track: 88, venue: 71, depth: 82, halo: 68, completeness: 90,
+    desc: "Two shorts + conversation with filmmakers." },
+  { id: "e6", title: "Design Systems in the Wild",  curator: "c6", space: "s4", brand: "b5", cat: "talk",
+    date: "May 14 · Wed 19:00", cap: 180, rsvps: 102, ticket: "Free",
+    status: "sponsor_matched", wsi: 84, audienceFit: 88, revenue: 72, track: 79, venue: 82, depth: 81, halo: 70, completeness: 94,
+    desc: "Panel + live audit of 3 live products.  BMW i sponsoring." },
+  { id: "e7", title: "Neukölln Night Market",       curator: "c3", space: "s1", brand: "b3", cat: "food",
+    date: "May 17 · Sat 18:00", cap: 450, rsvps: 318, ticket: "Free",
+    status: "published", wsi: 81, audienceFit: 84, revenue: 68, track: 90, venue: 84, depth: 74, halo: 88, completeness: 88,
+    desc: "20 vendors + Veganz sampling + Rico's open kitchen." },
+  { id: "e8", title: "Morning Vinyasa + Coffee",    curator: "c2", space: "s4", brand: "b4", cat: "fitness",
+    date: "May 18 · Sun 09:00", cap: 40, rsvps: 22, ticket: "€18",
+    status: "qa_review", wsi: 72, audienceFit: 74, revenue: 58, track: 82, venue: 82, depth: 78, halo: 52, completeness: 82,
+    desc: "60-min flow + NIO Coffee after." },
+];
+
+// STATUS palette — reserved colors that DO NOT overlap with CATEGORY hues.
+// Categories are identity (Music=purple, Food=orange, etc). Statuses are state.
+// Status palette = slate / amber / green / charcoal — semantic neutrals.
+//   - waiting / in-progress → amber (D97706)
+//   - confirmed / published → slate (334155) — neutral "all-good"
+//   - success / live / paid → green-ink
+//   - sponsor_matched       → sponsor-purple (kept; sponsor is its own domain concept)
+//   - completed / draft     → grey
+const STATUS = {
+  draft:           { label: "Draft",           color: "#8892A4",              tint: "#EEF1F6" },
+  space_pending:   { label: "Space pending",   color: "#D97706",              tint: "rgba(217,119,6,0.12)" },
+  qa_review:       { label: "In QA review",    color: "#D97706",              tint: "rgba(217,119,6,0.12)" },
+  published:       { label: "Published",       color: "#334155",              tint: "rgba(51,65,85,0.08)" },
+  confirmed:       { label: "Confirmed",       color: "#334155",              tint: "rgba(51,65,85,0.08)" },
+  sponsor_matched: { label: "Sponsor matched", color: "#6968CB",              tint: "rgba(105,104,203,0.10)" },
+  live:            { label: "Live",            color: "var(--wd-green-ink)", tint: "rgba(126,217,87,0.18)" },
+  completed:       { label: "Completed",       color: "#5B6476",              tint: "#EEF1F6" },
+  paid:            { label: "Paid",            color: "var(--wd-green-ink)", tint: "rgba(126,217,87,0.18)" },
+};
+
+const getCurator = id => CURATORS.find(c => c.id === id);
+const getSpace   = id => SPACES.find(s => s.id === id);
+const getBrand   = id => BRANDS.find(b => b.id === id);
+const getCat     = id => CATEGORIES[id];
+
+Object.assign(window, { CATEGORIES, FORMATS, CURATORS, SPACES, BRANDS, EVENTS, STATUS,
+  getCurator, getSpace, getBrand, getCat });
+</script>
+<!-- source: data_brlo.js -->
+<script>
+// BRLO — a multi-capability entity: Space (Brwhouse) + Brand (brewery sponsor).
+// This extends the single-role data with entity-level context.
+
+const BRLO_ENTITY = {
+  id: "brlo",
+  name: "BRLO",
+  handle: "@brlo",
+  tagline: "Kreuzberg brewery + taproom",
+  city: "Kreuzberg, Berlin",
+  color: "#FF5501",               // brand orange
+  capabilities: ["space", "brand"], // enabled hats
+  // Space capability
+  space: {
+    venue: "BRLO Brwhouse",
+    n: "Kreuzberg",
+    cap: 280,
+    type: "Brewery + Taproom",
+    svi: 78,
+    revenueBaseline: "€2.4k avg night",
+    utilization: 62,
+    openSlots: 9,
+    booked: 8,
+    incomingRequests: 4,
+    color: "#7ED957", // space capability color = green
+  },
+  // Brand capability
+  brand: {
+    industry: "Craft brewery",
+    budget: "€45,000",
+    bsi: 77,
+    activeSponsorships: 3,
+    pendingApplications: 2,
+    weidsThisMonth: 2840,
+    guaranteedRemaining: 6800,
+    color: "#FF5501", // brand capability color = orange
+  },
+};
+
+// Capability color system — used across the multi-cap UI
+const CAPABILITY = {
+  space:   { color: "#7ED957", tint: "rgba(126,217,87,0.12)", tintStrong: "rgba(126,217,87,0.22)", label: "Space",   icon: "building" },
+  brand:   { color: "#FF5501", tint: "rgba(255,85,1,0.10)",   tintStrong: "rgba(255,85,1,0.20)",   label: "Brand",   icon: "megaphone" },
+  curator: { color: "#6968CB", tint: "rgba(105,104,203,0.12)", tintStrong: "rgba(105,104,203,0.22)", label: "Curator", icon: "sparkle" },
+  talent:  { color: "#FAC938", tint: "rgba(250,201,56,0.14)", tintStrong: "rgba(250,201,56,0.25)", label: "Talent",  icon: "mic" },
+};
+
+// BRLO's unified inbox (space requests + brand applications, mixed)
+const BRLO_INBOX = [
+  { id: "i1", cap: "space", kind: "request",      from: "c1", ev: "Midsommar Listening",        date: "May 14 · 20:00", match: 89, when: "2h ago", status: "new" },
+  { id: "i2", cap: "brand", kind: "pitch",        from: "c3", ev: "Kreuzberg Supper Pass",      date: "May 03 · 19:00", match: 82, when: "4h ago", status: "new" },
+  { id: "i3", cap: "space", kind: "request",      from: "c5", ev: "Afro-Futures Film Night",    date: "May 18 · 19:30", match: 76, when: "1d ago", status: "new" },
+  { id: "i4", cap: "brand", kind: "confirmation", from: "c6", ev: "Design Systems in the Wild", date: "May 14 · 19:00", match: 84, when: "2d ago", status: "confirmed" },
+  { id: "i5", cap: "space", kind: "request",      from: "c3", ev: "Neukölln Night Market",      date: "May 17 · 18:00", match: 84, when: "3d ago", status: "new" },
+  { id: "i6", cap: "brand", kind: "report",       from: null, ev: "Midsommar Listening · live", date: "Apr 27",         match: 87, when: "last wk", status: "done" },
+];
+
+// BRLO's "cross-capability" moments — where the two hats inform each other
+const BRLO_CROSSOVERS = [
+  {
+    id: "x1",
+    headline: "You're hosting and sponsoring the same Friday",
+    detail: "May 14, Design Systems in the Wild is at NIO House (not yours), but BRLO is pouring. Your taproom has an open slot that night. Consider co-hosting?",
+    cap: ["space", "brand"],
+  },
+  {
+    id: "x2",
+    headline: "3 curator requests to your taproom mention beer pairings",
+    detail: "DJ Kleo, Chef Rico, and Devonte Ali all flagged BRLO-first pairings. Converting these into sponsor-matched events could 2x margin.",
+    cap: ["space", "brand"],
+  },
+];
+
+Object.assign(window, { BRLO_ENTITY, CAPABILITY, BRLO_INBOX, BRLO_CROSSOVERS });
+</script>
+<!-- source: Icons.jsx -->
+<script type="text/babel">
+// Line icon set — 1.75 stroke, 24×24 viewBox. Minimal, neutral.
+// Drawn in a consistent Feather-ish style: round caps/joins, open paths,
+// lowercase naming. Keep strokeWidth 1.75 as default; size via `size` prop.
+const Icon = ({ name, size = 20, color = "currentColor", strokeWidth = 1.75, style = {} }) => {
+  const paths = {
+    // Nav + structure
+    home:       <><path d="M3 10l9-7 9 7v10a2 2 0 0 1-2 2h-4v-6h-6v6H5a2 2 0 0 1-2-2z"/></>,
+    calendar:   <><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></>,
+    plus:       <><path d="M12 5v14M5 12h14"/></>,
+    minus:      <><path d="M5 12h14"/></>,
+    zap:        <><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></>,
+    compass:    <><circle cx="12" cy="12" r="9"/><path d="m16 8-2 6-6 2 2-6z"/></>,
+    wallet:     <><path d="M3 7a2 2 0 0 1 2-2h12l2 4v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M17 13h.01"/></>,
+    sparkle:    <><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/></>,
+    chart:      <><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></>,
+    barchart:   <><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></>,
+    tag:        <><path d="M20 12 12 20l-8-8V4h8z"/><circle cx="8" cy="8" r="1.5" fill="currentColor" stroke="none"/></>,
+    bell:       <><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10 21a2 2 0 0 0 4 0"/></>,
+    search:     <><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></>,
+    filter:     <><path d="M3 5h18l-7 8v6l-4-2v-4z"/></>,
+    settings:   <><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3h0a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8v0a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></>,
+    grid:       <><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></>,
+    list:       <><path d="M8 6h13M8 12h13M8 18h13"/><circle cx="3.5" cy="6" r="1.2" fill="currentColor" stroke="none"/><circle cx="3.5" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="3.5" cy="18" r="1.2" fill="currentColor" stroke="none"/></>,
+
+    // People + entities
+    users:      <><circle cx="9" cy="8" r="4"/><path d="M2 21a7 7 0 0 1 14 0"/><path d="M16 4a4 4 0 0 1 0 8"/><path d="M22 21a7 7 0 0 0-5-6.7"/></>,
+    users2:     <><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></>,
+    user:       <><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></>,
+    megaphone:  <><path d="M3 11v2a2 2 0 0 0 2 2h1v4h3v-4h1l9 4V7l-9 4H5a2 2 0 0 0-2 2z"/></>,
+    building:   <><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M9 8h.01M15 8h.01M9 12h.01M15 12h.01M9 16h.01M15 16h.01"/></>,
+    briefcase:  <><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></>,
+
+    // Actions + states
+    check:      <><path d="m5 12 5 5L20 7"/></>,
+    checkCircle:<><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></>,
+    x:          <><path d="M6 6l12 12M18 6 6 18"/></>,
+    xCircle:    <><circle cx="12" cy="12" r="9"/><path d="m9 9 6 6M15 9l-6 6"/></>,
+    info:       <><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8.5v0"/></>,
+    warn:       <><path d="M12 3 2 20h20z"/><path d="M12 10v5M12 18v0"/></>,
+    help:       <><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5A2.5 2.5 0 1 1 12 14v1.5M12 19v0"/></>,
+
+    // Arrows + chevrons
+    arrowRight: <><path d="M5 12h14M13 5l7 7-7 7"/></>,
+    arrowLeft:  <><path d="M19 12H5M11 5l-7 7 7 7"/></>,
+    arrowUp:    <><path d="M12 19V5M5 11l7-7 7 7"/></>,
+    arrowDown:  <><path d="M12 5v14M5 13l7 7 7-7"/></>,
+    chevronRight:<><path d="m9 6 6 6-6 6"/></>,
+    chevronLeft:<><path d="m15 6-6 6 6 6"/></>,
+    chevronDown:<><path d="m6 9 6 6 6-6"/></>,
+    chevronUp:  <><path d="m6 15 6-6 6 6"/></>,
+    trend:      <><path d="m3 17 6-6 4 4 8-8"/><path d="M14 7h7v7"/></>,
+    trendDown:  <><path d="m3 7 6 6 4-4 8 8"/><path d="M14 17h7v-7"/></>,
+    externalLink:<><path d="M14 3h7v7M21 3 10 14M19 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h6"/></>,
+
+    // Communication + commerce
+    dot:        <><circle cx="12" cy="12" r="3" fill="currentColor" stroke="none"/></>,
+    location:   <><path d="M12 22s-7-7-7-12a7 7 0 1 1 14 0c0 5-7 12-7 12z"/><circle cx="12" cy="10" r="2.5"/></>,
+    clock:      <><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></>,
+    eye:        <><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></>,
+    eyeOff:     <><path d="M3 3l18 18M10.6 10.6a3 3 0 0 0 4.2 4.2M6.5 6.5C4.1 8 2 12 2 12s4 7 10 7a9.8 9.8 0 0 0 5.5-1.5M9.9 5.1A9.9 9.9 0 0 1 12 5c6 0 10 7 10 7a17.8 17.8 0 0 1-3.1 4"/></>,
+    euro:       <><path d="M17 5a8 8 0 1 0 0 14M3 9h12M3 15h12"/></>,
+    upload:     <><path d="M12 3v13M6 9l6-6 6 6M4 21h16"/></>,
+    download:   <><path d="M12 3v13M6 13l6 6 6-6M4 21h16"/></>,
+    scan:       <><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M7 12h10"/></>,
+    target:     <><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/></>,
+    gift:       <><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M5 12v9h14v-9M12 8a3 3 0 0 1-3-3 2 2 0 1 1 3 3zM12 8a3 3 0 0 0 3-3 2 2 0 1 0-3 3z"/></>,
+    layers:     <><path d="m12 3 9 5-9 5-9-5zM3 13l9 5 9-5M3 18l9 5 9-5"/></>,
+    shield:     <><path d="M12 3 4 6v6c0 5 4 8 8 9 4-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></>,
+
+    // Media + creative
+    mic:        <><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4M9 21h6"/></>,
+    headphones: <><path d="M3 14v-2a9 9 0 0 1 18 0v2"/><rect x="3" y="14" width="5" height="7" rx="1.5"/><rect x="16" y="14" width="5" height="7" rx="1.5"/></>,
+    music:      <><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></>,
+    camera:     <><rect x="3" y="7" width="18" height="13" rx="2"/><circle cx="12" cy="13.5" r="3.5"/><path d="M8 7l1.5-3h5L16 7"/></>,
+    image:      <><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m3 17 5-5 7 7M14 14l3-3 4 4"/></>,
+    video:      <><rect x="3" y="6" width="14" height="12" rx="2"/><path d="m17 10 4-2v8l-4-2z"/></>,
+    play:       <><path d="M6 4v16l14-8z" fill="currentColor" stroke="none"/></>,
+    pause:      <><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></>,
+    paint:      <><path d="M19 11V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h8v4a3 3 0 0 0 3 3v0a3 3 0 0 0 3-3v-2a2 2 0 0 0 0-4"/><circle cx="7" cy="9" r="0.01"/></>,
+
+    // Misc used throughout
+    send:       <><path d="M21 3 3 10l7 3 3 7z"/><path d="M21 3 10 13"/></>,
+    link:       <><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></>,
+    heart:      <><path d="M12 20s-7-4.5-7-11a4.5 4.5 0 0 1 8.5-2 4.5 4.5 0 0 1 8.5 2c0 6.5-7 11-7 11z"/></>,
+    star:       <><path d="m12 3 2.7 5.7 6.3.9-4.6 4.5 1.1 6.4-5.5-2.9-5.5 2.9 1.1-6.4L3 9.6l6.3-.9z"/></>,
+    flag:       <><path d="M4 21V4a1 1 0 0 1 1-1h13l-2 4 2 4H5"/></>,
+    bookmark:   <><path d="M6 4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v17l-6-4-6 4z"/></>,
+    refresh:    <><path d="M3 12a9 9 0 0 1 15.3-6.4L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15.3 6.4L3 16"/><path d="M3 21v-5h5"/></>,
+    copy:       <><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></>,
+    edit:       <><path d="M17 3a2.8 2.8 0 0 1 4 4L8 20H4v-4z"/></>,
+    trash:      <><path d="M3 6h18M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2M6 6l1 14a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-14M10 11v6M14 11v6"/></>,
+    lock:       <><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></>,
+    unlock:     <><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/></>,
+    globe:      <><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></>,
+    sun:        <><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.5 1.5M17.5 17.5 19 19M5 19l1.5-1.5M17.5 6.5 19 5"/></>,
+    moon:       <><path d="M20 15a8 8 0 0 1-11-11 9 9 0 1 0 11 11z"/></>,
+    menu:       <><path d="M4 7h16M4 12h16M4 17h16"/></>,
+    more:       <><circle cx="5" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.5" fill="currentColor" stroke="none"/></>,
+
+    // weDISCOVR domain
+    signal:     <><path d="M3 21h4M9 21h4M15 21h6"/><path d="M3 18v-2M9 18V12M15 18V6M21 18V3"/></>,
+    pulse:      <><path d="M3 12h4l3-9 4 18 3-9h4"/></>,
+    vibe:       <><circle cx="12" cy="12" r="3"/><path d="M7 12a5 5 0 0 1 10 0M4 12a8 8 0 0 1 16 0"/></>,
+  };
+  if (!paths[name]) return null;
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none"
+      stroke={color} strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round"
+      style={{ flexShrink: 0, ...style }}>
+      {paths[name]}
+    </svg>
+  );
+};
+
+Object.assign(window, { Icon });
+</script>
+<!-- source: Primitives.jsx -->
+<script type="text/babel">
+// Platform primitives — all light-mode by default.
+const { useState, useEffect, useMemo, createContext, useContext } = React;
+
+const Btn = ({ children, variant = "primary", size = "md", icon, onClick, style = {}, disabled }) => {
+  const h = size === "sm" ? 32 : size === "lg" ? 48 : 40;
+  const vs = {
+    primary: { bg: "#0066FF", color: "#fff", border: "none", hover: "#0054DD" },
+    blue:    { bg: "#0066FF", color: "#fff", border: "none", hover: "#0054DD" },
+    ghost:   { bg: "transparent", color: "var(--wd-ink)", border: "1px solid var(--wd-line-2)", hover: "var(--wd-pg-2)" },
+    quiet:   { bg: "transparent", color: "var(--wd-ink-2)", border: "none", hover: "var(--wd-pg-2)" },
+    danger:  { bg: "#FA2E2E", color: "#fff", border: "none", hover: "#DD1515" },
+    success: { bg: "#7ED957", color: "#0B1220", border: "none", hover: "#6ECB47" },
+    dark:    { bg: "#0B1220", color: "#fff", border: "none", hover: "#1C2536" },
+  };
+  const v = vs[variant];
+  return (
+    <button onClick={disabled ? undefined : onClick} disabled={disabled}
+      style={{
+        height: h, padding: size === "sm" ? "0 12px" : "0 16px",
+        borderRadius: h / 2, fontFamily: "Nunito",
+        fontWeight: 700, fontSize: size === "sm" ? 12 : 13,
+        background: v.bg, color: v.color, border: v.border,
+        display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 6,
+        cursor: disabled ? "not-allowed" : "pointer",
+        opacity: disabled ? 0.5 : 1,
+        transition: "background 180ms var(--wd-ease), transform 180ms var(--wd-ease)",
+        whiteSpace: "nowrap", ...style,
+      }}
+      onMouseDown={e => e.currentTarget.style.transform = "scale(0.97)"}
+      onMouseUp={e => e.currentTarget.style.transform = "scale(1)"}
+      onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
+    >
+      {icon && <Icon name={icon} size={size === "sm" ? 14 : 16} />}
+      {children}
+    </button>
+  );
+};
+
+const Card = ({ children, style = {}, onClick, hover, padding = 20 }) => (
+  <div onClick={onClick}
+    style={{
+      background: "var(--wd-surface)", border: "1px solid var(--wd-line)",
+      borderRadius: 16, padding,
+      transition: "border-color 180ms, box-shadow 180ms, transform 180ms",
+      cursor: onClick ? "pointer" : "default", ...style,
+    }}
+    onMouseEnter={hover || onClick ? e => {
+      e.currentTarget.style.borderColor = "var(--wd-line-2)";
+      e.currentTarget.style.boxShadow = "0 4px 16px rgba(11,18,32,0.06)";
+    } : undefined}
+    onMouseLeave={hover || onClick ? e => {
+      e.currentTarget.style.borderColor = "var(--wd-line)";
+      e.currentTarget.style.boxShadow = "none";
+    } : undefined}
+  >
+    {children}
+  </div>
+);
+
+const StatCard = ({ label, value, delta, deltaKind = "neutral", sub, sparkColor = "#0066FF", spark, icon, tint }) => {
+  const kinds = { up: "var(--wd-green-ink)", down: "#FA2E2E", neutral: "var(--wd-ink-3)" };
+  return (
+    <Card padding={20}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 16 }}>
+        <span style={{ fontSize: 12, color: "var(--wd-ink-3)", fontWeight: 600 }}>{label}</span>
+        {icon && (
+          <div style={{ width: 28, height: 28, borderRadius: 8, background: tint || "var(--wd-pg-2)", display: "flex", alignItems: "center", justifyContent: "center", color: sparkColor }}>
+            <Icon name={icon} size={14} />
+          </div>
+        )}
+      </div>
+      <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 10 }}>
+        <span style={{ fontSize: 28, fontWeight: 700, color: "var(--wd-ink)", letterSpacing: "-0.01em" }}>{value}</span>
+        {delta && <span style={{ fontSize: 12, fontWeight: 700, color: kinds[deltaKind] }}>{delta}</span>}
+      </div>
+      {spark && <Sparkline values={spark} color={sparkColor} />}
+      {sub && <div style={{ fontSize: 11, color: "var(--wd-ink-4)", marginTop: spark ? 8 : 0 }}>{sub}</div>}
+    </Card>
+  );
+};
+
+const Sparkline = ({ values, color = "#0066FF", height = 28 }) => {
+  const w = 100, h = height;
+  const max = Math.max(...values), min = Math.min(...values);
+  const range = max - min || 1;
+  const pts = values.map((v, i) => [i * (w / (values.length - 1)), h - ((v - min) / range) * (h - 4) - 2]);
+  const d = pts.map((p, i) => `${i ? "L" : "M"}${p[0]},${p[1]}`).join(" ");
+  const area = `${d} L${w},${h} L0,${h} Z`;
+  return (
+    <svg viewBox={`0 0 ${w} ${h}`} width="100%" height={h} preserveAspectRatio="none">
+      <path d={area} fill={color} fillOpacity="0.1" />
+      <path d={d} fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+};
+
+const Pill = ({ children, color = "#0066FF", tint, style = {}, size = "md" }) => (
+  <span style={{
+    display: "inline-flex", alignItems: "center", gap: 4,
+    padding: size === "sm" ? "2px 8px" : "4px 10px",
+    background: tint || `${color}15`, color,
+    borderRadius: 999, fontSize: size === "sm" ? 10 : 11, fontWeight: 700,
+    whiteSpace: "nowrap", ...style,
+  }}>{children}</span>
+);
+
+const CatPill = ({ cat, size = "md" }) => {
+  const c = getCat(cat);
+  if (!c) return null;
+  return (
+    <Pill color={c.color} tint={c.tintLt} size={size}>
+      <span style={{ width: 6, height: 6, borderRadius: 3, background: c.color }} />
+      {c.name}
+    </Pill>
+  );
+};
+
+const StatusPill = ({ status, size = "md" }) => {
+  const s = STATUS[status]; if (!s) return null;
+  const dot = status === "live";
+  return (
+    <Pill color={s.color} tint={s.tint} size={size}>
+      {dot && <span className="pulse" style={{ width: 6, height: 6, borderRadius: 3, background: s.color }} />}
+      {s.label}
+    </Pill>
+  );
+};
+
+const Avatar = ({ name, imgSrc, color = "#6968CB", size = 36, ring }) => {
+  const initials = name ? name.split(" ").map(s => s[0]).slice(0, 2).join("") : "";
+  const baseStyle = {
+    width: size, height: size, flexShrink: 0,
+    borderRadius: size, background: color,
+    border: ring ? `2px solid ${ring}` : "none",
+    display: "flex", alignItems: "center", justifyContent: "center",
+    color: "#fff", fontWeight: 700, fontSize: size * 0.4,
+    overflow: "hidden", position: "relative",
+  };
+  if (imgSrc) {
+    return (
+      <div style={baseStyle}>
+        <img src={imgSrc} alt={name || ""} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+      </div>
+    );
+  }
+  return <div style={baseStyle}>{initials}</div>;
+};
+
+const Bar = ({ value, color = "#0066FF", height = 6, bg = "var(--wd-pg-2)" }) => (
+  <div style={{ height, background: bg, borderRadius: height / 2, overflow: "hidden" }}>
+    <div style={{ height: "100%", width: `${Math.min(100, value)}%`, background: color, borderRadius: height / 2, transition: "width 400ms var(--wd-ease)" }} />
+  </div>
+);
+
+const SegmentedControl = ({ options, value, onChange, size = "md" }) => (
+  <div style={{ display: "inline-flex", padding: 3, background: "var(--wd-pg-2)", borderRadius: 10 }}>
+    {options.map(o => (
+      <button key={o.value} onClick={() => onChange(o.value)}
+        style={{
+          height: size === "sm" ? 28 : 34, padding: "0 14px",
+          border: "none", fontFamily: "Nunito", fontWeight: 700,
+          fontSize: size === "sm" ? 12 : 13,
+          color: value === o.value ? "var(--wd-ink)" : "var(--wd-ink-3)",
+          background: value === o.value ? "var(--wd-surface)" : "transparent",
+          borderRadius: 8, cursor: "pointer",
+          boxShadow: value === o.value ? "0 1px 3px rgba(11,18,32,0.1)" : "none",
+          transition: "all 180ms var(--wd-ease)",
+        }}>
+        {o.label}
+      </button>
+    ))}
+  </div>
+);
+
+const Field = ({ label, children, required, hint }) => (
+  <label style={{ display: "block", marginBottom: 18 }}>
+    <div style={{ fontSize: 12, fontWeight: 700, color: "var(--wd-ink-2)", marginBottom: 8 }}>
+      {label}{required && <span style={{ color: "#FA2E2E", marginLeft: 3 }}>*</span>}
+    </div>
+    {children}
+    {hint && <div style={{ fontSize: 11, color: "var(--wd-ink-4)", marginTop: 6 }}>{hint}</div>}
+  </label>
+);
+
+const Input = ({ value, onChange, placeholder, style = {} }) => (
+  <input value={value} onChange={e => onChange && onChange(e.target.value)} placeholder={placeholder}
+    style={{
+      width: "100%", height: 40, padding: "0 14px",
+      background: "var(--wd-surface)", border: "1px solid var(--wd-line-2)",
+      borderRadius: 10, fontFamily: "Nunito", fontSize: 13, color: "var(--wd-ink)",
+      outline: "none", transition: "border-color 180ms", ...style,
+    }}
+    onFocus={e => e.target.style.borderColor = "#0066FF"}
+    onBlur={e => e.target.style.borderColor = "var(--wd-line-2)"}
+  />
+);
+
+const Textarea = ({ value, onChange, placeholder, rows = 4 }) => (
+  <textarea value={value} onChange={e => onChange && onChange(e.target.value)} placeholder={placeholder} rows={rows}
+    style={{
+      width: "100%", padding: 12,
+      background: "var(--wd-surface)", border: "1px solid var(--wd-line-2)",
+      borderRadius: 10, fontFamily: "Nunito", fontSize: 13,
+      color: "var(--wd-ink)", outline: "none", resize: "vertical", lineHeight: 1.5,
+    }}
+    onFocus={e => e.target.style.borderColor = "#0066FF"}
+    onBlur={e => e.target.style.borderColor = "var(--wd-line-2)"}
+  />
+);
+
+const Chip = ({ children, selected, onClick, icon }) => (
+  <button onClick={onClick}
+    style={{
+      height: 36, padding: "0 14px",
+      background: selected ? "rgba(0,102,255,0.08)" : "var(--wd-surface)",
+      border: selected ? "1px solid #0066FF" : "1px solid var(--wd-line-2)",
+      borderRadius: 20, fontFamily: "Nunito", fontSize: 13, fontWeight: 600,
+      color: selected ? "#0066FF" : "var(--wd-ink-2)",
+      cursor: "pointer", display: "inline-flex", alignItems: "center", gap: 6,
+      transition: "all 180ms",
+    }}>
+    {icon && <Icon name={icon} size={14} />}
+    {children}
+  </button>
+);
+
+const Divider = ({ vertical, style = {} }) => (
+  <div style={{
+    background: "var(--wd-line)",
+    ...(vertical ? { width: 1, height: "100%" } : { height: 1, width: "100%", margin: "16px 0" }),
+    ...style,
+  }} />
+);
+
+const PageHeader = ({ title, sub, actions }) => (
+  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 28, gap: 16, flexWrap: "wrap" }}>
+    <div>
+      <h1 style={{ margin: 0, fontSize: 28, fontWeight: 700, color: "var(--wd-ink)", letterSpacing: "-0.02em" }}>{title}</h1>
+      {sub && <p style={{ margin: "6px 0 0", fontSize: 14, color: "var(--wd-ink-3)" }}>{sub}</p>}
+    </div>
+    {actions && <div style={{ display: "flex", gap: 8 }}>{actions}</div>}
+  </div>
+);
+
+const Row = ({ children, gap = 12, style = {}, align = "center", wrap }) => (
+  <div style={{ display: "flex", alignItems: align, gap, flexWrap: wrap ? "wrap" : "nowrap", ...style }}>
+    {children}
+  </div>
+);
+
+const Stack = ({ children, gap = 12, style = {} }) => (
+  <div style={{ display: "flex", flexDirection: "column", gap, ...style }}>
+    {children}
+  </div>
+);
+
+Object.assign(window, {
+  Btn, Card, StatCard, Sparkline, Pill, CatPill, StatusPill, Avatar, Bar,
+  SegmentedControl, Field, Input, Textarea, Chip, Divider, PageHeader, Row, Stack,
+});
+</script>
+<!-- source: WSI.jsx -->
+<script type="text/babel">
+// wSI visualization — three variants. Each takes the same event data shape.
+// The Tweak "wsi_variant" switches between them.
+// Dimensions: Audience Fit (EPI+BSI, 25%), Revenue (DAS+BSI, 20%), Track (CPI, 20%),
+// Venue (SVI, 15%), Completeness (DAS, 5%), Depth (EPI+DAS, 10%), Halo/Spend (SVI+POS, 5%).
+
+const WSI_DIMS = [
+  { key: "audienceFit",  label: "Audience-Brand Fit", index: "EPI·BSI", w: 25 },
+  { key: "revenue",      label: "Revenue potential",  index: "DAS·BSI", w: 20 },
+  { key: "track",        label: "Curator track",      index: "CPI",     w: 20 },
+  { key: "venue",        label: "Space quality",      index: "SVI",     w: 15 },
+  { key: "depth",        label: "Community depth",    index: "EPI·DAS", w: 10 },
+  { key: "halo",         label: "Venue halo",         index: "SVI·POS", w:  5 },
+  { key: "completeness", label: "Completeness",       index: "DAS",     w:  5 },
+];
+
+// Variant A: score badge + bar list
+const WSI_A = ({ ev, compact }) => (
+  <div>
+    <Row gap={16} align="center" style={{ marginBottom: compact ? 12 : 20 }}>
+      <WSIScoreBadge value={ev.wsi} size={compact ? 58 : 76} />
+      <div style={{ flex: 1 }}>
+        <div style={{ fontSize: 12, color: "var(--wd-ink-4)", fontWeight: 600, marginBottom: 4 }}>wSI MATCH</div>
+        <div style={{ fontSize: 16, fontWeight: 700, color: "var(--wd-ink)" }}>{scoreLabel(ev.wsi)}</div>
+        <div style={{ fontSize: 12, color: "var(--wd-ink-3)", marginTop: 2 }}>Signal Index · {WSI_DIMS.length} inputs</div>
+      </div>
+    </Row>
+    <Stack gap={10}>
+      {WSI_DIMS.map(d => (
+        <div key={d.key}>
+          <Row style={{ justifyContent: "space-between", marginBottom: 5 }}>
+            <span style={{ fontSize: 12, color: "var(--wd-ink-2)", fontWeight: 600 }}>{d.label}</span>
+            <Row gap={8}>
+              <span style={{ fontSize: 10, color: "var(--wd-ink-4)", fontWeight: 700, letterSpacing: "0.04em" }}>{d.index}</span>
+              <span style={{ fontSize: 12, color: "var(--wd-ink)", fontWeight: 700, width: 30, textAlign: "right" }}>{ev[d.key]}</span>
+            </Row>
+          </Row>
+          <Bar value={ev[d.key]} color={barColor(ev[d.key])} height={5} />
+        </div>
+      ))}
+    </Stack>
+  </div>
+);
+
+// Variant B: radar chart
+const WSI_B = ({ ev }) => {
+  const size = 220, cx = size / 2, cy = size / 2, r = 82;
+  const n = WSI_DIMS.length;
+  const rings = [0.25, 0.5, 0.75, 1.0];
+  const pts = WSI_DIMS.map((d, i) => {
+    const a = (i / n) * Math.PI * 2 - Math.PI / 2;
+    const v = ev[d.key] / 100;
+    return [cx + Math.cos(a) * r * v, cy + Math.sin(a) * r * v];
+  });
+  const labelPts = WSI_DIMS.map((_, i) => {
+    const a = (i / n) * Math.PI * 2 - Math.PI / 2;
+    return [cx + Math.cos(a) * (r + 20), cy + Math.sin(a) * (r + 20)];
+  });
+  const poly = pts.map(p => p.join(",")).join(" ");
+  return (
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+      <div style={{ position: "relative" }}>
+        <svg width={size} height={size}>
+          {rings.map((rr, i) => (
+            <polygon key={i}
+              points={Array.from({length: n}, (_, j) => {
+                const a = (j / n) * Math.PI * 2 - Math.PI / 2;
+                return [cx + Math.cos(a) * r * rr, cy + Math.sin(a) * r * rr].join(",");
+              }).join(" ")}
+              fill="none" stroke="var(--wd-line)" strokeWidth={i === 3 ? 1.5 : 1} />
+          ))}
+          {WSI_DIMS.map((_, i) => {
+            const a = (i / n) * Math.PI * 2 - Math.PI / 2;
+            return <line key={i} x1={cx} y1={cy} x2={cx + Math.cos(a) * r} y2={cy + Math.sin(a) * r} stroke="var(--wd-line)" strokeWidth="1" />;
+          })}
+          <polygon points={poly} fill="rgba(0,102,255,0.15)" stroke="#0066FF" strokeWidth="1.75" strokeLinejoin="round" />
+          {pts.map((p, i) => <circle key={i} cx={p[0]} cy={p[1]} r="3" fill="#0066FF" />)}
+          {labelPts.map((p, i) => (
+            <text key={i} x={p[0]} y={p[1]} textAnchor="middle" dominantBaseline="middle"
+              fontSize="9.5" fontFamily="Nunito" fontWeight="700" fill="var(--wd-ink-3)">
+              {WSI_DIMS[i].index}
+            </text>
+          ))}
+          <text x={cx} y={cy - 2} textAnchor="middle" fontSize="24" fontFamily="Nunito" fontWeight="700" fill="var(--wd-ink)" letterSpacing="-0.02em">{ev.wsi}</text>
+          <text x={cx} y={cy + 14} textAnchor="middle" fontSize="9" fontFamily="Nunito" fontWeight="700" fill="var(--wd-ink-4)" letterSpacing="0.08em">WSI MATCH</text>
+        </svg>
+      </div>
+      <div style={{ marginTop: 8, fontSize: 12, color: "var(--wd-ink-3)" }}>{scoreLabel(ev.wsi)}</div>
+    </div>
+  );
+};
+
+// Variant C: single ring + fit reasons (compact)
+const WSI_C = ({ ev }) => {
+  const reasons = topReasons(ev);
+  return (
+    <Row gap={20} align="flex-start">
+      <WSIRing value={ev.wsi} size={108} />
+      <div style={{ flex: 1 }}>
+        <div style={{ fontSize: 11, color: "var(--wd-ink-4)", fontWeight: 700, letterSpacing: "0.06em", marginBottom: 4 }}>WSI MATCH</div>
+        <div style={{ fontSize: 15, fontWeight: 700, color: "var(--wd-ink)", marginBottom: 12 }}>{scoreLabel(ev.wsi)}</div>
+        <div style={{ fontSize: 11, color: "var(--wd-ink-4)", fontWeight: 700, letterSpacing: "0.06em", marginBottom: 8 }}>TOP FIT REASONS</div>
+        <Stack gap={6}>
+          {reasons.map(r => (
+            <Row key={r.key} gap={8}>
+              <Icon name="check" size={14} color="var(--wd-green-ink)" />
+              <span style={{ fontSize: 12, color: "var(--wd-ink-2)" }}>{r.msg}</span>
+            </Row>
+          ))}
+        </Stack>
+      </div>
+    </Row>
+  );
+};
+
+const WSIScoreBadge = ({ value, size = 60 }) => {
+  const color = barColor(value);
+  return (
+    <div style={{
+      width: size, height: size, borderRadius: size / 2,
+      background: `${color}12`, border: `2px solid ${color}`,
+      display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+      flexShrink: 0,
+    }}>
+      <div style={{ fontSize: size * 0.36, fontWeight: 700, color, lineHeight: 1, letterSpacing: "-0.02em" }}>{value}</div>
+      <div style={{ fontSize: Math.max(7, size * 0.12), fontWeight: 700, color: "var(--wd-ink-4)", letterSpacing: "0.08em", marginTop: 2 }}>wSI</div>
+    </div>
+  );
+};
+
+const WSIRing = ({ value, size = 100, stroke = 8 }) => {
+  const r = (size - stroke) / 2, c = 2 * Math.PI * r;
+  const pct = value / 100;
+  const color = barColor(value);
+  return (
+    <svg width={size} height={size}>
+      <circle cx={size/2} cy={size/2} r={r} fill="none" stroke="var(--wd-pg-2)" strokeWidth={stroke} />
+      <circle cx={size/2} cy={size/2} r={r} fill="none" stroke={color} strokeWidth={stroke}
+        strokeDasharray={`${c * pct} ${c}`} strokeLinecap="round"
+        transform={`rotate(-90 ${size/2} ${size/2})`} />
+      <text x={size/2} y={size/2 - 2} textAnchor="middle" fontSize={size * 0.28} fontFamily="Nunito"
+        fontWeight="700" fill="var(--wd-ink)" dominantBaseline="middle" letterSpacing="-0.02em">
+        {value}
+      </text>
+      <text x={size/2} y={size/2 + size * 0.2} textAnchor="middle" fontSize="9" fontFamily="Nunito"
+        fontWeight="700" fill="var(--wd-ink-4)" letterSpacing="0.08em">wSI</text>
+    </svg>
+  );
+};
+
+const barColor = (v) => v >= 85 ? "var(--wd-green-ink)" : v >= 70 ? "#0066FF" : v >= 55 ? "var(--wd-gold-ink)" : "var(--wd-orange-ink)";
+const scoreLabel = (v) => v >= 85 ? "Exceptional fit" : v >= 75 ? "Strong fit" : v >= 65 ? "Good fit" : v >= 55 ? "Fair fit" : "Weak fit";
+
+const topReasons = (ev) => {
+  const sorted = [...WSI_DIMS].sort((a, b) => ev[b.key] - ev[a.key]).slice(0, 3);
+  return sorted.map(d => ({
+    key: d.key,
+    msg: d.key === "audienceFit" ? `Audience overlap ${ev[d.key]}% with brand target`
+       : d.key === "revenue"     ? `Revenue potential ${ev[d.key]}% above baseline`
+       : d.key === "track"       ? `Curator track record scores ${ev[d.key]}`
+       : d.key === "venue"       ? `Space index (SVI) at ${ev[d.key]}`
+       : d.key === "depth"       ? `Expected engagement depth ${ev[d.key]}%`
+       : d.key === "halo"        ? `Spend-per-head index ${ev[d.key]}`
+       : `Brief completeness ${ev[d.key]}%`,
+  }));
+};
+
+// Router
+const WSI = ({ ev, variant = "bars", compact }) => {
+  if (variant === "radar")   return <WSI_B ev={ev} />;
+  if (variant === "reasons") return <WSI_C ev={ev} />;
+  return <WSI_A ev={ev} compact={compact} />;
+};
+
+Object.assign(window, { WSI, WSIScoreBadge, WSIRing, WSI_DIMS, barColor, scoreLabel, topReasons });
+</script>
+<!-- source: Shell.jsx -->
+<script type="text/babel">
+// App shell: sidebar + topbar + page.
+const TweaksCtx = createContext(null);
+
+const NAV = {
+  curator: [
+    { id: "dashboard", label: "Dashboard", icon: "home" },
+    { id: "events",    label: "My Events", icon: "calendar" },
+    { id: "create",    label: "Create Event", icon: "plus", accent: true },
+    { id: "sponsors",  label: "Sponsors",  icon: "megaphone" },
+    { id: "earnings",  label: "Earnings",  icon: "wallet" },
+    { id: "settings",  label: "Settings",  icon: "settings" },
+  ],
+  brand: [
+    { id: "feed",      label: "Sponsor Feed", icon: "compass" },
+    { id: "recall",    label: "Recall Studio", icon: "sparkle" },
+    { id: "insurance", label: "Attention Insurance", icon: "shield" },
+    { id: "report",    label: "Campaign Report", icon: "chart" },
+    { id: "assets",    label: "Brand Assets", icon: "layers" },
+    { id: "settings",  label: "Settings", icon: "settings" },
+  ],
+  space: [
+    { id: "calendar",  label: "Calendar", icon: "calendar" },
+    { id: "requests",  label: "Requests", icon: "bell" },
+    { id: "events",    label: "Events", icon: "building" },
+    { id: "revenue",   label: "Revenue", icon: "chart" },
+    { id: "warehouse", label: "Flex Warehouse", icon: "layers" },
+    { id: "settings",  label: "Settings", icon: "settings" },
+  ],
+  ops: [
+    { id: "qa",        label: "QA Queue", icon: "shield" },
+    { id: "events",    label: "All Events", icon: "calendar" },
+    { id: "entities",  label: "Entities", icon: "users" },
+    { id: "wsi",       label: "wSI Monitor", icon: "chart" },
+    { id: "settings",  label: "Settings", icon: "settings" },
+  ],
+};
+
+const ROLES = [
+  { id: "curator", label: "Curator", color: "#6968CB", person: "DJ Kleo",   sub: "Music · Neukölln" },
+  { id: "brand",   label: "Brand",   color: "#FAC938", person: "Amazingy",  sub: "Clean beauty" },
+  { id: "space",   label: "Space",   color: "#2C9CE4", person: "Urban Spree", sub: "Friedrichshain" },
+  { id: "ops",     label: "Ops",     color: "#0066FF", person: "weDISCOVR", sub: "Platform team" },
+];
+
+const Sidebar = ({ role, page, setPage, shell }) => {
+  const items = NAV[role];
+  const dark = shell !== "light";
+  return (
+    <aside style={{
+      width: 248, flexShrink: 0, height: "100vh", position: "sticky", top: 0,
+      background: dark ? "var(--wd-nav-bg)" : "var(--wd-surface)",
+      borderRight: dark ? "none" : "1px solid var(--wd-line)",
+      display: "flex", flexDirection: "column", padding: "20px 14px",
+      color: dark ? "var(--wd-nav-fg)" : "var(--wd-ink-2)",
+    }}>
+      <Row gap={10} style={{ padding: "4px 8px 20px" }}>
+        <div style={{ width: 32, height: 32, borderRadius: 9, background: "#0066FF", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 14, fontWeight: 800, letterSpacing: "-0.03em" }}>wD</div>
+        <div>
+          <div style={{ fontSize: 14, fontWeight: 800, color: dark ? "#fff" : "var(--wd-ink)", letterSpacing: "-0.01em" }}>The Platform</div>
+          <div style={{ fontSize: 10, color: dark ? "rgba(255,255,255,0.5)" : "var(--wd-ink-4)", fontWeight: 600, letterSpacing: "0.06em", marginTop: 2 }}>weDISCOVR · BERLIN</div>
+        </div>
+      </Row>
+
+      <div style={{ fontSize: 10, color: dark ? "rgba(255,255,255,0.4)" : "var(--wd-ink-4)", fontWeight: 700, letterSpacing: "0.1em", padding: "12px 10px 8px" }}>
+        {role.toUpperCase()}
+      </div>
+
+      <Stack gap={2} style={{ flex: 1 }}>
+        {items.map(item => {
+          const on = page === item.id;
+          return (
+            <button key={item.id} onClick={() => setPage(item.id)}
+              style={{
+                display: "flex", alignItems: "center", gap: 10,
+                padding: "10px 12px", border: "none",
+                background: on ? (dark ? "var(--wd-nav-active)" : "rgba(0,102,255,0.08)") : "transparent",
+                color: on ? (dark ? "#fff" : "#0066FF") : (dark ? "var(--wd-nav-fg)" : "var(--wd-ink-2)"),
+                borderRadius: 8, fontFamily: "Nunito", fontSize: 13, fontWeight: on ? 700 : 600,
+                cursor: "pointer", textAlign: "left", width: "100%",
+                transition: "background 180ms",
+              }}
+              onMouseEnter={e => { if (!on) e.currentTarget.style.background = dark ? "var(--wd-nav-hover)" : "var(--wd-pg-2)"; }}
+              onMouseLeave={e => { if (!on) e.currentTarget.style.background = "transparent"; }}>
+              <Icon name={item.icon} size={17} />
+              <span>{item.label}</span>
+              {item.accent && !on && <span style={{ marginLeft: "auto", fontSize: 9, fontWeight: 700, padding: "2px 6px", borderRadius: 6, background: "rgba(0,102,255,0.2)", color: "#66A6FF" }}>NEW</span>}
+            </button>
+          );
+        })}
+      </Stack>
+
+      <RoleCard role={role} dark={dark} />
+    </aside>
+  );
+};
+
+const RoleCard = ({ role, dark }) => {
+  const r = ROLES.find(x => x.id === role);
+  return (
+    <div style={{
+      margin: "12px 4px 0", padding: 12, borderRadius: 12,
+      background: dark ? "rgba(255,255,255,0.04)" : "var(--wd-pg)",
+      border: dark ? "1px solid rgba(255,255,255,0.08)" : "1px solid var(--wd-line)",
+      display: "flex", alignItems: "center", gap: 10,
+    }}>
+      <Avatar name={r.person} color={r.color} size={32} />
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ fontSize: 12, fontWeight: 700, color: dark ? "#fff" : "var(--wd-ink)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{r.person}</div>
+        <div style={{ fontSize: 10, color: dark ? "rgba(255,255,255,0.5)" : "var(--wd-ink-4)", marginTop: 2 }}>{r.sub}</div>
+      </div>
+    </div>
+  );
+};
+
+const Topbar = ({ title, sub }) => (
+  <div style={{
+    height: 60, padding: "0 32px", display: "flex", alignItems: "center",
+    justifyContent: "space-between", borderBottom: "1px solid var(--wd-line)",
+    background: "var(--wd-surface)", position: "sticky", top: 0, zIndex: 5,
+  }}>
+    <div>
+      <div style={{ fontSize: 13, fontWeight: 700, color: "var(--wd-ink)" }}>{title}</div>
+      {sub && <div style={{ fontSize: 11, color: "var(--wd-ink-4)", marginTop: 2 }}>{sub}</div>}
+    </div>
+    <Row gap={8}>
+      <button style={{ width: 36, height: 36, borderRadius: 10, border: "1px solid var(--wd-line)", background: "var(--wd-surface)", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--wd-ink-2)" }}><Icon name="search" size={16}/></button>
+      <button style={{ width: 36, height: 36, borderRadius: 10, border: "1px solid var(--wd-line)", background: "var(--wd-surface)", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", position: "relative", color: "var(--wd-ink-2)" }}>
+        <Icon name="bell" size={16}/>
+        <span style={{ position: "absolute", top: 8, right: 9, width: 7, height: 7, borderRadius: 4, background: "#FA2E2E", border: "1.5px solid var(--wd-surface)" }}/>
+      </button>
+    </Row>
+  </div>
+);
+
+const Shell = ({ role, page, setPage, children, title, sub, shell }) => (
+  <div style={{ display: "flex", minHeight: "100vh", background: "var(--wd-pg)" }}>
+    <Sidebar role={role} page={page} setPage={setPage} shell={shell} />
+    <main style={{ flex: 1, minWidth: 0 }}>
+      <Topbar title={title} sub={sub} />
+      <div style={{ padding: "32px 40px 60px", maxWidth: 1400, margin: "0 auto" }}>
+        {children}
+      </div>
+    </main>
+  </div>
+);
+
+Object.assign(window, { Shell, ROLES, NAV, TweaksCtx });
+</script>
+<!-- source: Curator/Dashboard.jsx -->
+<script type="text/babel">
+// Curator Dashboard.
+const CuratorDashboard = ({ setPage, wsiVariant }) => {
+  const myEvents = EVENTS.filter(e => e.curator === "c1");
+  const drafts = EVENTS.filter(e => e.status === "qa_review" || e.status === "space_pending");
+  const nextEvent = myEvents.find(e => e.status === "live" || e.status === "confirmed") || myEvents[0];
+  return (
+    <>
+      <PageHeader
+        title="Welcome back, DJ Kleo"
+        sub="Your events, brand matches and payout status, all in one place."
+        actions={<>
+          <Btn variant="ghost" icon="eye">Preview profile</Btn>
+          <Btn icon="plus" onClick={() => setPage("create")}>Create Event</Btn>
+        </>}
+      />
+
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 16, marginBottom: 24 }}>
+        <StatCard label="Upcoming events" value="3" sub="Next: Fri 20:00 at Urban Spree"
+          icon="calendar" tint="rgba(0,102,255,0.08)" sparkColor="#0066FF"
+          spark={[2,3,2,4,3,5,4]} />
+        <StatCard label="Estimated earnings" value="€4,820" delta="+18%" deltaKind="up" sub="This month · before fees"
+          icon="euro" tint="rgba(126,217,87,0.18)" sparkColor="#7ED957"
+          spark={[800,1200,900,1400,1800,2200,4820]} />
+        <StatCard label="Brand matches" value="7" delta="+2 this week" deltaKind="up" sub="Pending sponsor decisions"
+          icon="sparkle" tint="rgba(105,104,203,0.10)" sparkColor="#6968CB"
+          spark={[3,4,5,4,6,7,7]} />
+        <StatCard label="CPI · track record" value="86" sub="Top 12% of Berlin curators"
+          icon="target" tint="rgba(250,201,56,0.18)" sparkColor="#FAC938"
+          spark={[72,74,78,80,82,85,86]} />
+      </div>
+
+      <div style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr", gap: 20 }}>
+        <Card>
+          <Row style={{ justifyContent: "space-between", marginBottom: 18 }}>
+            <h3 style={{ margin: 0, fontSize: 16, fontWeight: 700, color: "var(--wd-ink)" }}>Your next event</h3>
+            <StatusPill status={nextEvent.status} />
+          </Row>
+          <EventHero ev={nextEvent} />
+          <Divider />
+          <Row style={{ justifyContent: "space-between" }}>
+            <div>
+              <div style={{ fontSize: 11, color: "var(--wd-ink-4)", fontWeight: 700, letterSpacing: "0.06em" }}>ESTIMATED EARNINGS</div>
+              <div style={{ fontSize: 22, fontWeight: 700, color: "var(--wd-ink)", marginTop: 6 }}>€2,140</div>
+              <div style={{ fontSize: 11, color: "var(--wd-ink-4)", marginTop: 2 }}>Host fee + per-head + ticket share</div>
+            </div>
+            <Row gap={8}>
+              <Btn variant="ghost" size="sm">View run-sheet</Btn>
+              <Btn size="sm" icon="arrowRight">Open event</Btn>
+            </Row>
+          </Row>
+        </Card>
+
+        <Card>
+          <h3 style={{ margin: "0 0 18px", fontSize: 16, fontWeight: 700, color: "var(--wd-ink)" }}>
+            Brand sponsor match
+          </h3>
+          <Row gap={10} style={{ marginBottom: 16, padding: 12, borderRadius: 12, background: "var(--wd-pg)" }}>
+            <Avatar name="Ableton" color="#6968CB" size={40} />
+            <div style={{ flex: 1 }}>
+              <div style={{ fontSize: 14, fontWeight: 700, color: "var(--wd-ink)" }}>Ableton</div>
+              <div style={{ fontSize: 11, color: "var(--wd-ink-3)", marginTop: 2 }}>Music tech · €60,000 budget</div>
+            </div>
+            <Pill color="#7ED957" tint="rgba(126,217,87,0.18)">MATCHED</Pill>
+          </Row>
+          <WSI ev={nextEvent} variant={wsiVariant} compact />
+        </Card>
+      </div>
+
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginTop: 20 }}>
+        <Card>
+          <Row style={{ justifyContent: "space-between", marginBottom: 14 }}>
+            <h3 style={{ margin: 0, fontSize: 16, fontWeight: 700, color: "var(--wd-ink)" }}>Upcoming</h3>
+            <Btn variant="quiet" size="sm">View all →</Btn>
+          </Row>
+          <Stack gap={0}>
+            {myEvents.slice(0, 3).map((e, i, arr) => (
+              <React.Fragment key={e.id}>
+                <EventRow ev={e} />
+                {i < arr.length - 1 && <Divider style={{ margin: "12px 0" }}/>}
+              </React.Fragment>
+            ))}
+          </Stack>
+        </Card>
+
+        <Card>
+          <h3 style={{ margin: "0 0 14px", fontSize: 16, fontWeight: 700, color: "var(--wd-ink)" }}>
+            Payout status
+          </h3>
+          <Stack gap={10}>
+            {[
+              { stage: "Scheduled", label: "Apr 27 · Midsommar", amount: "€2,140", active: false, done: true },
+              { stage: "Happened · calculating", label: "Apr 12 · Moog Session", amount: "€1,640", active: true, done: false },
+              { stage: "Ready to pay", label: "Apr 5 · DJ set @ Urban", amount: "€980", active: false, done: false },
+              { stage: "Paid", label: "Mar 22 · Vinyl night", amount: "€1,220", active: false, done: true },
+            ].map((p, i) => (
+              <Row key={i} gap={12} style={{ padding: "12px 0", borderBottom: i < 3 ? "1px solid var(--wd-line)" : "none" }}>
+                <div style={{ width: 10, height: 10, borderRadius: 5, background: p.active ? "#0066FF" : p.done ? "#7ED957" : "var(--wd-line-3)" }} />
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 11, color: "var(--wd-ink-4)", fontWeight: 700, letterSpacing: "0.04em" }}>{p.stage.toUpperCase()}</div>
+                  <div style={{ fontSize: 13, color: "var(--wd-ink)", fontWeight: 600, marginTop: 3 }}>{p.label}</div>
+                </div>
+                <div style={{ fontSize: 14, fontWeight: 700, color: "var(--wd-ink)" }}>{p.amount}</div>
+              </Row>
+            ))}
+          </Stack>
+        </Card>
+      </div>
+    </>
+  );
+};
+
+const EventHero = ({ ev }) => {
+  const c = getCat(ev.cat), space = getSpace(ev.space), curator = getCurator(ev.curator);
+  return (
+    <div style={{ display: "flex", gap: 16 }}>
+      <div style={{ width: 128, height: 96, borderRadius: 12, flexShrink: 0, position: "relative", overflow: "hidden", backgroundColor: "var(--wd-pg-2)", backgroundImage: space.img ? `url(${space.img})` : undefined, backgroundSize: "cover", backgroundPosition: "center" }}>
+        <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 3, background: c.color }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(0,0,0,0) 30%, rgba(0,0,0,0.4) 100%)" }} />
+      </div>
+      <div style={{ flex: 1 }}>
+        <Row gap={6} style={{ marginBottom: 6 }}>
+          <CatPill cat={ev.cat} size="sm" />
+          {ev.brand && <Pill color="#6968CB" tint="rgba(105,104,203,0.10)" size="sm">Sponsored</Pill>}
+        </Row>
+        <div style={{ fontSize: 18, fontWeight: 700, color: "var(--wd-ink)", marginBottom: 6 }}>{ev.title}</div>
+        <Row gap={14} style={{ marginBottom: 10 }}>
+          <Row gap={4}><Icon name="clock" size={13} color="var(--wd-ink-3)"/><span style={{ fontSize: 12, color: "var(--wd-ink-3)" }}>{ev.date}</span></Row>
+          <Row gap={4}><Icon name="location" size={13} color="var(--wd-ink-3)"/><span style={{ fontSize: 12, color: "var(--wd-ink-3)" }}>{space.name}</span></Row>
+          <Row gap={4}><Icon name="users2" size={13} color="var(--wd-ink-3)"/><span style={{ fontSize: 12, color: "var(--wd-ink-3)" }}>{ev.rsvps} / {ev.cap}</span></Row>
+        </Row>
+        <div style={{ fontSize: 13, color: "var(--wd-ink-2)", lineHeight: 1.5 }}>{ev.desc}</div>
+      </div>
+    </div>
+  );
+};
+
+const EventRow = ({ ev }) => {
+  const c = getCat(ev.cat), space = getSpace(ev.space);
+  return (
+    <Row gap={12}>
+      <div style={{ width: 48, height: 48, borderRadius: 10, flexShrink: 0, overflow: "hidden", backgroundColor: "var(--wd-pg-2)", backgroundImage: space.img ? `url(${space.img})` : undefined, backgroundSize: "cover", backgroundPosition: "center", position: "relative" }}>
+        <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 2.5, background: c.color }} />
+      </div>
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <Row gap={6} style={{ marginBottom: 3 }}>
+          <span style={{ fontSize: 13, fontWeight: 700, color: "var(--wd-ink)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{ev.title}</span>
+        </Row>
+        <Row gap={10}>
+          <span style={{ fontSize: 11, color: "var(--wd-ink-4)" }}>{ev.date}</span>
+          <span style={{ fontSize: 11, color: "var(--wd-ink-4)" }}>· {space.name}</span>
+        </Row>
+      </div>
+      <StatusPill status={ev.status} size="sm" />
+    </Row>
+  );
+};
+
+Object.assign(window, { CuratorDashboard, EventHero, EventRow });
+</script>
+<!-- source: Curator/CreateEvent.jsx -->
+<script type="text/babel">
+// Create Event wizard — full clickthrough: format → brief → space → review → submit.
+const CreateEvent = ({ onDone, onCancel }) => {
+  const [step, setStep] = useState(0);
+  const [data, setData] = useState({
+    format: "listening",
+    title: "Vinyl & Neighbors",
+    desc: "Warm-up listening set with guest selector. Open doors, soft start.",
+    date: "May 23 · Fri 20:00",
+    cap: 120,
+    neighborhood: "Neukölln",
+    spaceChoice: "partner",
+    space: "s3",
+    ticket: "€16",
+    targetAge: "25–40",
+    nogo: ["alcohol_heavy"],
+    noGoCategories: [],
+  });
+
+  const steps = ["Format", "Brief", "Space", "Review"];
+  const update = (k, v) => setData(d => ({ ...d, [k]: v }));
+
+  return (
+    <>
+      <PageHeader
+        title="Create Event"
+        sub="Build the brief. We'll route space + brand matches automatically."
+        actions={<Btn variant="ghost" icon="x" onClick={onCancel}>Cancel</Btn>}
+      />
+
+      <Row gap={8} style={{ marginBottom: 28 }}>
+        {steps.map((s, i) => (
+          <Row key={i} gap={10} style={{ flex: 1, alignItems: "center" }}>
+            <div style={{
+              width: 28, height: 28, borderRadius: 14,
+              background: i <= step ? "#0066FF" : "var(--wd-pg-2)",
+              color: i <= step ? "#fff" : "var(--wd-ink-3)",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              fontSize: 12, fontWeight: 700,
+            }}>{i < step ? "✓" : i + 1}</div>
+            <div style={{ fontSize: 12, fontWeight: 700, color: i <= step ? "var(--wd-ink)" : "var(--wd-ink-4)" }}>{s}</div>
+            {i < steps.length - 1 && <div style={{ flex: 1, height: 2, background: i < step ? "#0066FF" : "var(--wd-line)", borderRadius: 1 }} />}
+          </Row>
+        ))}
+      </Row>
+
+      <Card>
+        {step === 0 && <StepFormat data={data} update={update} />}
+        {step === 1 && <StepBrief  data={data} update={update} />}
+        {step === 2 && <StepSpace  data={data} update={update} />}
+        {step === 3 && <StepReview data={data} />}
+
+        <Divider />
+        <Row style={{ justifyContent: "space-between" }}>
+          <Btn variant="ghost" onClick={() => step > 0 ? setStep(step - 1) : onCancel()}>
+            {step === 0 ? "Cancel" : "← Back"}
+          </Btn>
+          <Row gap={8}>
+            <span style={{ fontSize: 12, color: "var(--wd-ink-4)" }}>Step {step + 1} of {steps.length}</span>
+            <Btn onClick={() => step < steps.length - 1 ? setStep(step + 1) : onDone()} icon={step === steps.length - 1 ? "check" : "arrowRight"}>
+              {step === steps.length - 1 ? "Submit for QA" : "Continue"}
+            </Btn>
+          </Row>
+        </Row>
+      </Card>
+    </>
+  );
+};
+
+const StepFormat = ({ data, update }) => (
+  <>
+    <h3 style={{ margin: "0 0 6px", fontSize: 18, fontWeight: 700, color: "var(--wd-ink)" }}>Pick a format</h3>
+    <p style={{ margin: "0 0 20px", fontSize: 13, color: "var(--wd-ink-3)" }}>Format presets duration, capacity ranges, and space requirements. You can adjust later.</p>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: 12 }}>
+      {FORMATS.map(f => {
+        const on = data.format === f.id;
+        return (
+          <button key={f.id} onClick={() => update("format", f.id)}
+            style={{
+              textAlign: "left", padding: 16,
+              background: on ? "rgba(0,102,255,0.05)" : "var(--wd-surface)",
+              border: on ? "1.5px solid #0066FF" : "1px solid var(--wd-line-2)",
+              borderRadius: 12, cursor: "pointer", fontFamily: "Nunito",
+              transition: "all 180ms",
+            }}>
+            <div style={{ fontSize: 15, fontWeight: 700, color: "var(--wd-ink)", marginBottom: 6 }}>{f.name}</div>
+            <div style={{ fontSize: 12, color: "var(--wd-ink-3)", marginBottom: 12, minHeight: 32 }}>{f.desc}</div>
+            <Row gap={10}>
+              <span style={{ fontSize: 11, color: "var(--wd-ink-4)" }}><Icon name="clock" size={11} style={{ display: "inline", verticalAlign: "middle", marginRight: 3 }}/> {f.dur}</span>
+              <span style={{ fontSize: 11, color: "var(--wd-ink-4)" }}><Icon name="users2" size={11} style={{ display: "inline", verticalAlign: "middle", marginRight: 3 }}/> {f.cap}</span>
+            </Row>
+          </button>
+        );
+      })}
+    </div>
+  </>
+);
+
+const StepBrief = ({ data, update }) => (
+  <>
+    <h3 style={{ margin: "0 0 6px", fontSize: 18, fontWeight: 700, color: "var(--wd-ink)" }}>Event brief</h3>
+    <p style={{ margin: "0 0 20px", fontSize: 13, color: "var(--wd-ink-3)" }}>Fill the required fields. Optional fields strengthen brand matching.</p>
+    <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: 24 }}>
+      <div>
+        <Field label="Event name" required>
+          <Input value={data.title} onChange={v => update("title", v)} />
+        </Field>
+        <Field label="Description" required hint="One-liner + short description. ~2-3 sentences.">
+          <Textarea value={data.desc} onChange={v => update("desc", v)} rows={4} />
+        </Field>
+        <Row gap={16}>
+          <div style={{ flex: 1 }}>
+            <Field label="Date" required>
+              <Input value={data.date} onChange={v => update("date", v)} />
+            </Field>
+          </div>
+          <div style={{ flex: 1 }}>
+            <Field label="Capacity" required>
+              <Input value={data.cap} onChange={v => update("cap", v)} />
+            </Field>
+          </div>
+        </Row>
+      </div>
+      <div>
+        <Field label="Neighborhood" required>
+          <Input value={data.neighborhood} onChange={v => update("neighborhood", v)} />
+        </Field>
+        <Field label="Ticket price" hint="Use 'Free' or 'RSVP' for no ticket.">
+          <Input value={data.ticket} onChange={v => update("ticket", v)} />
+        </Field>
+        <Field label="Target audience" hint="Strengthens brand matching.">
+          <Input value={data.targetAge} onChange={v => update("targetAge", v)} />
+        </Field>
+        <Field label="No-go brand categories">
+          <Row gap={6} wrap>
+            {["Alcohol", "Gambling", "Fast food", "Crypto"].map(c => {
+              const on = data.noGoCategories.includes(c);
+              return <Chip key={c} selected={on} onClick={() => update("noGoCategories", on ? data.noGoCategories.filter(x => x !== c) : [...data.noGoCategories, c])}>{c}</Chip>;
+            })}
+          </Row>
+        </Field>
+      </div>
+    </div>
+  </>
+);
+
+const StepSpace = ({ data, update }) => (
+  <>
+    <h3 style={{ margin: "0 0 6px", fontSize: 18, fontWeight: 700, color: "var(--wd-ink)" }}>Choose a space</h3>
+    <p style={{ margin: "0 0 20px", fontSize: 13, color: "var(--wd-ink-3)" }}>Apply to partner spaces (recommended) or use your own.</p>
+    <Row gap={10} style={{ marginBottom: 20 }}>
+      <Chip selected={data.spaceChoice === "partner"} onClick={() => update("spaceChoice", "partner")} icon="building">Apply to partner spaces</Chip>
+      <Chip selected={data.spaceChoice === "own"} onClick={() => update("spaceChoice", "own")} icon="location">Use my own space</Chip>
+    </Row>
+    {data.spaceChoice === "partner" && (
+      <>
+        <div style={{ fontSize: 12, fontWeight: 700, color: "var(--wd-ink-4)", letterSpacing: "0.06em", marginBottom: 12 }}>RECOMMENDED · 3 top matches for {data.neighborhood}</div>
+        <Stack gap={10}>
+          {SPACES.slice(0, 3).map(s => {
+            const on = data.space === s.id;
+            const match = 82 + (s.svi % 5);
+            return (
+              <div key={s.id} onClick={() => update("space", s.id)}
+                style={{
+                  display: "flex", gap: 16, padding: 16,
+                  background: on ? "rgba(0,102,255,0.04)" : "var(--wd-surface)",
+                  border: on ? "1.5px solid #0066FF" : "1px solid var(--wd-line-2)",
+                  borderRadius: 12, cursor: "pointer", alignItems: "center",
+                }}>
+                <div style={{ width: 72, height: 72, borderRadius: 10, flexShrink: 0, overflow: "hidden", backgroundColor: "var(--wd-pg-2)", backgroundImage: s.img ? `url(${s.img})` : "none", backgroundSize: "cover", backgroundPosition: "center", position: "relative" }}>
+                  {/* category stripe as identity */}
+                  <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 3, background: s.color }} />
+                </div>
+                <div style={{ flex: 1 }}>
+                  <Row gap={8} style={{ marginBottom: 4 }}>
+                    <div style={{ fontSize: 14, fontWeight: 700, color: "var(--wd-ink)" }}>{s.name}</div>
+                    <Pill color="#5B6476" tint="var(--wd-pg-2)" size="sm">{s.type}</Pill>
+                  </Row>
+                  <Row gap={12}>
+                    <span style={{ fontSize: 12, color: "var(--wd-ink-3)" }}>{s.n}</span>
+                    <span style={{ fontSize: 12, color: "var(--wd-ink-3)" }}>· cap {s.cap}</span>
+                    <span style={{ fontSize: 12, color: "var(--wd-ink-3)" }}>· SVI {s.svi}</span>
+                  </Row>
+                  <div style={{ fontSize: 11, color: "var(--wd-ink-4)", marginTop: 8 }}>
+                    Equipment: {s.equipment.join(", ")}
+                  </div>
+                </div>
+                <div style={{ textAlign: "right" }}>
+                  <WSIScoreBadge value={match} size={56} />
+                  <div style={{ fontSize: 10, color: "var(--wd-ink-4)", fontWeight: 700, letterSpacing: "0.06em", marginTop: 6 }}>MATCH</div>
+                </div>
+              </div>
+            );
+          })}
+        </Stack>
+      </>
+    )}
+    {data.spaceChoice === "own" && (
+      <Stack gap={14}>
+        <Field label="Venue address" required><Input value="Weserstr. 104, 12045 Berlin" /></Field>
+        <Row gap={16}>
+          <div style={{ flex: 1 }}><Field label="Capacity" required><Input value="60" /></Field></div>
+          <div style={{ flex: 1 }}><Field label="Type" required><Input value="Studio / gallery" /></Field></div>
+        </Row>
+      </Stack>
+    )}
+  </>
+);
+
+const StepReview = ({ data }) => {
+  const space = getSpace(data.space);
+  return (
+    <>
+      <h3 style={{ margin: "0 0 6px", fontSize: 18, fontWeight: 700, color: "var(--wd-ink)" }}>Review & submit</h3>
+      <p style={{ margin: "0 0 20px", fontSize: 13, color: "var(--wd-ink-3)" }}>Once submitted the event enters QA review. On approval it goes live to Explorers and the Sponsor Feed.</p>
+      <Stack gap={14}>
+        <ReviewBlock label="Format" value={FORMATS.find(f => f.id === data.format).name} />
+        <ReviewBlock label="Title" value={data.title} />
+        <ReviewBlock label="Description" value={data.desc} />
+        <Row gap={14}>
+          <div style={{ flex: 1 }}><ReviewBlock label="Date" value={data.date} /></div>
+          <div style={{ flex: 1 }}><ReviewBlock label="Capacity" value={data.cap} /></div>
+          <div style={{ flex: 1 }}><ReviewBlock label="Ticket" value={data.ticket} /></div>
+        </Row>
+        <ReviewBlock label="Space" value={data.spaceChoice === "partner" ? `${space.name} · ${space.n}` : "Own space"} />
+      </Stack>
+
+      <div style={{ marginTop: 20, padding: 14, background: "rgba(0,102,255,0.05)", border: "1px solid rgba(0,102,255,0.2)", borderRadius: 12 }}>
+        <Row gap={10}>
+          <Icon name="shield" size={18} color="#0066FF" />
+          <div style={{ flex: 1 }}>
+            <div style={{ fontSize: 13, fontWeight: 700, color: "var(--wd-ink)", marginBottom: 2 }}>Next: QA review</div>
+            <div style={{ fontSize: 12, color: "var(--wd-ink-3)" }}>
+              {data.spaceChoice === "partner" ? "Space confirms, then QA reviews." : "QA reviews directly, no space step needed."} Typical turnaround: under 24h.
+            </div>
+          </div>
+        </Row>
+      </div>
+    </>
+  );
+};
+
+const ReviewBlock = ({ label, value }) => (
+  <div>
+    <div style={{ fontSize: 11, color: "var(--wd-ink-4)", fontWeight: 700, letterSpacing: "0.06em", marginBottom: 4 }}>{label.toUpperCase()}</div>
+    <div style={{ fontSize: 14, color: "var(--wd-ink)", fontWeight: 500 }}>{value}</div>
+  </div>
+);
+
+Object.assign(window, { CreateEvent });
+</script>
+<!-- source: Curator/Earnings.jsx -->
+<script type="text/babel">
+// Curator Earnings screen.
+const Earnings = () => {
+  const months = [
+    { m: "Jan", v: 2100 }, { m: "Feb", v: 3400 }, { m: "Mar", v: 4120 },
+    { m: "Apr", v: 4820 }, { m: "May", v: 5600, est: true },
+  ];
+  const max = Math.max(...months.map(m => m.v));
+  return (
+    <>
+      <PageHeader
+        title="Earnings"
+        sub="Host fees, per-head payouts, and ticket share. Reconciled monthly."
+        actions={<>
+          <SegmentedControl options={[{value:"2026",label:"2026"},{value:"2025",label:"2025"}]} value="2026" onChange={()=>{}} size="sm" />
+          <Btn variant="ghost" icon="upload">Export</Btn>
+        </>}
+      />
+
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, marginBottom: 20 }}>
+        <StatCard label="This month · estimated" value="€4,820" delta="+18% MoM" deltaKind="up" sub="Before OS + payment fees" icon="euro" tint="rgba(126,217,87,0.18)" sparkColor="var(--wd-green-ink)" />
+        <StatCard label="Ready to pay" value="€980" sub="1 event reconciled" icon="wallet" tint="rgba(0,102,255,0.08)" sparkColor="#0066FF" />
+        <StatCard label="Year to date" value="€14,440" delta="+42% YoY" deltaKind="up" sub="Across 11 events" icon="chart" tint="rgba(105,104,203,0.10)" sparkColor="#6968CB" />
+        <StatCard label="CPI bonus earned" value="€520" sub="From 3 DAS-overperforming events" icon="sparkle" tint="rgba(250,201,56,0.18)" sparkColor="var(--wd-gold-ink)" />
+      </div>
+
+      <div style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr", gap: 20 }}>
+        <Card>
+          <Row style={{ justifyContent: "space-between", marginBottom: 20 }}>
+            <h3 style={{ margin: 0, fontSize: 16, fontWeight: 700, color: "var(--wd-ink)" }}>Monthly earnings</h3>
+            <Row gap={12}>
+              <Row gap={5}><span style={{ width: 9, height: 9, borderRadius: 2, background: "#0066FF" }}/><span style={{ fontSize: 11, color: "var(--wd-ink-3)" }}>Final</span></Row>
+              <Row gap={5}><span style={{ width: 9, height: 9, borderRadius: 2, background: "rgba(0,102,255,0.3)", border: "1px dashed #0066FF" }}/><span style={{ fontSize: 11, color: "var(--wd-ink-3)" }}>Estimated</span></Row>
+            </Row>
+          </Row>
+          <div style={{ display: "flex", alignItems: "flex-end", gap: 14, height: 200, padding: "0 6px" }}>
+            {months.map(m => (
+              <div key={m.m} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
+                <div style={{ fontSize: 11, fontWeight: 700, color: "var(--wd-ink)" }}>€{(m.v/1000).toFixed(1)}k</div>
+                <div style={{
+                  width: "100%", height: `${(m.v / max) * 140}px`,
+                  background: m.est ? "rgba(0,102,255,0.25)" : "#0066FF",
+                  border: m.est ? "1px dashed #0066FF" : "none",
+                  borderRadius: "6px 6px 0 0",
+                  transition: "height 400ms var(--wd-ease)",
+                }} />
+                <div style={{ fontSize: 11, color: "var(--wd-ink-4)", fontWeight: 600 }}>{m.m}</div>
+              </div>
+            ))}
+          </div>
+        </Card>
+
+        <Card>
+          <h3 style={{ margin: "0 0 16px", fontSize: 16, fontWeight: 700, color: "var(--wd-ink)" }}>April breakdown</h3>
+          <Stack gap={12}>
+            {[
+              { label: "Host fees", amount: "€1,200", pct: 25 },
+              { label: "Per-head (verified)", amount: "€2,420", pct: 50 },
+              { label: "Ticket share (80%)", amount: "€820",  pct: 17 },
+              { label: "DAS overperf. bonus", amount: "€520", pct: 11 },
+            ].map((r, i) => (
+              <div key={i}>
+                <Row style={{ justifyContent: "space-between", marginBottom: 5 }}>
+                  <span style={{ fontSize: 12, color: "var(--wd-ink-2)", fontWeight: 600 }}>{r.label}</span>
+                  <span style={{ fontSize: 13, color: "var(--wd-ink)", fontWeight: 700 }}>{r.amount}</span>
+                </Row>
+                <Bar value={r.pct * 2} color={barColor(70 + i * 5)} height={5} />
+              </div>
+            ))}
+            <Divider style={{ margin: "4px 0" }}/>
+            <Row style={{ justifyContent: "space-between" }}>
+              <span style={{ fontSize: 12, color: "var(--wd-ink-4)" }}>OS + payment fees</span>
+              <span style={{ fontSize: 13, color: "var(--wd-ink-3)" }}>− €140</span>
+            </Row>
+            <Row style={{ justifyContent: "space-between", padding: "8px 0 0", borderTop: "1px solid var(--wd-line)" }}>
+              <span style={{ fontSize: 13, color: "var(--wd-ink)", fontWeight: 700 }}>Net payout</span>
+              <span style={{ fontSize: 18, color: "var(--wd-ink)", fontWeight: 700 }}>€4,820</span>
+            </Row>
+          </Stack>
+        </Card>
+      </div>
+
+      <Card style={{ marginTop: 20 }}>
+        <h3 style={{ margin: "0 0 16px", fontSize: 16, fontWeight: 700, color: "var(--wd-ink)" }}>Per-event detail</h3>
+        <table style={{ width: "100%", borderCollapse: "collapse" }}>
+          <thead>
+            <tr style={{ borderBottom: "1px solid var(--wd-line)" }}>
+              {["Event", "Date", "Attended", "Host fee", "Per-head", "Tickets", "Bonus", "Net", "Status"].map(h => (
+                <th key={h} style={{ textAlign: "left", padding: "10px 8px", fontSize: 11, fontWeight: 700, color: "var(--wd-ink-4)", letterSpacing: "0.06em", textTransform: "uppercase" }}>{h}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ["Midsommar Listening", "Apr 27", "214/280", "€400", "€1,070", "€342", "€328", "€2,140", "scheduled", "#0066FF"],
+              ["Moog × Push Session", "Apr 12", "92/100",  "€400", "€920",   "€0",   "€320", "€1,640", "calculating", "var(--wd-gold-ink)"],
+              ["DJ Set @ Urban",      "Apr 5",  "118/120", "€400", "€580",   "€0",   "€0",   "€980",  "ready", "var(--wd-green-ink)"],
+              ["Vinyl Night",         "Mar 22", "78/80",   "€400", "€820",   "€0",   "€0",   "€1,220","paid", "#5B6476"],
+            ].map((r, i) => (
+              <tr key={i} style={{ borderBottom: "1px solid var(--wd-line)" }}>
+                <td style={{ padding: "14px 8px", fontSize: 13, fontWeight: 600, color: "var(--wd-ink)" }}>{r[0]}</td>
+                <td style={{ padding: "14px 8px", fontSize: 13, color: "var(--wd-ink-3)" }}>{r[1]}</td>
+                <td style={{ padding: "14px 8px", fontSize: 13, color: "var(--wd-ink-3)" }}>{r[2]}</td>
+                <td style={{ padding: "14px 8px", fontSize: 13, color: "var(--wd-ink-2)" }}>{r[3]}</td>
+                <td style={{ padding: "14px 8px", fontSize: 13, color: "var(--wd-ink-2)" }}>{r[4]}</td>
+                <td style={{ padding: "14px 8px", fontSize: 13, color: "var(--wd-ink-2)" }}>{r[5]}</td>
+                <td style={{ padding: "14px 8px", fontSize: 13, color: "var(--wd-ink-2)" }}>{r[6]}</td>
+                <td style={{ padding: "14px 8px", fontSize: 13, fontWeight: 700, color: "var(--wd-ink)" }}>{r[7]}</td>
+                <td style={{ padding: "14px 8px" }}><Pill color={r[9]} tint={`${r[9]}15`} size="sm">{r[8]}</Pill></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </Card>
+    </>
+  );
+};
+
+Object.assign(window, { Earnings });
+</script>
+<!-- source: Brand/SponsorFeed.jsx -->
+<script type="text/babel">
+// Brand Sponsor Feed — browse events, see wSI match %, apply to sponsor.
+const SponsorFeed = ({ onOpenEvent, wsiVariant }) => {
+  const [filter, setFilter] = useState("all");
+  const [sort, setSort] = useState("match");
+  const events = EVENTS.filter(e => ["published", "sponsor_matched", "confirmed", "live"].includes(e.status))
+    .sort((a, b) => sort === "match" ? b.wsi - a.wsi : 0);
+  return (
+    <>
+      <PageHeader
+        title="Sponsor Feed"
+        sub="Published events matching Amazingy's brand profile. Sorted by wSI."
+        actions={<>
+          <Btn variant="ghost" icon="shield">Attention Insurance</Btn>
+          <Btn icon="target">Set targeting</Btn>
+        </>}
+      />
+
+      <Row style={{ justifyContent: "space-between", marginBottom: 20 }}>
+        <Row gap={8}>
+          {[["all","All"],["beauty","Beauty"],["music","Music"],["culture","Culture"],["food","Food"]].map(([v,l]) => (
+            <Chip key={v} selected={filter === v} onClick={() => setFilter(v)}>{l}</Chip>
+          ))}
+        </Row>
+        <Row gap={12}>
+          <span style={{ fontSize: 12, color: "var(--wd-ink-4)" }}>Sort by</span>
+          <SegmentedControl options={[{value:"match",label:"wSI match"},{value:"date",label:"Date"}]} value={sort} onChange={setSort} size="sm"/>
+        </Row>
+      </Row>
+
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(380px, 1fr))", gap: 18 }}>
+        {events.filter(e => filter === "all" || e.cat === filter).map(e => (
+          <SponsorCard key={e.id} ev={e} onOpen={() => onOpenEvent(e)} wsiVariant={wsiVariant} />
+        ))}
+      </div>
+    </>
+  );
+};
+
+const SponsorCard = ({ ev, onOpen, wsiVariant }) => {
+  const c = getCat(ev.cat), curator = getCurator(ev.curator), space = getSpace(ev.space);
+  return (
+    <Card onClick={onOpen} padding={0} style={{ overflow: "hidden" }}>
+      <div style={{ height: 140, position: "relative", background: c.color, backgroundImage: space.img ? `url(${space.img})` : undefined, backgroundSize: "cover", backgroundPosition: "center" }}>
+        <div style={{ position: "absolute", inset: 0, background: `linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.55) 100%)` }} />
+        {/* 3px category stripe — identity */}
+        <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 3, background: c.color }} />
+        <div style={{ position: "absolute", top: 14, left: 14 }}><CatPill cat={ev.cat} /></div>
+        <div style={{ position: "absolute", top: 14, right: 14 }}><StatusPill status={ev.status} /></div>
+        <div style={{ position: "absolute", bottom: 12, right: 12 }}><WSIScoreBadge value={ev.wsi} size={52}/></div>
+      </div>
+      <div style={{ padding: 18 }}>
+        <div style={{ fontSize: 16, fontWeight: 700, color: "var(--wd-ink)", marginBottom: 8, lineHeight: 1.3 }}>{ev.title}</div>
+        <Row gap={12} style={{ marginBottom: 14 }}>
+          <Row gap={5}><Icon name="clock" size={12} color="var(--wd-ink-3)"/><span style={{ fontSize: 12, color: "var(--wd-ink-3)" }}>{ev.date}</span></Row>
+          <Row gap={5}><Icon name="location" size={12} color="var(--wd-ink-3)"/><span style={{ fontSize: 12, color: "var(--wd-ink-3)" }}>{space.name}</span></Row>
+        </Row>
+        <Row gap={8} style={{ padding: "12px 0", borderTop: "1px solid var(--wd-line)", borderBottom: "1px solid var(--wd-line)", marginBottom: 14 }}>
+          <Avatar name={curator.name} imgSrc={curator.img} color={curator.color} size={30} />
+          <div style={{ flex: 1 }}>
+            <div style={{ fontSize: 12, fontWeight: 700, color: "var(--wd-ink)" }}>{curator.name}</div>
+            <div style={{ fontSize: 10, color: "var(--wd-ink-4)" }}>CPI {curator.cpi} · {curator.events} events</div>
+          </div>
+          <div style={{ textAlign: "right" }}>
+            <div style={{ fontSize: 14, fontWeight: 700, color: "var(--wd-ink)" }}>{ev.rsvps}/{ev.cap}</div>
+            <div style={{ fontSize: 10, color: "var(--wd-ink-4)" }}>expected wEIDs</div>
+          </div>
+        </Row>
+        <Stack gap={6}>
+          {[
+            { label: "Audience fit (EPI·BSI)", v: ev.audienceFit },
+            { label: "Revenue potential (DAS)", v: ev.revenue },
+            { label: "Space quality (SVI)", v: ev.venue },
+          ].map(r => (
+            <div key={r.label}>
+              <Row style={{ justifyContent: "space-between", marginBottom: 3 }}>
+                <span style={{ fontSize: 11, color: "var(--wd-ink-3)" }}>{r.label}</span>
+                <span style={{ fontSize: 11, fontWeight: 700, color: "var(--wd-ink)" }}>{r.v}</span>
+              </Row>
+              <Bar value={r.v} color={barColor(r.v)} height={4}/>
+            </div>
+          ))}
+        </Stack>
+        <Row style={{ justifyContent: "space-between", marginTop: 16 }}>
+          <Btn variant="ghost" size="sm">View brief</Btn>
+          <Btn size="sm" icon="sparkle">Sponsor this</Btn>
+        </Row>
+      </div>
+    </Card>
+  );
+};
+
+const EventDetail = ({ ev, onBack, wsiVariant }) => {
+  const [applied, setApplied] = useState(false);
+  const c = getCat(ev.cat), curator = getCurator(ev.curator), space = getSpace(ev.space);
+  return (
+    <>
+      <Row gap={10} style={{ marginBottom: 24, cursor: "pointer" }} onClick={onBack}>
+        <Icon name="arrowLeft" size={16} color="var(--wd-ink-3)" />
+        <span style={{ fontSize: 13, fontWeight: 700, color: "var(--wd-ink-3)" }}>Back to feed</span>
+      </Row>
+      <Row style={{ justifyContent: "space-between", marginBottom: 20, alignItems: "flex-start" }}>
+        <div style={{ flex: 1 }}>
+          <Row gap={8} style={{ marginBottom: 10 }}><CatPill cat={ev.cat}/><StatusPill status={ev.status}/></Row>
+          <h1 style={{ margin: 0, fontSize: 28, fontWeight: 700, color: "var(--wd-ink)", letterSpacing: "-0.02em" }}>{ev.title}</h1>
+          <Row gap={16} style={{ marginTop: 10 }}>
+            <Row gap={5}><Icon name="clock" size={14} color="var(--wd-ink-3)"/><span style={{ fontSize: 13, color: "var(--wd-ink-3)" }}>{ev.date}</span></Row>
+            <Row gap={5}><Icon name="location" size={14} color="var(--wd-ink-3)"/><span style={{ fontSize: 13, color: "var(--wd-ink-3)" }}>{space.name} · {space.n}</span></Row>
+            <Row gap={5}><Icon name="users2" size={14} color="var(--wd-ink-3)"/><span style={{ fontSize: 13, color: "var(--wd-ink-3)" }}>{ev.rsvps} / {ev.cap} expected</span></Row>
+          </Row>
+        </div>
+        {!applied ? (
+          <Btn size="lg" icon="sparkle" onClick={() => setApplied(true)}>Sponsor this event</Btn>
+        ) : (
+          <Pill color="var(--wd-green-ink)" tint="rgba(126,217,87,0.18)">✓ Application submitted · chat opened</Pill>
+        )}
+      </Row>
+      <div style={{ display: "grid", gridTemplateColumns: "1.3fr 1fr", gap: 20 }}>
+        <Stack gap={20}>
+          <Card>
+            <h3 style={{ margin: "0 0 12px", fontSize: 15, fontWeight: 700 }}>About</h3>
+            <p style={{ margin: 0, fontSize: 14, color: "var(--wd-ink-2)", lineHeight: 1.6 }}>{ev.desc}</p>
+          </Card>
+          {ev.schedule && (
+            <Card>
+              <h3 style={{ margin: "0 0 12px", fontSize: 15, fontWeight: 700 }}>Schedule</h3>
+              <Stack gap={0}>
+                {ev.schedule.map(([t, l], i, arr) => (
+                  <Row key={i} style={{ padding: "10px 0", borderBottom: i < arr.length - 1 ? "1px solid var(--wd-line)" : "none", justifyContent: "space-between" }}>
+                    <span style={{ fontSize: 13, fontWeight: 700, color: "var(--wd-ink)" }}>{t}</span>
+                    <span style={{ fontSize: 13, color: "var(--wd-ink-3)" }}>{l}</span>
+                  </Row>
+                ))}
+              </Stack>
+            </Card>
+          )}
+          <Card>
+            <h3 style={{ margin: "0 0 12px", fontSize: 15, fontWeight: 700 }}>Curator</h3>
+            <Row gap={14}>
+              <Avatar name={curator.name} imgSrc={curator.img} color={curator.color} size={56}/>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontSize: 15, fontWeight: 700, color: "var(--wd-ink)" }}>{curator.name}</div>
+                <div style={{ fontSize: 12, color: "var(--wd-ink-3)", marginTop: 2 }}>{curator.handle} · {curator.followers} followers · CPI {curator.cpi}</div>
+                <div style={{ fontSize: 13, color: "var(--wd-ink-2)", marginTop: 8 }}>{curator.bio}</div>
+              </div>
+            </Row>
+          </Card>
+        </Stack>
+        <Stack gap={20}>
+          <Card>
+            <h3 style={{ margin: "0 0 14px", fontSize: 15, fontWeight: 700 }}>wSI breakdown</h3>
+            <WSI ev={ev} variant={wsiVariant}/>
+          </Card>
+          <Card>
+            <h3 style={{ margin: "0 0 14px", fontSize: 15, fontWeight: 700 }}>Guaranteed wEID impressions</h3>
+            <Stack gap={10}>
+              {[["Floor case (60%)", Math.round(ev.rsvps * 0.6)],["Base case", ev.rsvps],["Upside (DAS)", Math.round(ev.rsvps * 1.2)]].map(([l, v], i) => (
+                <Row key={i} style={{ padding: "10px 12px", borderRadius: 10, background: i === 1 ? "rgba(0,102,255,0.05)" : "var(--wd-pg)", border: i === 1 ? "1px solid rgba(0,102,255,0.2)" : "1px solid var(--wd-line)" }}>
+                  <div style={{ flex: 1, fontSize: 12, fontWeight: 700, color: "var(--wd-ink-2)" }}>{l}</div>
+                  <div style={{ fontSize: 18, fontWeight: 700, color: i === 1 ? "#0066FF" : "var(--wd-ink)" }}>{v}</div>
+                </Row>
+              ))}
+            </Stack>
+            <div style={{ fontSize: 11, color: "var(--wd-ink-4)", marginTop: 12, lineHeight: 1.5 }}>Priced and delivered via wSI. Never lead counts. Floor-case credit issued if breached.</div>
+          </Card>
+        </Stack>
+      </div>
+    </>
+  );
+};
+
+Object.assign(window, { SponsorFeed, EventDetail });
+</script>
+<!-- source: Brand/Recall.jsx -->
+<script type="text/babel">
+// Brand Recall Creative Studio — AR activation setup.
+const RecallStudio = () => {
+  const [format, setFormat] = useState("scratch");
+  const [reward, setReward] = useState("voucher");
+  const [discReward, setDiscReward] = useState(15);
+  const [floor, setFloor] = useState(60);
+  const [step, setStep] = useState("creative");
+  const formats = [
+    { id: "scratch", name: "Scratch Card", desc: "Tap to reveal a hidden offer" },
+    { id: "spin", name: "Spin Wheel", desc: "Wheel of prizes, one spin per unlock" },
+    { id: "quiz", name: "Quiz", desc: "3-question quiz, reward on completion" },
+    { id: "cinematic", name: "Cinematic Reveal", desc: "Hero video → offer reveal" },
+    { id: "unwrap", name: "Tap to Unwrap", desc: "Animated product reveal" },
+    { id: "challenge", name: "Tap Challenge", desc: "Speed-tap mini-game" },
+  ];
+  return (
+    <>
+      <PageHeader
+        title="Recall Creative Studio"
+        sub="Configure the micro-experience that unlocks at AR geofences and in Recall placements."
+        actions={<><Btn variant="ghost" icon="eye">Preview on device</Btn><Btn icon="check">Save & publish</Btn></>}
+      />
+      <Row gap={16} style={{ marginBottom: 20 }}>
+        {[["creative","1. Creative"],["reward","2. Reward"],["target","3. Targeting"],["review","4. Review"]].map(([v, l], i) => (
+          <button key={v} onClick={() => setStep(v)} style={{
+            padding: "10px 16px", borderRadius: 10,
+            background: step === v ? "rgba(0,102,255,0.08)" : "transparent",
+            color: step === v ? "#0066FF" : "var(--wd-ink-3)",
+            border: step === v ? "1px solid rgba(0,102,255,0.3)" : "1px solid var(--wd-line)",
+            fontFamily: "Nunito", fontSize: 13, fontWeight: 700, cursor: "pointer",
+          }}>{l}</button>
+        ))}
+      </Row>
+
+      <div style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr", gap: 20 }}>
+        <Card>
+          {step === "creative" && (
+            <>
+              <h3 style={{ margin: "0 0 6px", fontSize: 18, fontWeight: 700 }}>Pick a Recall format</h3>
+              <p style={{ margin: "0 0 20px", fontSize: 13, color: "var(--wd-ink-3)" }}>Every placement needs a Recall Creative. Placements without one rank lower in the Explorer feed.</p>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+                {formats.map(f => (
+                  <button key={f.id} onClick={() => setFormat(f.id)} style={{
+                    textAlign: "left", padding: 16,
+                    background: format === f.id ? "rgba(0,102,255,0.05)" : "var(--wd-surface)",
+                    border: format === f.id ? "1.5px solid #0066FF" : "1px solid var(--wd-line-2)",
+                    borderRadius: 12, cursor: "pointer", fontFamily: "Nunito",
+                  }}>
+                    <div style={{ fontSize: 14, fontWeight: 700, color: "var(--wd-ink)", marginBottom: 4 }}>{f.name}</div>
+                    <div style={{ fontSize: 12, color: "var(--wd-ink-3)" }}>{f.desc}</div>
+                  </button>
+                ))}
+              </div>
+              <Divider />
+              <h4 style={{ margin: "0 0 12px", fontSize: 14, fontWeight: 700 }}>AR Activation Kit</h4>
+              <Stack gap={10}>
+                {[
+                  ["Brand logo", "amazingy-logo.svg", "check"],
+                  ["Product 3D asset", "spf30-bottle.glb", "check"],
+                  ["2D fallback", "spf30-card.png", "check"],
+                  ["Activation copy", "\"Tap to unlock your sample\"", "check"],
+                  ["Venue scan", "NIO House · completed", "check"],
+                ].map(([k, v, st], i) => (
+                  <Row key={i} gap={10} style={{ padding: "10px 0", borderBottom: i < 4 ? "1px solid var(--wd-line)" : "none" }}>
+                    <Icon name="check" size={16} color="var(--wd-green-ink)"/>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ fontSize: 12, fontWeight: 700, color: "var(--wd-ink-2)" }}>{k}</div>
+                      <div style={{ fontSize: 11, color: "var(--wd-ink-4)", marginTop: 2 }}>{v}</div>
+                    </div>
+                  </Row>
+                ))}
+              </Stack>
+            </>
+          )}
+          {step === "reward" && (
+            <>
+              <h3 style={{ margin: "0 0 6px", fontSize: 18, fontWeight: 700 }}>Configure reward</h3>
+              <p style={{ margin: "0 0 20px", fontSize: 13, color: "var(--wd-ink-3)" }}>What lands in the Explorer's Caught wallet on unlock.</p>
+              <Field label="Reward type">
+                <Row gap={8} wrap>
+                  {[["voucher","Voucher"],["sample","Sample"],["discount","Discount"],["experience","Experience pass"],["disc","DISC only"]].map(([v, l]) => (
+                    <Chip key={v} selected={reward === v} onClick={() => setReward(v)}>{l}</Chip>
+                  ))}
+                </Row>
+              </Field>
+              <Field label="Reward title"><Input value="SPF30 Daily Moisturizer · 50ml sample"/></Field>
+              <Field label="Monetary or experiential value"><Input value="€18 retail"/></Field>
+              <Field label={`DISC points (default 15)`} hint="Points added to Explorer's DISC wallet on unlock. Explorer bonus runs in parallel to the reward itself.">
+                <Row gap={12}>
+                  <input type="range" min="0" max="100" value={discReward} onChange={e => setDiscReward(+e.target.value)} style={{ flex: 1, accentColor: "#FAC938" }}/>
+                  <span style={{ fontSize: 15, fontWeight: 700, color: "var(--wd-gold-ink)", width: 60, textAlign: "right" }}>{discReward} DISC</span>
+                </Row>
+              </Field>
+              <Field label="Post-unlock destination"><Input value="Drops → SPF30 product page"/></Field>
+            </>
+          )}
+          {step === "target" && (
+            <>
+              <h3 style={{ margin: "0 0 6px", fontSize: 18, fontWeight: 700 }}>Targeting</h3>
+              <p style={{ margin: "0 0 20px", fontSize: 13, color: "var(--wd-ink-3)" }}>Only Explorers meeting the wSI floor see this Recall. Higher floor = more premium, higher insurance cost.</p>
+              <Field label={`wSI targeting floor (${floor})`} hint="0 = everyone · 100 = only exceptional-fit Explorers">
+                <Row gap={12}>
+                  <input type="range" min="0" max="100" value={floor} onChange={e => setFloor(+e.target.value)} style={{ flex: 1, accentColor: "#0066FF" }}/>
+                  <span style={{ fontSize: 15, fontWeight: 700, color: barColor(floor), width: 40, textAlign: "right" }}>{floor}</span>
+                </Row>
+              </Field>
+              <Field label="Geofence">
+                <Row gap={8} wrap>
+                  {["NIO House, Mitte","Urban Spree","Tree House, Neukölln","+ Add location"].map((l, i) => (
+                    <Chip key={l} selected={i < 3}>{l}</Chip>
+                  ))}
+                </Row>
+              </Field>
+              <Field label="Interest categories">
+                <Row gap={6} wrap>
+                  {["Clean beauty","Skincare","Wellness","Sustainability","Design"].map((c, i) => <Chip key={c} selected={i < 4}>{c}</Chip>)}
+                </Row>
+              </Field>
+            </>
+          )}
+          {step === "review" && (
+            <>
+              <h3 style={{ margin: "0 0 6px", fontSize: 18, fontWeight: 700 }}>Review & publish</h3>
+              <p style={{ margin: "0 0 20px", fontSize: 13, color: "var(--wd-ink-3)" }}>weDISCOVR generates the AR experience from your assets. Preview in one click, approve, go live.</p>
+              <Stack gap={14}>
+                {[["Format", formats.find(f => f.id === format).name],["Reward", "€18 sample + " + discReward + " DISC"],["wSI floor", floor],["Geofences", "3 active"],["Est. unique wEIDs / mo", "4,200 – 6,800"]].map(([k, v], i) => (
+                  <Row key={i} style={{ padding: "12px 0", borderBottom: i < 4 ? "1px solid var(--wd-line)" : "none", justifyContent: "space-between" }}>
+                    <span style={{ fontSize: 12, color: "var(--wd-ink-4)", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase" }}>{k}</span>
+                    <span style={{ fontSize: 14, color: "var(--wd-ink)", fontWeight: 600 }}>{v}</span>
+                  </Row>
+                ))}
+              </Stack>
+            </>
+          )}
+        </Card>
+
+        <div>
+          <Card style={{ position: "sticky", top: 80 }}>
+            <div style={{ fontSize: 11, color: "var(--wd-ink-4)", fontWeight: 700, letterSpacing: "0.08em", marginBottom: 12 }}>PREVIEW · EXPLORER APP</div>
+            <div style={{ width: "100%", aspectRatio: "402 / 600", borderRadius: 24, background: "radial-gradient(#040F24 0%, #081C2C 100%)", border: "6px solid #0B1220", position: "relative", overflow: "hidden" }}>
+              <div style={{ position: "absolute", inset: "20px 16px", borderRadius: 20, overflow: "hidden", backgroundImage: "url(https://images.unsplash.com/photo-1612817288484-6f916006741a?w=600&h=900&fit=crop&q=80)", backgroundSize: "cover", backgroundPosition: "center" }}>
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.75) 100%)" }} />
+                <div style={{ position: "absolute", top: 14, left: 14, padding: "4px 10px", borderRadius: 999, background: "rgba(126,217,87,0.4)", color: "#fff", fontSize: 10, fontWeight: 700, backdropFilter: "blur(8px)" }}>✨ RECALL</div>
+                <div style={{ position: "absolute", left: 14, right: 14, bottom: 48, color: "#fff" }}>
+                  <div style={{ fontSize: 12, fontWeight: 700, opacity: 0.9, marginBottom: 6 }}>AMAZINGY</div>
+                  <div style={{ fontSize: 18, fontWeight: 700, lineHeight: 1.2, marginBottom: 8 }}>Tap to unlock your sample</div>
+                  <div style={{ fontSize: 11, opacity: 0.8 }}>{formats.find(f => f.id === format).name} · +{discReward} DISC</div>
+                </div>
+                <div style={{ position: "absolute", bottom: 14, left: 14, right: 14, height: 32, borderRadius: 16, background: "rgba(255,255,255,0.25)", backdropFilter: "blur(10px)", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 12, fontWeight: 700 }}>Unlock →</div>
+              </div>
+            </div>
+            <div style={{ fontSize: 11, color: "var(--wd-ink-4)", marginTop: 12, textAlign: "center" }}>Live preview. Updates as you configure.</div>
+          </Card>
+        </div>
+      </div>
+    </>
+  );
+};
+
+Object.assign(window, { RecallStudio });
+</script>
+<!-- source: Brand/Report.jsx -->
+<script type="text/babel">
+// Brand post-campaign wEID report.
+const CampaignReport = () => {
+  return (
+    <>
+      <PageHeader
+        title="Amazingy · Spring Beauty Drops"
+        sub="Campaign report · Apr 1 – Apr 30, 2026 · 4 sponsored events · 3 Recall placements"
+        actions={<><Btn variant="ghost" icon="upload">Export PDF</Btn><Btn variant="ghost" icon="layers">Hashed wEID export</Btn></>}
+      />
+
+      <div style={{ padding: 14, borderRadius: 12, background: "rgba(0,102,255,0.04)", border: "1px solid rgba(0,102,255,0.2)", marginBottom: 24, display: "flex", gap: 12, alignItems: "center" }}>
+        <Icon name="shield" size={20} color="#0066FF"/>
+        <div style={{ flex: 1, fontSize: 13, color: "var(--wd-ink-2)" }}>
+          <strong style={{ color: "var(--wd-ink)" }}>No PII exported.</strong> All data expressed through anonymized wEIDs. Retargeting flows through weDISCOVR's pipes, not through your CRM.
+        </div>
+      </div>
+
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, marginBottom: 20 }}>
+        <StatCard label="Unique wEIDs reached" value="4,847" delta="+22% vs. base" deltaKind="up" sub="Guaranteed: 4,200" icon="users" tint="rgba(0,102,255,0.08)" sparkColor="#0066FF" />
+        <StatCard label="Recall impressions" value="18,920" delta="+14%" deltaKind="up" sub="Across 3 placements" icon="zap" tint="rgba(105,104,203,0.10)" sparkColor="#6968CB" />
+        <StatCard label="Offer redemptions" value="1,208" delta="€14.40 CPE" deltaKind="neutral" sub="25% redemption rate" icon="gift" tint="rgba(250,201,56,0.18)" sparkColor="var(--wd-gold-ink)" />
+        <StatCard label="Drops conversion" value="312" delta="€8,640 GMV" deltaKind="up" sub="Full IRL → Drop attribution" icon="target" tint="rgba(126,217,87,0.18)" sparkColor="var(--wd-green-ink)" />
+      </div>
+
+      <div style={{ display: "grid", gridTemplateColumns: "1.3fr 1fr", gap: 20, marginBottom: 20 }}>
+        <Card>
+          <h3 style={{ margin: "0 0 16px", fontSize: 16, fontWeight: 700 }}>Attention Insurance · delivery</h3>
+          <Stack gap={14}>
+            {[
+              { l: "Unique wEIDs",    g: 4200, a: 4847 },
+              { l: "Recall impressions", g: 15000, a: 18920 },
+              { l: "Offer deliveries", g: 3000, a: 3620 },
+            ].map((r, i) => {
+              const pct = Math.min(130, (r.a / r.g) * 100);
+              return (
+                <div key={i}>
+                  <Row style={{ justifyContent: "space-between", marginBottom: 6 }}>
+                    <span style={{ fontSize: 12, fontWeight: 700, color: "var(--wd-ink-2)" }}>{r.l}</span>
+                    <span style={{ fontSize: 13, color: "var(--wd-ink)", fontWeight: 700 }}>
+                      {r.a.toLocaleString()} <span style={{ color: "var(--wd-ink-4)", fontWeight: 400 }}>/ {r.g.toLocaleString()} guaranteed</span>
+                    </span>
+                  </Row>
+                  <div style={{ position: "relative", height: 8, background: "var(--wd-pg-2)", borderRadius: 4, overflow: "hidden" }}>
+                    <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: `${(r.g / r.a) * Math.min(pct,100)}%`, background: "rgba(126,217,87,0.3)" }} />
+                    <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: `${Math.min(100, pct)}%`, background: "#7ED957" }} />
+                  </div>
+                </div>
+              );
+            })}
+          </Stack>
+          <div style={{ marginTop: 14, padding: 12, borderRadius: 10, background: "rgba(126,217,87,0.1)", fontSize: 12, color: "var(--wd-ink-2)" }}>
+            ✓ All base-case minimums exceeded. DAS overperformance. Curator bonus triggered for DJ Kleo.
+          </div>
+        </Card>
+
+        <Card>
+          <h3 style={{ margin: "0 0 16px", fontSize: 16, fontWeight: 700 }}>Attribution trail</h3>
+          <Stack gap={12}>
+            {[
+              { k: "IRL exposure", v: "4,847 wEIDs", c: "#0066FF" },
+              { k: "Recall engagement", v: "2,416 plays", c: "#6968CB" },
+              { k: "Offer saved", v: "1,802 saves", c: "#FAC938" },
+              { k: "Redeemed", v: "1,208 redemptions", c: "#FF5501" },
+              { k: "Drops purchase", v: "312 orders · €8,640 GMV", c: "#7ED957" },
+            ].map((r, i, arr) => (
+              <div key={i}>
+                <Row gap={10}>
+                  <div style={{ width: 8, height: 8, borderRadius: 4, background: r.c }} />
+                  <div style={{ flex: 1 }}>
+                    <div style={{ fontSize: 12, color: "var(--wd-ink-4)", fontWeight: 700 }}>{r.k.toUpperCase()}</div>
+                    <div style={{ fontSize: 15, fontWeight: 700, color: "var(--wd-ink)", marginTop: 2 }}>{r.v}</div>
+                  </div>
+                </Row>
+                {i < arr.length - 1 && <div style={{ width: 1, height: 14, background: "var(--wd-line-2)", marginLeft: 4, marginTop: 4 }} />}
+              </div>
+            ))}
+          </Stack>
+        </Card>
+      </div>
+
+      <Card>
+        <Row style={{ justifyContent: "space-between", marginBottom: 16 }}>
+          <h3 style={{ margin: 0, fontSize: 16, fontWeight: 700 }}>Explorer pool insights</h3>
+          <span style={{ fontSize: 11, color: "var(--wd-ink-4)" }}>Aggregated · wEID-level · zero PII</span>
+        </Row>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }}>
+          {[
+            { l: "Avg. wSI score", v: "74.2", s: "Top 30% of Berlin pool" },
+            { l: "Peak hour",      v: "19:00", s: "8x the 11:00 rate" },
+            { l: "Top category",   v: "Clean beauty", s: "62% overlap" },
+            { l: "Neighborhood",   v: "Mitte", s: "48% of reached wEIDs" },
+          ].map((r, i) => (
+            <div key={i} style={{ padding: 16, borderRadius: 12, background: "var(--wd-pg)", border: "1px solid var(--wd-line)" }}>
+              <div style={{ fontSize: 11, color: "var(--wd-ink-4)", fontWeight: 700, letterSpacing: "0.06em" }}>{r.l.toUpperCase()}</div>
+              <div style={{ fontSize: 22, fontWeight: 700, color: "var(--wd-ink)", marginTop: 8 }}>{r.v}</div>
+              <div style={{ fontSize: 11, color: "var(--wd-ink-3)", marginTop: 4 }}>{r.s}</div>
+            </div>
+          ))}
+        </div>
+      </Card>
+    </>
+  );
+};
+
+Object.assign(window, { CampaignReport });
+</script>
+<!-- source: Space/Calendar.jsx -->
+<script type="text/babel">
+// Space Calendar + Requests.
+//
+// COLOR LOGIC
+// -----------
+// Calendar cells are colored by STATUS only (status = state):
+//   • Available  → soft green tint
+//   • Booked     → neutral ink-filled cell
+//   • Pending    → amber (separate from Food orange to avoid conflict)
+//   • Blocked    → flat neutral grey
+// The event CATEGORY on booked days appears as a thin 3px stripe on the left
+// edge of the cell (identity, secondary). Never as the main fill.
+
+const SpaceCalendar = () => {
+  // days 1..31 (May 2026 layout — starts Fri col 5)
+  const pad = Array.from({length: 4}, (_, i) => null);
+  const days = pad.concat(Array.from({length: 31}, (_, i) => i + 1));
+  const booked = { 2: "food", 8: "music", 9: "music", 15: "culture", 17: "food", 23: "fitness", 27: "music", 28: "beauty" };
+  const pendingDays = [14, 21];
+  const blockedDays = [5, 12]; // private / closed days
+  const available = [3, 4, 6, 7, 10, 11, 13, 16, 18, 19, 20, 22, 24, 25, 26, 29, 30, 31];
+
+  return (
+    <>
+      <PageHeader
+        title="Calendar"
+        sub="Urban Spree · Friedrichshain · cap 450. Mark available slots to receive curator requests."
+        actions={<><Btn variant="ghost" icon="upload">Sync iCal</Btn><Btn icon="plus">Open new slot</Btn></>}
+      />
+
+      <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: 20 }}>
+        <Card>
+          <Row style={{ justifyContent: "space-between", marginBottom: 18 }}>
+            <h3 style={{ margin: 0, fontSize: 16, fontWeight: 700 }}>May 2026</h3>
+            <Row gap={14}>
+              <LegendChip swatch="avail"    label="Available"/>
+              <LegendChip swatch="booked"   label="Booked"/>
+              <LegendChip swatch="pending"  label="Pending"/>
+              <LegendChip swatch="blocked"  label="Blocked"/>
+            </Row>
+          </Row>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: 6, marginBottom: 6 }}>
+            {["Mon","Tue","Wed","Thu","Fri","Sat","Sun"].map(d =>
+              <div key={d} style={{ fontSize: 10, fontWeight: 700, color: "var(--wd-ink-4)", letterSpacing: "0.06em", textAlign: "center", padding: "6px 0" }}>{d.toUpperCase()}</div>)}
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: 6 }}>
+            {days.map((d, idx) => {
+              if (d === null) return <div key={`pad-${idx}`}/>;
+              const bk = booked[d];
+              const cat = bk ? getCat(bk) : null;
+              const isAvail = available.includes(d);
+              const isPending = pendingDays.includes(d);
+              const isBlocked = blockedDays.includes(d);
+              return (
+                <DayCell
+                  key={d} day={d}
+                  status={bk ? "booked" : isPending ? "pending" : isBlocked ? "blocked" : isAvail ? "available" : "empty"}
+                  catColor={cat?.color} catName={cat?.name}
+                />
+              );
+            })}
+          </div>
+
+          <Divider/>
+          <Row gap={12}>
+            <StatPills />
+          </Row>
+        </Card>
+
+        <div>
+          <Card>
+            <Row style={{ justifyContent: "space-between", marginBottom: 14 }}>
+              <h3 style={{ margin: 0, fontSize: 16, fontWeight: 700 }}>Incoming requests</h3>
+              <Pill color="#D97706" tint="rgba(217,119,6,0.12)">3 NEW</Pill>
+            </Row>
+            <Stack gap={14}>
+              {[
+                { c: "c1", title: "Midsommar Listening", date: "May 14 · 20:00", match: 89 },
+                { c: "c5", title: "Afro-Futures Film Night", date: "May 18 · 19:30", match: 76 },
+                { c: "c3", title: "Neukölln Night Market", date: "May 17 · 18:00", match: 84 },
+              ].map((r, i) => {
+                const curator = getCurator(r.c);
+                const cat = getCat(curator.cat);
+                return (
+                  <div key={i} style={{ padding: 12, borderRadius: 10, background: "var(--wd-pg)", border: "1px solid var(--wd-line)", position: "relative", overflow: "hidden" }}>
+                    {/* thin category stripe — identity only, not status */}
+                    <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 3, background: cat.color }}/>
+                    <Row gap={10} style={{ marginBottom: 10, paddingLeft: 4 }}>
+                      <Avatar name={curator.name} imgSrc={curator.img} color={curator.color} size={32}/>
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <div style={{ fontSize: 12, fontWeight: 700, color: "var(--wd-ink)" }}>{curator.name}</div>
+                        <div style={{ fontSize: 10, color: "var(--wd-ink-4)" }}>CPI {curator.cpi} · {curator.city} · {cat.name}</div>
+                      </div>
+                      <WSIScoreBadge value={r.match} size={40}/>
+                    </Row>
+                    <div style={{ fontSize: 12, fontWeight: 700, color: "var(--wd-ink-2)", paddingLeft: 4 }}>{r.title}</div>
+                    <div style={{ fontSize: 11, color: "var(--wd-ink-4)", marginTop: 3, paddingLeft: 4 }}>{r.date}</div>
+                    <Row gap={6} style={{ marginTop: 10, paddingLeft: 4 }}>
+                      <Btn size="sm" variant="success" icon="check">Accept</Btn>
+                      <Btn size="sm" variant="ghost">Counter</Btn>
+                      <Btn size="sm" variant="quiet">Decline</Btn>
+                    </Row>
+                  </div>
+                );
+              })}
+            </Stack>
+          </Card>
+          <Card style={{ marginTop: 20 }}>
+            <h3 style={{ margin: "0 0 12px", fontSize: 15, fontWeight: 700 }}>Revenue uplift</h3>
+            <div style={{ fontSize: 28, fontWeight: 700, color: "var(--wd-ink)", letterSpacing: "-0.02em" }}>+38%</div>
+            <div style={{ fontSize: 12, color: "var(--wd-ink-3)", marginBottom: 10 }}>vs. baseline nights · from POS attribution</div>
+            <Sparkline values={[100, 110, 130, 125, 140, 138, 155]} color="var(--wd-green-ink)" height={36}/>
+            <div style={{ fontSize: 11, color: "var(--wd-ink-4)", marginTop: 8 }}>Events on weDISCOVR drive consistent above-baseline revenue.</div>
+          </Card>
+        </div>
+      </div>
+    </>
+  );
+};
+
+// A single calendar cell. Status drives fill; category is a 3px left stripe.
+const DayCell = ({ day, status, catColor, catName }) => {
+  const cellStyles = {
+    available: { bg: "rgba(126,217,87,0.14)", border: "1px solid rgba(126,217,87,0.4)", text: "var(--wd-ink)", subtext: "var(--wd-green-ink)" },
+    booked:    { bg: "var(--wd-ink)",         border: "none",                          text: "#fff",           subtext: "rgba(255,255,255,0.75)" },
+    pending:   { bg: "rgba(217,119,6,0.14)",  border: "1px dashed rgba(217,119,6,0.5)",text: "var(--wd-ink)",  subtext: "#D97706" },
+    blocked:   { bg: "repeating-linear-gradient(135deg, var(--wd-pg-2) 0 6px, var(--wd-pg) 6px 12px)", border: "1px solid var(--wd-line-2)", text: "var(--wd-ink-4)", subtext: "var(--wd-ink-4)" },
+    empty:     { bg: "var(--wd-surface)",     border: "1px solid var(--wd-line)",      text: "var(--wd-ink-3)",subtext: "var(--wd-ink-4)" },
+  };
+  const s = cellStyles[status];
+  const subLabel =
+    status === "available" ? "Open" :
+    status === "booked"    ? catName :
+    status === "pending"   ? "Review" :
+    status === "blocked"   ? "Blocked" : "";
+
+  return (
+    <div style={{
+      aspectRatio: "1", borderRadius: 8,
+      background: s.bg, border: s.border,
+      display: "flex", flexDirection: "column", justifyContent: "space-between",
+      padding: 8, cursor: "pointer", position: "relative", overflow: "hidden",
+    }}>
+      {status === "booked" && catColor && (
+        <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 3, background: catColor }}/>
+      )}
+      <div style={{ fontSize: 13, fontWeight: 700, color: s.text, paddingLeft: status === "booked" ? 4 : 0 }}>{day}</div>
+      {subLabel && (
+        <div style={{ fontSize: 9, color: s.subtext, fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase", paddingLeft: status === "booked" ? 4 : 0 }}>
+          {subLabel}
+        </div>
+      )}
+    </div>
+  );
+};
+
+// Little legend swatches that visually match the cells exactly.
+const LegendChip = ({ swatch, label }) => {
+  const swatches = {
+    avail:   { bg: "rgba(126,217,87,0.14)", bd: "1px solid rgba(126,217,87,0.5)" },
+    booked:  { bg: "var(--wd-ink)",         bd: "none" },
+    pending: { bg: "rgba(217,119,6,0.14)",  bd: "1px dashed rgba(217,119,6,0.5)" },
+    blocked: { bg: "repeating-linear-gradient(135deg, var(--wd-pg-2) 0 3px, var(--wd-pg) 3px 6px)", bd: "1px solid var(--wd-line-2)" },
+  };
+  const s = swatches[swatch];
+  return (
+    <Row gap={6}>
+      <span style={{ width: 12, height: 12, borderRadius: 3, background: s.bg, border: s.bd }}/>
+      <span style={{ fontSize: 11, color: "var(--wd-ink-3)" }}>{label}</span>
+    </Row>
+  );
+};
+
+const StatPills = () => (
+  <>
+    <div style={{ flex: 1 }}>
+      <div style={{ fontSize: 11, color: "var(--wd-ink-4)", fontWeight: 700, letterSpacing: "0.06em" }}>OPEN SLOTS</div>
+      <div style={{ fontSize: 22, fontWeight: 700, color: "var(--wd-ink)", marginTop: 4 }}>12</div>
+    </div>
+    <div style={{ flex: 1 }}>
+      <div style={{ fontSize: 11, color: "var(--wd-ink-4)", fontWeight: 700, letterSpacing: "0.06em" }}>BOOKED</div>
+      <div style={{ fontSize: 22, fontWeight: 700, color: "var(--wd-ink)", marginTop: 4 }}>7</div>
+    </div>
+    <div style={{ flex: 1 }}>
+      <div style={{ fontSize: 11, color: "var(--wd-ink-4)", fontWeight: 700, letterSpacing: "0.06em" }}>SVI</div>
+      <div style={{ fontSize: 22, fontWeight: 700, color: "var(--wd-ink)", marginTop: 4 }}>84</div>
+    </div>
+    <div style={{ flex: 1 }}>
+      <div style={{ fontSize: 11, color: "var(--wd-ink-4)", fontWeight: 700, letterSpacing: "0.06em" }}>UTILIZATION</div>
+      <div style={{ fontSize: 22, fontWeight: 700, color: "var(--wd-ink)", marginTop: 4 }}>58%</div>
+    </div>
+  </>
+);
+
+Object.assign(window, { SpaceCalendar });
+</script>
+<!-- source: Ops/QAQueue.jsx -->
+<script type="text/babel">
+// Ops QA Queue.
+const QAQueue = ({ wsiVariant }) => {
+  const [selected, setSelected] = useState(EVENTS.find(e => e.status === "qa_review"));
+  const queue = EVENTS.filter(e => ["qa_review", "space_pending", "draft"].includes(e.status));
+  return (
+    <>
+      <PageHeader
+        title="QA Queue"
+        sub={`${queue.length} events awaiting review · median turnaround 14h`}
+        actions={<><Btn variant="ghost" icon="chart">QA metrics</Btn><Btn icon="settings">Rules</Btn></>}
+      />
+      <div style={{ display: "grid", gridTemplateColumns: "380px 1fr", gap: 20, height: "calc(100vh - 260px)" }}>
+        <Card padding={0} style={{ overflow: "auto" }}>
+          <div style={{ padding: "14px 16px", borderBottom: "1px solid var(--wd-line)", position: "sticky", top: 0, background: "var(--wd-surface)" }}>
+            <Row gap={6}>
+              <Chip selected>All</Chip>
+              <Chip>QA review</Chip>
+              <Chip>Space pending</Chip>
+            </Row>
+          </div>
+          <Stack gap={0}>
+            {queue.map(e => {
+              const on = selected?.id === e.id;
+              const cur = getCurator(e.curator);
+              return (
+                <div key={e.id} onClick={() => setSelected(e)} style={{
+                  padding: "14px 16px", cursor: "pointer",
+                  background: on ? "rgba(0,102,255,0.05)" : "transparent",
+                  borderLeft: on ? "3px solid #0066FF" : "3px solid transparent",
+                  borderBottom: "1px solid var(--wd-line)",
+                }}>
+                  <Row gap={10} style={{ marginBottom: 6 }}>
+                    <Avatar name={cur.name} imgSrc={cur.img} color={cur.color} size={28}/>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{ fontSize: 13, fontWeight: 700, color: "var(--wd-ink)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{e.title}</div>
+                      <div style={{ fontSize: 11, color: "var(--wd-ink-4)" }}>{cur.name} · {e.date}</div>
+                    </div>
+                  </Row>
+                  <Row gap={6}>
+                    <StatusPill status={e.status} size="sm"/>
+                    <CatPill cat={e.cat} size="sm"/>
+                  </Row>
+                </div>
+              );
+            })}
+          </Stack>
+        </Card>
+
+        {selected && (
+          <Card style={{ overflow: "auto" }}>
+            <Row style={{ justifyContent: "space-between", marginBottom: 20 }}>
+              <div>
+                <Row gap={8} style={{ marginBottom: 8 }}>
+                  <StatusPill status={selected.status}/>
+                  <CatPill cat={selected.cat}/>
+                </Row>
+                <h2 style={{ margin: 0, fontSize: 22, fontWeight: 700, color: "var(--wd-ink)", letterSpacing: "-0.01em" }}>{selected.title}</h2>
+                <div style={{ fontSize: 12, color: "var(--wd-ink-3)", marginTop: 4 }}>Submitted 4h ago · auto-checks passed: 6/6</div>
+              </div>
+              <Row gap={8}>
+                <Btn variant="danger" icon="x">Reject</Btn>
+                <Btn variant="success" icon="check">Approve & publish</Btn>
+              </Row>
+            </Row>
+
+            <div style={{ display: "grid", gridTemplateColumns: "1.3fr 1fr", gap: 20 }}>
+              <Stack gap={16}>
+                <div style={{ padding: 16, borderRadius: 12, background: "var(--wd-pg)", border: "1px solid var(--wd-line)" }}>
+                  <div style={{ fontSize: 11, color: "var(--wd-ink-4)", fontWeight: 700, letterSpacing: "0.06em", marginBottom: 8 }}>AUTO-CHECKS</div>
+                  <Stack gap={8}>
+                    {[
+                      ["All required fields filled", true],
+                      ["Space confirmed", true],
+                      ["Curator profile 90%+ complete", true],
+                      ["No duplicate submissions", true],
+                      ["Description > 50 chars", true],
+                      ["Date within 90-day window", true],
+                    ].map(([l, ok], i) => (
+                      <Row key={i} gap={8}>
+                        <Icon name={ok ? "check" : "x"} size={14} color={ok ? "var(--wd-green-ink)" : "#FA2E2E"}/>
+                        <span style={{ fontSize: 12, color: "var(--wd-ink-2)" }}>{l}</span>
+                      </Row>
+                    ))}
+                  </Stack>
+                </div>
+                <div style={{ padding: 16, borderRadius: 12, background: "var(--wd-pg)", border: "1px solid var(--wd-line)" }}>
+                  <div style={{ fontSize: 11, color: "var(--wd-ink-4)", fontWeight: 700, letterSpacing: "0.06em", marginBottom: 10 }}>DESCRIPTION</div>
+                  <div style={{ fontSize: 13, color: "var(--wd-ink-2)", lineHeight: 1.6 }}>{selected.desc}</div>
+                </div>
+                <div style={{ padding: 16, borderRadius: 12, background: "var(--wd-pg)", border: "1px solid var(--wd-line)" }}>
+                  <div style={{ fontSize: 11, color: "var(--wd-ink-4)", fontWeight: 700, letterSpacing: "0.06em", marginBottom: 10 }}>MANUAL NOTES</div>
+                  <Textarea rows={3} placeholder="Optional notes for curator (visible on reject)..."/>
+                </div>
+              </Stack>
+              <Stack gap={16}>
+                <div>
+                  <div style={{ fontSize: 11, color: "var(--wd-ink-4)", fontWeight: 700, letterSpacing: "0.06em", marginBottom: 10 }}>wSI · PREDICTED</div>
+                  <WSI ev={selected} variant={wsiVariant}/>
+                </div>
+              </Stack>
+            </div>
+          </Card>
+        )}
+      </div>
+    </>
+  );
+};
+
+Object.assign(window, { QAQueue });
+</script>
+<!-- source: BRLO/Shell.jsx -->
+<script type="text/babel">
+// BRLO multi-capability shell. Replaces Sidebar for this persona.
+// Design: left nav is capability-neutral (profile, inbox, settings),
+// but CAPABILITY TABS sit at the top of the content area with color accents.
+
+const BRLOShell = ({ page, setPage, cap, setCap, children, tweaks }) => {
+  const e = BRLO_ENTITY;
+  return (
+    <div style={{ display: "flex", minHeight: "100vh", background: "var(--wd-pg)" }}>
+      <BRLOSidebar page={page} setPage={setPage} entity={e} shell={tweaks.shellVariant} />
+      <main style={{ flex: 1, minWidth: 0 }}>
+        <BRLOTopbar entity={e} cap={cap} setCap={setCap} page={page} />
+        <div style={{ padding: "28px 40px 60px", maxWidth: 1400, margin: "0 auto" }}>
+          {children}
+        </div>
+      </main>
+    </div>
+  );
+};
+
+const BRLO_NAV = [
+  { id: "dashboard", label: "Home",    icon: "home",     cap: null },        // merged
+  { id: "inbox",     label: "Inbox",   icon: "bell",     cap: null },        // merged
+  { id: "calendar",  label: "Calendar", icon: "calendar", cap: "space" },
+  { id: "feed",      label: "Sponsor Feed", icon: "compass",  cap: "brand" },
+  { id: "recall",    label: "Recall Studio", icon: "sparkle", cap: "brand" },
+  { id: "report",    label: "Campaign Report", icon: "chart", cap: "brand" },
+  { id: "profile",   label: "Public profile", icon: "users2", cap: null },
+  { id: "settings",  label: "Settings", icon: "settings", cap: null },
+];
+
+const BRLOSidebar = ({ page, setPage, entity, shell }) => {
+  const dark = shell !== "light";
+  return (
+    <aside style={{
+      width: 248, flexShrink: 0, height: "100vh", position: "sticky", top: 0,
+      background: dark ? "var(--wd-nav-bg)" : "var(--wd-surface)",
+      borderRight: dark ? "none" : "1px solid var(--wd-line)",
+      display: "flex", flexDirection: "column", padding: "20px 14px",
+      color: dark ? "var(--wd-nav-fg)" : "var(--wd-ink-2)",
+    }}>
+      <Row gap={10} style={{ padding: "4px 8px 20px" }}>
+        <div style={{ width: 32, height: 32, borderRadius: 9, background: "#0066FF", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 14, fontWeight: 800, letterSpacing: "-0.03em" }}>wD</div>
+        <div>
+          <div style={{ fontSize: 14, fontWeight: 800, color: dark ? "#fff" : "var(--wd-ink)", letterSpacing: "-0.01em" }}>The Platform</div>
+          <div style={{ fontSize: 10, color: dark ? "rgba(255,255,255,0.5)" : "var(--wd-ink-4)", fontWeight: 600, letterSpacing: "0.06em", marginTop: 2 }}>weDISCOVR · BERLIN</div>
+        </div>
+      </Row>
+
+      <div style={{ fontSize: 10, color: dark ? "rgba(255,255,255,0.4)" : "var(--wd-ink-4)", fontWeight: 700, letterSpacing: "0.1em", padding: "12px 10px 8px" }}>
+        MULTI-CAPABILITY
+      </div>
+
+      <Stack gap={2} style={{ flex: 1 }}>
+        {BRLO_NAV.map(item => {
+          const on = page === item.id;
+          const capColor = item.cap ? CAPABILITY[item.cap].color : null;
+          return (
+            <button key={item.id} onClick={() => setPage(item.id)}
+              style={{
+                display: "flex", alignItems: "center", gap: 10,
+                padding: "10px 12px", border: "none",
+                background: on ? (dark ? "var(--wd-nav-active)" : "rgba(0,102,255,0.08)") : "transparent",
+                color: on ? (dark ? "#fff" : "#0066FF") : (dark ? "var(--wd-nav-fg)" : "var(--wd-ink-2)"),
+                borderRadius: 8, fontFamily: "Nunito", fontSize: 13, fontWeight: on ? 700 : 600,
+                cursor: "pointer", textAlign: "left", width: "100%",
+              }}
+              onMouseEnter={e => { if (!on) e.currentTarget.style.background = dark ? "var(--wd-nav-hover)" : "var(--wd-pg-2)"; }}
+              onMouseLeave={e => { if (!on) e.currentTarget.style.background = "transparent"; }}>
+              <Icon name={item.icon} size={17} />
+              <span style={{ flex: 1 }}>{item.label}</span>
+              {capColor && <span style={{ width: 6, height: 6, borderRadius: 3, background: capColor, opacity: on ? 1 : 0.7 }} />}
+            </button>
+          );
+        })}
+      </Stack>
+
+      {/* Entity card — color split bar shows both caps */}
+      <div style={{
+        margin: "12px 4px 0", padding: 12, borderRadius: 12,
+        background: dark ? "rgba(255,255,255,0.04)" : "var(--wd-pg)",
+        border: dark ? "1px solid rgba(255,255,255,0.08)" : "1px solid var(--wd-line)",
+        overflow: "hidden", position: "relative",
+      }}>
+        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, display: "flex" }}>
+          <div style={{ flex: 1, background: CAPABILITY.space.color }} />
+          <div style={{ flex: 1, background: CAPABILITY.brand.color }} />
+        </div>
+        <Row gap={10}>
+          <Avatar name={entity.name} color={entity.color} size={32} />
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{ fontSize: 13, fontWeight: 700, color: dark ? "#fff" : "var(--wd-ink)" }}>{entity.name}</div>
+            <div style={{ fontSize: 10, color: dark ? "rgba(255,255,255,0.5)" : "var(--wd-ink-4)", marginTop: 2 }}>{entity.tagline}</div>
+          </div>
+        </Row>
+        <Row gap={4} style={{ marginTop: 10 }}>
+          {entity.capabilities.map(c => {
+            const C = CAPABILITY[c];
+            return (
+              <span key={c} style={{
+                padding: "2px 8px", fontSize: 9, fontWeight: 700,
+                background: C.tintStrong, color: C.color,
+                borderRadius: 999, letterSpacing: "0.04em",
+              }}>{C.label.toUpperCase()}</span>
+            );
+          })}
+        </Row>
+      </div>
+    </aside>
+  );
+};
+
+const BRLOTopbar = ({ entity, cap, setCap, page }) => {
+  // Only show capability tabs when a cap-specific page is relevant
+  const capPages = BRLO_NAV.filter(n => n.cap).map(n => n.cap);
+  const showTabs = !["dashboard", "inbox"].includes(page); // hide on merged views
+  const current = BRLO_NAV.find(n => n.id === page);
+  const activeCap = current?.cap;
+
+  return (
+    <div style={{
+      borderBottom: "1px solid var(--wd-line)",
+      background: "var(--wd-surface)", position: "sticky", top: 0, zIndex: 5,
+    }}>
+      <div style={{ height: 60, padding: "0 32px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <Row gap={14}>
+          {activeCap && (
+            <div style={{
+              display: "inline-flex", alignItems: "center", gap: 6,
+              padding: "4px 10px", borderRadius: 999,
+              background: CAPABILITY[activeCap].tintStrong,
+              color: CAPABILITY[activeCap].color,
+              fontSize: 11, fontWeight: 700, letterSpacing: "0.04em",
+            }}>
+              <Icon name={CAPABILITY[activeCap].icon} size={12} />
+              {CAPABILITY[activeCap].label.toUpperCase()} TOOLS
+            </div>
+          )}
+          {!activeCap && (
+            <div style={{ fontSize: 13, fontWeight: 700, color: "var(--wd-ink)" }}>
+              {current?.label}
+            </div>
+          )}
+        </Row>
+        <Row gap={8}>
+          <button style={{ width: 36, height: 36, borderRadius: 10, border: "1px solid var(--wd-line)", background: "var(--wd-surface)", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--wd-ink-2)" }}><Icon name="search" size={16}/></button>
+          <button style={{ width: 36, height: 36, borderRadius: 10, border: "1px solid var(--wd-line)", background: "var(--wd-surface)", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", position: "relative", color: "var(--wd-ink-2)" }}>
+            <Icon name="bell" size={16}/>
+            <span style={{ position: "absolute", top: 8, right: 9, width: 7, height: 7, borderRadius: 4, background: "#FA2E2E", border: "1.5px solid var(--wd-surface)" }}/>
+          </button>
+        </Row>
+      </div>
+    </div>
+  );
+};
+
+Object.assign(window, { BRLOShell, BRLO_NAV });
+</script>
+<!-- source: BRLO/Dashboard.jsx -->
+<script type="text/babel">
+// BRLO merged dashboard — both capabilities, swim-laned.
+const BRLODashboard = ({ setPage, setCap }) => {
+  const e = BRLO_ENTITY;
+  const spaceRequests = BRLO_INBOX.filter(i => i.cap === "space" && i.status === "new");
+  const brandPitches  = BRLO_INBOX.filter(i => i.cap === "brand" && i.status === "new");
+
+  return (
+    <>
+      <PageHeader
+        title={`Guten Tag, BRLO`}
+        sub="Your taproom + your brand sponsorship pipeline, in one place."
+        actions={<>
+          <Btn variant="ghost" icon="plus">Open calendar slot</Btn>
+          <Btn icon="compass">Browse sponsor feed</Btn>
+        </>}
+      />
+
+      {/* Capability overview — color-coded */}
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 24 }}>
+        <CapSummaryCard
+          cap="space" entity={e.space}
+          stats={[
+            { l: "Open slots",  v: e.space.openSlots },
+            { l: "Booked",      v: e.space.booked },
+            { l: "Utilization", v: `${e.space.utilization}%` },
+            { l: "SVI",         v: e.space.svi },
+          ]}
+          cta="Manage calendar →"
+          onCta={() => { setCap("space"); setPage("calendar"); }}
+          pending={spaceRequests.length}
+        />
+        <CapSummaryCard
+          cap="brand" entity={e.brand}
+          stats={[
+            { l: "Sponsoring",         v: e.brand.activeSponsorships },
+            { l: "wEIDs this month",   v: e.brand.weidsThisMonth.toLocaleString() },
+            { l: "Guaranteed pool",    v: e.brand.guaranteedRemaining.toLocaleString() },
+            { l: "BSI",                v: e.brand.bsi },
+          ]}
+          cta="Browse feed →"
+          onCta={() => { setCap("brand"); setPage("feed"); }}
+          pending={brandPitches.length}
+        />
+      </div>
+
+      {/* Cross-capability moments */}
+      <div style={{ marginBottom: 24 }}>
+        <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", color: "var(--wd-ink-4)", marginBottom: 12 }}>
+          WHEN YOUR TWO HATS MEET
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+          {BRLO_CROSSOVERS.map(x => (
+            <div key={x.id} style={{
+              padding: 16, borderRadius: 14, background: "var(--wd-surface)",
+              border: "1px solid var(--wd-line)",
+              borderLeft: "3px solid transparent",
+              position: "relative", overflow: "hidden",
+            }}>
+              {/* gradient stripe = both caps */}
+              <div style={{
+                position: "absolute", left: 0, top: 0, bottom: 0, width: 3,
+                background: `linear-gradient(180deg, ${CAPABILITY.space.color}, ${CAPABILITY.brand.color})`,
+              }} />
+              <Row gap={6} style={{ marginBottom: 8 }}>
+                {x.cap.map(c => (
+                  <span key={c} style={{
+                    padding: "2px 8px", fontSize: 9, fontWeight: 700, letterSpacing: "0.04em",
+                    background: CAPABILITY[c].tintStrong, color: CAPABILITY[c].color,
+                    borderRadius: 999,
+                  }}>{CAPABILITY[c].label.toUpperCase()}</span>
+                ))}
+              </Row>
+              <div style={{ fontSize: 14, fontWeight: 700, color: "var(--wd-ink)", marginBottom: 4 }}>{x.headline}</div>
+              <div style={{ fontSize: 12, color: "var(--wd-ink-3)", lineHeight: 1.5 }}>{x.detail}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Unified inbox */}
+      <Card padding={0}>
+        <Row style={{ padding: "16px 20px", justifyContent: "space-between", borderBottom: "1px solid var(--wd-line)" }}>
+          <Row gap={10}>
+            <h3 style={{ margin: 0, fontSize: 15, fontWeight: 700 }}>Unified Inbox</h3>
+            <Pill color="#D97706" tint="rgba(217,119,6,0.12)">
+              {spaceRequests.length + brandPitches.length} NEW
+            </Pill>
+          </Row>
+          <Row gap={6}>
+            <FilterChip color={CAPABILITY.space.color} label="Space" count={spaceRequests.length} />
+            <FilterChip color={CAPABILITY.brand.color} label="Brand" count={brandPitches.length} />
+          </Row>
+        </Row>
+        <Stack gap={0}>
+          {BRLO_INBOX.map((i, idx) => {
+            const cur = getCurator(i.from);
+            const C = CAPABILITY[i.cap];
+            const isNew = i.status === "new";
+            return (
+              <div key={i.id} style={{
+                padding: "14px 20px",
+                borderBottom: idx < BRLO_INBOX.length - 1 ? "1px solid var(--wd-line)" : "none",
+                borderLeft: `3px solid ${C.color}`,
+                display: "grid", gridTemplateColumns: "auto 1fr auto auto auto",
+                gap: 16, alignItems: "center",
+                background: isNew ? `linear-gradient(90deg, ${C.tint} 0%, transparent 40%)` : "transparent",
+                cursor: "pointer",
+              }}>
+                <span style={{
+                  padding: "3px 8px", fontSize: 9, fontWeight: 700, letterSpacing: "0.06em",
+                  background: C.tintStrong, color: C.color, borderRadius: 4, minWidth: 52, textAlign: "center",
+                }}>{C.label.toUpperCase()}</span>
+                <div>
+                  <Row gap={6} style={{ marginBottom: 2 }}>
+                    {cur && <span style={{ fontSize: 12, fontWeight: 700, color: "var(--wd-ink)" }}>{cur.name}</span>}
+                    <span style={{ fontSize: 11, color: "var(--wd-ink-4)" }}>
+                      {i.kind === "request" && "requested your space for"}
+                      {i.kind === "pitch" && "is pitching a sponsorship for"}
+                      {i.kind === "confirmation" && "confirmed your sponsorship of"}
+                      {i.kind === "report" && "Campaign report ready ·"}
+                    </span>
+                  </Row>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: "var(--wd-ink-2)" }}>{i.ev}</div>
+                  <div style={{ fontSize: 11, color: "var(--wd-ink-4)", marginTop: 2 }}>{i.date}</div>
+                </div>
+                <WSIScoreBadge value={i.match} size={36} />
+                <span style={{ fontSize: 11, color: "var(--wd-ink-4)", whiteSpace: "nowrap" }}>{i.when}</span>
+                <Row gap={6}>
+                  {isNew && (i.kind === "request" ? (
+                    <><Btn size="sm" variant="success" icon="check">Accept</Btn><Btn size="sm" variant="ghost">Counter</Btn></>
+                  ) : i.kind === "pitch" ? (
+                    <><Btn size="sm" icon="sparkle">Review pitch</Btn></>
+                  ) : null)}
+                  {!isNew && <Btn size="sm" variant="ghost">View</Btn>}
+                </Row>
+              </div>
+            );
+          })}
+        </Stack>
+      </Card>
+    </>
+  );
+};
+
+const CapSummaryCard = ({ cap, entity, stats, cta, onCta, pending }) => {
+  const C = CAPABILITY[cap];
+  return (
+    <div style={{
+      padding: 20, borderRadius: 16,
+      background: "var(--wd-surface)",
+      border: "1px solid var(--wd-line)",
+      position: "relative", overflow: "hidden",
+    }}>
+      {/* Top accent stripe */}
+      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 4, background: C.color }} />
+      <Row style={{ justifyContent: "space-between", marginBottom: 16 }}>
+        <Row gap={10}>
+          <div style={{ width: 36, height: 36, borderRadius: 10, background: C.tintStrong, color: C.color, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <Icon name={C.icon} size={18}/>
+          </div>
+          <div>
+            <div style={{ fontSize: 11, color: "var(--wd-ink-4)", fontWeight: 700, letterSpacing: "0.08em" }}>AS {C.label.toUpperCase()}</div>
+            <div style={{ fontSize: 16, fontWeight: 700, color: "var(--wd-ink)", marginTop: 2 }}>
+              {cap === "space" ? entity.venue : `${BRLO_ENTITY.name} · ${entity.industry}`}
+            </div>
+          </div>
+        </Row>
+        {pending > 0 && (
+          <Pill color={C.color} tint={C.tintStrong}>{pending} PENDING</Pill>
+        )}
+      </Row>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginBottom: 14 }}>
+        {stats.map((s, i) => (
+          <div key={i}>
+            <div style={{ fontSize: 10, color: "var(--wd-ink-4)", fontWeight: 700, letterSpacing: "0.06em" }}>{s.l.toUpperCase()}</div>
+            <div style={{ fontSize: 20, fontWeight: 700, color: "var(--wd-ink)", marginTop: 4 }}>{s.v}</div>
+          </div>
+        ))}
+      </div>
+      <button onClick={onCta} style={{
+        width: "100%", padding: "10px 14px",
+        background: C.tint, color: C.color,
+        border: "none", borderRadius: 10,
+        fontFamily: "Nunito", fontSize: 13, fontWeight: 700,
+        cursor: "pointer", textAlign: "center",
+      }}>{cta}</button>
+    </div>
+  );
+};
+
+const FilterChip = ({ color, label, count }) => (
+  <span style={{
+    display: "inline-flex", alignItems: "center", gap: 6,
+    padding: "4px 10px", borderRadius: 999,
+    background: "var(--wd-pg)", fontSize: 11, fontWeight: 700, color: "var(--wd-ink-2)",
+  }}>
+    <span style={{ width: 8, height: 8, borderRadius: 4, background: color }} />
+    {label} · {count}
+  </span>
+);
+
+Object.assign(window, { BRLODashboard });
+</script>
+<!-- source: BRLO/Inbox.jsx -->
+<script type="text/babel">
+// BRLO inbox — full unified view (standalone page).
+const BRLOInbox = () => {
+  const [filter, setFilter] = useState("all");
+  const items = BRLO_INBOX.filter(i => filter === "all" || i.cap === filter);
+  return (
+    <>
+      <PageHeader
+        title="Unified Inbox"
+        sub="Space requests + sponsor pitches + campaign updates. All in one queue."
+        actions={<><Btn variant="ghost" icon="check">Mark all seen</Btn></>}
+      />
+      <Row gap={8} style={{ marginBottom: 20 }}>
+        <Chip selected={filter === "all"} onClick={() => setFilter("all")}>All · {BRLO_INBOX.length}</Chip>
+        <Chip selected={filter === "space"} onClick={() => setFilter("space")}>
+          <span style={{ width: 8, height: 8, borderRadius: 4, background: CAPABILITY.space.color }}/>
+          Space · {BRLO_INBOX.filter(i => i.cap === "space").length}
+        </Chip>
+        <Chip selected={filter === "brand"} onClick={() => setFilter("brand")}>
+          <span style={{ width: 8, height: 8, borderRadius: 4, background: CAPABILITY.brand.color }}/>
+          Brand · {BRLO_INBOX.filter(i => i.cap === "brand").length}
+        </Chip>
+      </Row>
+      <Card padding={0}>
+        <Stack gap={0}>
+          {items.map((i, idx) => {
+            const cur = i.from ? getCurator(i.from) : null;
+            const C = CAPABILITY[i.cap];
+            return (
+              <div key={i.id} style={{
+                padding: "16px 20px",
+                borderBottom: idx < items.length - 1 ? "1px solid var(--wd-line)" : "none",
+                borderLeft: `3px solid ${C.color}`,
+                display: "grid", gridTemplateColumns: "auto 1fr auto auto",
+                gap: 16, alignItems: "center",
+              }}>
+                <span style={{
+                  padding: "4px 10px", fontSize: 10, fontWeight: 700, letterSpacing: "0.06em",
+                  background: C.tintStrong, color: C.color, borderRadius: 6,
+                }}>{C.label.toUpperCase()}</span>
+                <div>
+                  <div style={{ fontSize: 14, fontWeight: 700, color: "var(--wd-ink)" }}>{i.ev}</div>
+                  <div style={{ fontSize: 12, color: "var(--wd-ink-3)", marginTop: 2 }}>
+                    {cur ? `${cur.name} · ` : ""}{i.date} · {i.when}
+                  </div>
+                </div>
+                <WSIScoreBadge value={i.match} size={40}/>
+                <Row gap={6}>
+                  <Btn size="sm">Open</Btn>
+                </Row>
+              </div>
+            );
+          })}
+        </Stack>
+      </Card>
+    </>
+  );
+};
+
+Object.assign(window, { BRLOInbox });
+</script>
+<!-- source: BRLO/Profile.jsx -->
+<script type="text/babel">
+// BRLO public profile preview — shows both capabilities publicly.
+const BRLOProfile = () => {
+  const e = BRLO_ENTITY;
+  return (
+    <>
+      <PageHeader
+        title="Public profile"
+        sub="This is how curators, brands, and the weDISCOVR Explorer app see BRLO."
+        actions={<><Btn variant="ghost" icon="eye">Preview</Btn><Btn>Edit</Btn></>}
+      />
+      <Card padding={0} style={{ overflow: "hidden" }}>
+        {/* Hero */}
+        <div style={{
+          height: 180, position: "relative",
+          background: `linear-gradient(135deg, ${e.color} 0%, #8A2D00 100%)`,
+        }}>
+          <div style={{ position: "absolute", bottom: 14, left: 24, color: "#fff" }}>
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", opacity: 0.8 }}>BRLO · KREUZBERG</div>
+            <div style={{ fontSize: 32, fontWeight: 700, letterSpacing: "-0.02em" }}>{e.name}</div>
+          </div>
+          {/* Capability ribbon */}
+          <div style={{ position: "absolute", top: 16, right: 16, display: "flex", gap: 6 }}>
+            {e.capabilities.map(c => {
+              const C = CAPABILITY[c];
+              return (
+                <span key={c} style={{
+                  padding: "6px 12px", fontSize: 11, fontWeight: 700, letterSpacing: "0.04em",
+                  background: "rgba(255,255,255,0.18)", color: "#fff",
+                  borderRadius: 999, backdropFilter: "blur(10px)",
+                  display: "inline-flex", alignItems: "center", gap: 6,
+                }}>
+                  <span style={{ width: 7, height: 7, borderRadius: 4, background: C.color }} />
+                  {C.label.toUpperCase()}
+                </span>
+              );
+            })}
+          </div>
+        </div>
+
+        <div style={{ padding: 24 }}>
+          <div style={{ fontSize: 14, color: "var(--wd-ink-2)", lineHeight: 1.6, marginBottom: 20 }}>
+            A Kreuzberg brewery and taproom. We host events in our 280-cap Brwhouse and pour our craft beer at cultural events across Berlin. Both sides of our business live on weDISCOVR.
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+            <CapabilityBlock cap="space" />
+            <CapabilityBlock cap="brand" />
+          </div>
+        </div>
+      </Card>
+    </>
+  );
+};
+
+const CapabilityBlock = ({ cap }) => {
+  const C = CAPABILITY[cap];
+  const e = BRLO_ENTITY;
+  const items = cap === "space" ? [
+    ["Venue", "BRLO Brwhouse, Kreuzberg"],
+    ["Capacity", "280 people"],
+    ["Type", "Brewery + Taproom"],
+    ["SVI", e.space.svi],
+    ["Equipment", "Sound, Kitchen, Bar, Outdoor"],
+  ] : [
+    ["Industry", "Craft brewery"],
+    ["Category fit", "Food, Music, Culture"],
+    ["Monthly budget", e.brand.budget],
+    ["BSI", e.brand.bsi],
+    ["Active campaigns", e.brand.activeSponsorships],
+  ];
+  return (
+    <div style={{
+      padding: 20, borderRadius: 14,
+      border: `1px solid ${C.tintStrong}`,
+      background: C.tint,
+      position: "relative",
+    }}>
+      <Row gap={10} style={{ marginBottom: 16 }}>
+        <div style={{ width: 32, height: 32, borderRadius: 9, background: C.color, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <Icon name={C.icon} size={16} />
+        </div>
+        <div>
+          <div style={{ fontSize: 10, color: C.color, fontWeight: 700, letterSpacing: "0.08em" }}>AS {C.label.toUpperCase()}</div>
+          <div style={{ fontSize: 16, fontWeight: 700, color: "var(--wd-ink)" }}>
+            {cap === "space" ? "Book our taproom" : "We'll sponsor your event"}
+          </div>
+        </div>
+      </Row>
+      <Stack gap={8}>
+        {items.map(([k, v], i) => (
+          <Row key={i} style={{ justifyContent: "space-between", padding: "6px 0", borderBottom: i < items.length - 1 ? "1px solid rgba(0,0,0,0.06)" : "none" }}>
+            <span style={{ fontSize: 12, color: "var(--wd-ink-3)" }}>{k}</span>
+            <span style={{ fontSize: 13, fontWeight: 700, color: "var(--wd-ink)" }}>{v}</span>
+          </Row>
+        ))}
+      </Stack>
+    </div>
+  );
+};
+
+Object.assign(window, { BRLOProfile });
+</script>
+<!-- source: BRLO/Onboarding.jsx -->
+<script type="text/babel">
+// Entity onboarding flow — single- and multi-capability.
+// A 4-step wizard: identity → capabilities → per-capability details → confirm.
+
+const Onboarding = ({ onExit }) => {
+  const [step, setStep] = useState(0);
+  const [caps, setCaps] = useState([]);
+  const [entity, setEntity] = useState({ name: "", city: "Berlin", tagline: "" });
+
+  const steps = ["Identity", "Capabilities", "Details", "Confirm"];
+  const toggle = (c) => setCaps(caps.includes(c) ? caps.filter(x => x !== c) : [...caps, c]);
+
+  return (
+    <div style={{ position: "fixed", inset: 0, zIndex: 200, background: "var(--wd-pg)", display: "flex", flexDirection: "column", overflowY: "auto" }}>
+      {/* Top progress bar */}
+      <div style={{
+        background: "var(--wd-surface)", borderBottom: "1px solid var(--wd-line)",
+        padding: "14px 32px", display: "flex", alignItems: "center", justifyContent: "space-between",
+      }}>
+        <Row gap={10}>
+          <div style={{ width: 28, height: 28, borderRadius: 8, background: "#0066FF", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 800, fontSize: 12, letterSpacing: "-0.03em" }}>wD</div>
+          <span style={{ fontSize: 13, fontWeight: 700, color: "var(--wd-ink)" }}>Join weDISCOVR</span>
+        </Row>
+        <Row gap={16}>
+          {steps.map((s, i) => (
+            <Row key={s} gap={6}>
+              <span style={{
+                width: 20, height: 20, borderRadius: 10,
+                background: i <= step ? "#0066FF" : "var(--wd-pg-2)",
+                color: i <= step ? "#fff" : "var(--wd-ink-4)",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                fontSize: 10, fontWeight: 700,
+              }}>{i + 1}</span>
+              <span style={{ fontSize: 12, fontWeight: 700, color: i <= step ? "var(--wd-ink)" : "var(--wd-ink-4)" }}>{s}</span>
+              {i < steps.length - 1 && <span style={{ width: 24, height: 1, background: "var(--wd-line-2)", marginLeft: 10 }}/>}
+            </Row>
+          ))}
+        </Row>
+        <button onClick={onExit} style={{ padding: "6px 12px", border: "1px solid var(--wd-line-2)", borderRadius: 8, background: "transparent", fontSize: 12, color: "var(--wd-ink-3)", cursor: "pointer", fontFamily: "Nunito" }}>Exit demo</button>
+      </div>
+
+      <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", padding: 40 }}>
+        <div style={{ width: "100%", maxWidth: 720 }}>
+          {step === 0 && <StepIdentity entity={entity} setEntity={setEntity}/>}
+          {step === 1 && <StepCapabilities caps={caps} toggle={toggle}/>}
+          {step === 2 && <StepDetails caps={caps}/>}
+          {step === 3 && <StepConfirm entity={entity} caps={caps}/>}
+          <Row gap={10} style={{ justifyContent: "space-between", marginTop: 32 }}>
+            <Btn variant="ghost" onClick={() => setStep(Math.max(0, step - 1))} disabled={step === 0}>← Back</Btn>
+            {step < 3 ? (
+              <Btn size="lg" onClick={() => setStep(step + 1)} disabled={step === 1 && caps.length === 0}>
+                Continue →
+              </Btn>
+            ) : (
+              <Btn size="lg" variant="success" icon="check" onClick={onExit}>Enter dashboard</Btn>
+            )}
+          </Row>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const StepIdentity = ({ entity, setEntity }) => (
+  <div>
+    <h1 style={{ fontSize: 32, fontWeight: 700, letterSpacing: "-0.02em", margin: 0 }}>Welcome. Who are you?</h1>
+    <p style={{ fontSize: 15, color: "var(--wd-ink-3)", marginTop: 10, marginBottom: 28 }}>Start with the basics. You'll pick what you <em>do</em> next.</p>
+    <Stack gap={14}>
+      <Field label="Entity name" required><Input value={entity.name} onChange={v => setEntity({...entity, name: v})} placeholder="e.g. BRLO, DJ Kleo, Amazingy…"/></Field>
+      <Field label="City"><Input value={entity.city} onChange={v => setEntity({...entity, city: v})}/></Field>
+      <Field label="One-line tagline" hint="Shown on your public profile."><Input value={entity.tagline} onChange={v => setEntity({...entity, tagline: v})} placeholder="e.g. Kreuzberg brewery + taproom"/></Field>
+    </Stack>
+  </div>
+);
+
+const StepCapabilities = ({ caps, toggle }) => {
+  const options = [
+    { id: "curator", label: "Curate events",     desc: "Run cultural nights, supper clubs, listening sessions, workshops.", example: "DJs, chefs, foundations" },
+    { id: "space",   label: "Host at my venue",  desc: "Open a physical space to curators and receive booking requests.", example: "Breweries, galleries, showrooms" },
+    { id: "brand",   label: "Sponsor events",    desc: "Buy guaranteed wEID attention at relevant cultural events.",     example: "Beauty brands, breweries, auto" },
+    { id: "talent",  label: "Offer talent / services", desc: "Make yourself bookable for other curators' events.",      example: "DJs, speakers, caterers" },
+  ];
+  return (
+    <div>
+      <h1 style={{ fontSize: 32, fontWeight: 700, letterSpacing: "-0.02em", margin: 0 }}>What do you do?</h1>
+      <p style={{ fontSize: 15, color: "var(--wd-ink-3)", marginTop: 10, marginBottom: 28 }}>Pick one or more. You can always add capabilities later. <strong>Multiple = one unified dashboard.</strong></p>
+      <Stack gap={10}>
+        {options.map(o => {
+          const C = CAPABILITY[o.id];
+          const on = caps.includes(o.id);
+          return (
+            <button key={o.id} onClick={() => toggle(o.id)} style={{
+              padding: 20, borderRadius: 14, textAlign: "left", cursor: "pointer",
+              background: on ? C.tint : "var(--wd-surface)",
+              border: on ? `2px solid ${C.color}` : "1px solid var(--wd-line-2)",
+              fontFamily: "Nunito", display: "flex", gap: 16, alignItems: "center",
+            }}>
+              <div style={{
+                width: 44, height: 44, borderRadius: 12,
+                background: on ? C.color : C.tintStrong,
+                color: on ? "#fff" : C.color,
+                display: "flex", alignItems: "center", justifyContent: "center",
+              }}>
+                <Icon name={C.icon} size={20}/>
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontSize: 16, fontWeight: 700, color: "var(--wd-ink)" }}>{o.label}</div>
+                <div style={{ fontSize: 13, color: "var(--wd-ink-3)", marginTop: 4 }}>{o.desc}</div>
+                <div style={{ fontSize: 11, color: "var(--wd-ink-4)", marginTop: 6, fontStyle: "italic" }}>e.g. {o.example}</div>
+              </div>
+              <div style={{
+                width: 24, height: 24, borderRadius: 12,
+                border: on ? `none` : "2px solid var(--wd-line-2)",
+                background: on ? C.color : "transparent",
+                display: "flex", alignItems: "center", justifyContent: "center",
+              }}>
+                {on && <Icon name="check" size={14} color="#fff"/>}
+              </div>
+            </button>
+          );
+        })}
+      </Stack>
+      {caps.length >= 2 && (
+        <div style={{ marginTop: 16, padding: 14, borderRadius: 10, background: "rgba(0,102,255,0.05)", border: "1px solid rgba(0,102,255,0.15)", fontSize: 13, color: "var(--wd-ink-2)" }}>
+          ✨ <strong>Multi-capability account.</strong> You'll get a unified dashboard with {caps.length} capability tabs, like BRLO, who hosts <em>and</em> sponsors.
+        </div>
+      )}
+    </div>
+  );
+};
+
+const StepDetails = ({ caps }) => (
+  <div>
+    <h1 style={{ fontSize: 32, fontWeight: 700, letterSpacing: "-0.02em", margin: 0 }}>Quick details per hat</h1>
+    <p style={{ fontSize: 15, color: "var(--wd-ink-3)", marginTop: 10, marginBottom: 28 }}>Just enough so we can set up your dashboard. You can fill the rest later.</p>
+    <Stack gap={16}>
+      {caps.map(c => {
+        const C = CAPABILITY[c];
+        return (
+          <div key={c} style={{
+            padding: 20, borderRadius: 14,
+            border: `1px solid ${C.tintStrong}`, background: C.tint,
+          }}>
+            <Row gap={10} style={{ marginBottom: 14 }}>
+              <div style={{ width: 28, height: 28, borderRadius: 8, background: C.color, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <Icon name={C.icon} size={14}/>
+              </div>
+              <span style={{ fontSize: 11, color: C.color, fontWeight: 700, letterSpacing: "0.08em" }}>AS {C.label.toUpperCase()}</span>
+            </Row>
+            {c === "curator" && <Row gap={10}><Input placeholder="Primary category (music, food, …)"/><Input placeholder="Avg events per month"/></Row>}
+            {c === "space"   && <Row gap={10}><Input placeholder="Venue name"/><Input placeholder="Capacity"/></Row>}
+            {c === "brand"   && <Row gap={10}><Input placeholder="Industry"/><Input placeholder="Monthly budget (€)"/></Row>}
+            {c === "talent"  && <Row gap={10}><Input placeholder="What you offer (DJ, chef, …)"/><Input placeholder="Day rate (€)"/></Row>}
+          </div>
+        );
+      })}
+    </Stack>
+  </div>
+);
+
+const StepConfirm = ({ entity, caps }) => (
+  <div style={{ textAlign: "center" }}>
+    <div style={{ fontSize: 60, marginBottom: 20 }}>🎉</div>
+    <h1 style={{ fontSize: 32, fontWeight: 700, letterSpacing: "-0.02em", margin: 0 }}>Welcome, {entity.name || "you"}.</h1>
+    <p style={{ fontSize: 15, color: "var(--wd-ink-3)", marginTop: 12, maxWidth: 460, margin: "12px auto 28px" }}>
+      Your {caps.length > 1 ? "multi-capability" : "single-capability"} account is ready. {caps.length > 1 && "One dashboard, all your hats."}
+    </p>
+    <Row gap={8} style={{ justifyContent: "center", marginBottom: 28 }}>
+      {caps.map(c => {
+        const C = CAPABILITY[c];
+        return (
+          <span key={c} style={{
+            padding: "8px 14px", fontSize: 12, fontWeight: 700, letterSpacing: "0.04em",
+            background: C.tintStrong, color: C.color, borderRadius: 999,
+            display: "inline-flex", alignItems: "center", gap: 6,
+          }}>
+            <Icon name={C.icon} size={14}/>
+            {C.label.toUpperCase()}
+          </span>
+        );
+      })}
+    </Row>
+  </div>
+);
+
+Object.assign(window, { Onboarding });
+</script>
+<!-- source: BRLO/CapabilityExpand.jsx -->
+<script type="text/babel">
+// Capability expansion — "Add another hat" flow for an existing entity.
+const CapabilityExpand = ({ onClose }) => {
+  const existing = ["space", "brand"]; // BRLO already has these
+  const [picked, setPicked] = useState(null);
+  const options = [
+    { id: "curator", desc: "Start running your own events at your taproom, not just hosting other curators." },
+    { id: "talent", desc: "Offer your brewmasters as speakers or your staff as pop-up bartenders." },
+  ].filter(o => !existing.includes(o.id));
+
+  return (
+    <div style={{
+      position: "fixed", inset: 0, zIndex: 200,
+      background: "rgba(11,18,32,0.5)", backdropFilter: "blur(6px)",
+      display: "flex", alignItems: "center", justifyContent: "center", padding: 40,
+    }}>
+      <div style={{ width: "100%", maxWidth: 620, background: "var(--wd-surface)", borderRadius: 20, padding: 32 }}>
+        <Row style={{ justifyContent: "space-between", marginBottom: 8 }}>
+          <div style={{ fontSize: 11, color: "var(--wd-ink-4)", fontWeight: 700, letterSpacing: "0.08em" }}>ADD A CAPABILITY</div>
+          <button onClick={onClose} style={{ border: "none", background: "transparent", cursor: "pointer", color: "var(--wd-ink-3)" }}><Icon name="x" size={20}/></button>
+        </Row>
+        <h2 style={{ fontSize: 26, fontWeight: 700, letterSpacing: "-0.02em", margin: "0 0 10px" }}>Wear another hat?</h2>
+        <p style={{ fontSize: 13, color: "var(--wd-ink-3)", margin: "0 0 22px", lineHeight: 1.6 }}>
+          BRLO already does <strong style={{ color: CAPABILITY.space.color }}>Space</strong> and <strong style={{ color: CAPABILITY.brand.color }}>Brand</strong>. Adding a capability merges cleanly. One login, one profile, new tools appear.
+        </p>
+
+        <Stack gap={10}>
+          {options.map(o => {
+            const C = CAPABILITY[o.id];
+            const on = picked === o.id;
+            return (
+              <button key={o.id} onClick={() => setPicked(o.id)} style={{
+                padding: 16, textAlign: "left", cursor: "pointer",
+                background: on ? C.tint : "var(--wd-pg)",
+                border: on ? `2px solid ${C.color}` : "1px solid var(--wd-line)",
+                borderRadius: 12, fontFamily: "Nunito",
+                display: "flex", gap: 14, alignItems: "center",
+              }}>
+                <div style={{ width: 40, height: 40, borderRadius: 10, background: on ? C.color : C.tintStrong, color: on ? "#fff" : C.color, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <Icon name={C.icon} size={18}/>
+                </div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 14, fontWeight: 700, color: "var(--wd-ink)" }}>Add {C.label} capability</div>
+                  <div style={{ fontSize: 12, color: "var(--wd-ink-3)", marginTop: 3 }}>{o.desc}</div>
+                </div>
+              </button>
+            );
+          })}
+        </Stack>
+
+        {picked && (
+          <div style={{ marginTop: 16, padding: 14, borderRadius: 10, background: "rgba(0,102,255,0.06)", fontSize: 12, color: "var(--wd-ink-2)" }}>
+            We'll add a <strong>{CAPABILITY[picked].label}</strong> tab to your nav, update your public profile with a new block, and send you a quick 3-question setup next login.
+          </div>
+        )}
+
+        <Row gap={10} style={{ justifyContent: "flex-end", marginTop: 22 }}>
+          <Btn variant="ghost" onClick={onClose}>Not now</Btn>
+          <Btn icon="plus" disabled={!picked} onClick={onClose}>Add capability</Btn>
+        </Row>
+      </div>
+    </div>
+  );
+};
+
+Object.assign(window, { CapabilityExpand });
+</script>
+<!-- source: BRLO/Handoff.jsx -->
+<script type="text/babel">
+// Cross-capability handoff: accept a space request → get nudged to sponsor it.
+const HandoffModal = ({ req, onClose, onGoSponsor }) => {
+  const cur = getCurator(req.from);
+  return (
+    <div style={{
+      position: "fixed", inset: 0, zIndex: 200,
+      background: "rgba(11,18,32,0.55)", backdropFilter: "blur(6px)",
+      display: "flex", alignItems: "center", justifyContent: "center", padding: 40,
+    }}>
+      <div style={{
+        width: "100%", maxWidth: 560, background: "var(--wd-surface)", borderRadius: 20, overflow: "hidden",
+        border: "1px solid var(--wd-line)",
+      }}>
+        {/* Header with gradient stripe — both capabilities */}
+        <div style={{ height: 5, background: `linear-gradient(90deg, ${CAPABILITY.space.color}, ${CAPABILITY.brand.color})` }} />
+        <div style={{ padding: 32 }}>
+          <Row gap={6} style={{ marginBottom: 14 }}>
+            <span style={{ padding: "4px 10px", fontSize: 10, fontWeight: 700, letterSpacing: "0.06em", background: "rgba(126,217,87,0.18)", color: "var(--wd-green-ink)", borderRadius: 999 }}>✓ SPACE ACCEPTED</span>
+            <span style={{ padding: "4px 10px", fontSize: 10, fontWeight: 700, letterSpacing: "0.06em", background: CAPABILITY.brand.tintStrong, color: CAPABILITY.brand.color, borderRadius: 999 }}>BRAND OPPORTUNITY</span>
+          </Row>
+          <h2 style={{ fontSize: 24, fontWeight: 700, letterSpacing: "-0.02em", margin: "0 0 10px", lineHeight: 1.2 }}>
+            You just booked your taproom. Want to pour your own beer too?
+          </h2>
+          <p style={{ fontSize: 13, color: "var(--wd-ink-3)", margin: "0 0 20px", lineHeight: 1.6 }}>
+            {cur?.name}'s audience scores <strong style={{ color: "#FF5501" }}>89% wSI match</strong> against your BRLO brand profile. Self-sponsoring your own hosted event typically delivers <strong>3× margin</strong> vs. plain hosting. You keep the space revenue <em>and</em> the sponsor spend.
+          </p>
+
+          <div style={{ padding: 16, borderRadius: 12, background: "var(--wd-pg)", border: "1px solid var(--wd-line)", marginBottom: 18 }}>
+            <div style={{ fontSize: 11, color: "var(--wd-ink-4)", fontWeight: 700, letterSpacing: "0.06em", marginBottom: 10 }}>PROJECTED UPSIDE</div>
+            <Stack gap={10}>
+              <Row style={{ justifyContent: "space-between" }}>
+                <span style={{ fontSize: 13, color: "var(--wd-ink-2)" }}>Space revenue (already locked)</span>
+                <span style={{ fontSize: 14, fontWeight: 700, color: "var(--wd-green-ink)" }}>+ €2,400</span>
+              </Row>
+              <Row style={{ justifyContent: "space-between" }}>
+                <span style={{ fontSize: 13, color: "var(--wd-ink-2)" }}>Sponsor wEID value (est.)</span>
+                <span style={{ fontSize: 14, fontWeight: 700, color: "#FF5501" }}>+ €1,200</span>
+              </Row>
+              <Row style={{ justifyContent: "space-between", paddingTop: 10, borderTop: "1px solid var(--wd-line)" }}>
+                <span style={{ fontSize: 13, fontWeight: 700, color: "var(--wd-ink)" }}>Blended take</span>
+                <span style={{ fontSize: 18, fontWeight: 700, color: "var(--wd-ink)" }}>€3,600</span>
+              </Row>
+            </Stack>
+          </div>
+
+          <div style={{ fontSize: 11, color: "var(--wd-ink-4)", marginBottom: 20, lineHeight: 1.5 }}>
+            weDISCOVR will route the handoff automatically. You'll land in Recall Studio to configure the offer, pre-filled with your SPF recipe from last time.
+          </div>
+
+          <Row gap={10} style={{ justifyContent: "flex-end" }}>
+            <Btn variant="ghost" onClick={onClose}>Just host this time</Btn>
+            <Btn size="lg" icon="sparkle" onClick={onGoSponsor} style={{ background: "#FF5501" }}>Yes, also sponsor →</Btn>
+          </Row>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+Object.assign(window, { HandoffModal });
+</script>
+<!-- source: DemoNav.jsx -->
+<script type="text/babel">
+// Demo navigator — floating launcher that exposes every flow in one sheet.
+// For stakeholders who don't know the sidebar exists.
+
+const DEMO_ACTS = [
+  { num: "01", title: "A curator has an idea", sub: "DJ Kleo drafts Midsommar Listening",
+    role: "curator", page: "create", roleLabel: "CURATOR", roleColor: "#6968CB" },
+  { num: "02", title: "BRLO wears the Space hat", sub: "Request lands in unified inbox",
+    role: "brlo", page: "dashboard", roleLabel: "BRLO · SPACE+BRAND",
+    roleColor: "linear-gradient(90deg, #7ED957, #FF5501)" },
+  { num: "03", title: "The two hats talk", sub: "Cross-capability handoff modal",
+    role: "brlo", page: "dashboard", flag: "wd_demo_handoff", roleLabel: "CROSS-CAP",
+    roleColor: "linear-gradient(90deg, #7ED957, #FF5501)" },
+  { num: "04", title: "BRLO builds the activation", sub: "Recall Studio · AR setup",
+    role: "brlo", page: "recall", roleLabel: "BRAND", roleColor: "#FF5501" },
+  { num: "05", title: "The report lands", sub: "wEID trail · zero PII attribution",
+    role: "brlo", page: "report", roleLabel: "ROI", roleColor: "#FF5501" },
+  { num: "06", title: "How BRLO got here", sub: "Onboarding flashback",
+    role: null, flag: "wd_demo_onboarding", roleLabel: "ONBOARDING", roleColor: "#0066FF" },
+];
+
+const ALL_FLOWS = {
+  curator: [
+    { page: "dashboard", label: "Curator Dashboard", sub: "DJ Kleo · pipeline + earnings" },
+    { page: "create",    label: "Create Event wizard", sub: "4-step brief" },
+    { page: "earnings",  label: "Earnings", sub: "Monthly reconciled" },
+  ],
+  brand: [
+    { page: "feed",   label: "Sponsor Feed", sub: "Match-scored events" },
+    { page: "recall", label: "Recall Studio", sub: "AR activation builder" },
+    { page: "report", label: "Campaign Report", sub: "wEID trail" },
+  ],
+  space: [
+    { page: "calendar", label: "Space Calendar", sub: "Urban Spree · Friedrichshain" },
+  ],
+  ops: [
+    { page: "qa", label: "Ops QA Queue", sub: "weDISCOVR review" },
+  ],
+  brlo: [
+    { page: "dashboard", label: "BRLO Dashboard", sub: "Space + Brand merged" },
+    { page: "inbox",     label: "Unified Inbox", sub: "Requests from curators" },
+    { page: "calendar",  label: "Taproom Calendar", sub: "Space capability" },
+    { page: "feed",      label: "Sponsor Feed", sub: "Brand capability" },
+    { page: "recall",    label: "Recall Studio", sub: "Self-sponsored activation" },
+    { page: "report",    label: "Campaign Report", sub: "Hybrid ROI" },
+    { page: "profile",   label: "Public Profile", sub: "Both capabilities visible" },
+  ],
+};
+
+const ROLE_COLORS = {
+  curator: "#6968CB",
+  brand:   "#FF5501",
+  space:   "#7ED957",
+  ops:     "#0066FF",
+  brlo:    "linear-gradient(90deg, #7ED957, #FF5501)",
+};
+
+const DemoNav = ({ tweaks, updateTweak, updatePage, currentPage, onShowOnboarding, onShowHandoff }) => {
+  const [open, setOpen] = useState(false);
+  const [tab, setTab] = useState("story");
+
+  useEffect(() => {
+    const h = (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        setOpen(o => !o);
+      }
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", h);
+    return () => window.removeEventListener("keydown", h);
+  }, []);
+
+  const jumpTo = (role, page, flag) => {
+    if (role && role !== tweaks.role) updateTweak("role", role);
+    if (page) setTimeout(() => updatePage(page), 10);
+    if (flag === "wd_demo_onboarding") onShowOnboarding();
+    if (flag === "wd_demo_handoff") onShowHandoff();
+    setOpen(false);
+  };
+
+  return (
+    <>
+      <button onClick={() => setOpen(true)} style={{
+        position: "fixed", top: 16, left: "50%", transform: "translateX(-50%)", zIndex: 90,
+        background: "#0B1220", color: "#fff", border: "none",
+        padding: "8px 16px 8px 10px", borderRadius: 999,
+        fontFamily: "Nunito", fontSize: 12, fontWeight: 700, cursor: "pointer",
+        display: "flex", alignItems: "center", gap: 10,
+        boxShadow: "0 6px 20px rgba(11,18,32,0.28)", letterSpacing: "0.02em",
+      }}>
+        <span style={{
+          display: "inline-flex", alignItems: "center", gap: 6,
+          background: "#0066FF", borderRadius: 999, padding: "3px 9px",
+          fontSize: 10, fontWeight: 800, letterSpacing: "0.08em",
+        }}>
+          <span style={{ width: 6, height: 6, borderRadius: 3, background: "#fff" }}/>
+          DEMO
+        </span>
+        <span>Jump to a flow</span>
+        <span style={{ opacity: 0.5, fontSize: 14, marginLeft: 2 }}>⌘K</span>
+      </button>
+
+      {open && (
+        <div onClick={() => setOpen(false)} style={{
+          position: "fixed", inset: 0, zIndex: 200,
+          background: "rgba(11,18,32,0.55)", backdropFilter: "blur(6px)",
+          display: "flex", alignItems: "flex-start", justifyContent: "center",
+          padding: "80px 20px 40px",
+        }}>
+          <div onClick={(e) => e.stopPropagation()} style={{
+            width: "100%", maxWidth: 760, maxHeight: "calc(100vh - 120px)",
+            background: "#fff", borderRadius: 20, overflow: "hidden",
+            boxShadow: "0 24px 60px rgba(0,0,0,0.4)",
+            display: "flex", flexDirection: "column", fontFamily: "Nunito",
+          }}>
+            <div style={{ padding: "22px 26px 0", borderBottom: "1px solid #E3E6ED" }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 18 }}>
+                <div>
+                  <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: "0.12em", color: "#0066FF", marginBottom: 4 }}>WEDISCOVR · DEMO NAVIGATOR</div>
+                  <div style={{ fontSize: 22, fontWeight: 800, letterSpacing: "-0.02em", color: "#0B1220" }}>Jump to any flow</div>
+                </div>
+                <button onClick={() => setOpen(false)} style={{ width: 32, height: 32, borderRadius: 16, border: "none", background: "#F3F5F9", color: "#0B1220", fontSize: 18, cursor: "pointer" }}>×</button>
+              </div>
+              <div style={{ display: "flex", gap: 4 }}>
+                {[["story", "Story arc"], ["all", "All flows"]].map(([v, l]) => (
+                  <button key={v} onClick={() => setTab(v)} style={{
+                    padding: "10px 16px", border: "none", background: "none",
+                    borderBottom: tab === v ? "2px solid #0066FF" : "2px solid transparent",
+                    color: tab === v ? "#0066FF" : "#5B6476",
+                    fontFamily: "Nunito", fontSize: 13, fontWeight: 700, cursor: "pointer",
+                    marginBottom: -1,
+                  }}>{l}</button>
+                ))}
+              </div>
+            </div>
+
+            <div style={{ overflowY: "auto", padding: "22px 26px 26px" }}>
+              {tab === "story" && (
+                <>
+                  <div style={{ fontSize: 12, color: "#5B6476", marginBottom: 18, lineHeight: 1.5 }}>
+                    The 6-act investor walkthrough. Click an act to jump straight to that moment.
+                  </div>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                    {DEMO_ACTS.map(a => (
+                      <button key={a.num} onClick={() => jumpTo(a.role, a.page, a.flag)} style={{
+                        display: "grid", gridTemplateColumns: "44px 1fr auto",
+                        gap: 16, alignItems: "center",
+                        padding: "14px 16px", borderRadius: 12,
+                        border: "1px solid #E3E6ED", background: "#fff",
+                        cursor: "pointer", textAlign: "left", fontFamily: "Nunito",
+                      }}
+                        onMouseEnter={(e) => { e.currentTarget.style.borderColor = "#0066FF"; e.currentTarget.style.background = "#F7FAFF"; }}
+                        onMouseLeave={(e) => { e.currentTarget.style.borderColor = "#E3E6ED"; e.currentTarget.style.background = "#fff"; }}
+                      >
+                        <div style={{ fontSize: 28, fontWeight: 800, color: "#0066FF", letterSpacing: "-0.04em", lineHeight: 1 }}>{a.num}</div>
+                        <div>
+                          <div style={{ display: "inline-block", fontSize: 9, fontWeight: 800, letterSpacing: "0.1em", padding: "3px 8px", borderRadius: 999, background: a.roleColor, color: "#fff", marginBottom: 6 }}>{a.roleLabel}</div>
+                          <div style={{ fontSize: 14, fontWeight: 700, color: "#0B1220" }}>{a.title}</div>
+                          <div style={{ fontSize: 12, color: "#5B6476", marginTop: 2 }}>{a.sub}</div>
+                        </div>
+                        <div style={{ fontSize: 18, color: "#0066FF" }}>→</div>
+                      </button>
+                    ))}
+                  </div>
+                </>
+              )}
+
+              {tab === "all" && (
+                <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+                  {Object.entries(ALL_FLOWS).map(([role, flows]) => (
+                    <div key={role}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
+                        <span style={{ width: 10, height: 10, borderRadius: 5, background: ROLE_COLORS[role] }}/>
+                        <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.1em", color: "#0B1220", textTransform: "uppercase" }}>{role === "brlo" ? "BRLO · Multi-capability" : role}</div>
+                        {role === tweaks.role && <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.1em", padding: "2px 6px", borderRadius: 4, background: "#0066FF", color: "#fff" }}>ACTIVE</span>}
+                      </div>
+                      <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 6 }}>
+                        {flows.map(f => {
+                          const isCurrent = role === tweaks.role && f.page === currentPage;
+                          return (
+                            <button key={f.page} onClick={() => jumpTo(role, f.page)} style={{
+                              padding: "10px 12px", borderRadius: 10,
+                              border: isCurrent ? "1px solid #0066FF" : "1px solid #E3E6ED",
+                              background: isCurrent ? "#F7FAFF" : "#fff",
+                              cursor: "pointer", textAlign: "left", fontFamily: "Nunito",
+                            }}
+                              onMouseEnter={(e) => { if (!isCurrent) e.currentTarget.style.borderColor = "#B5C2D6"; }}
+                              onMouseLeave={(e) => { if (!isCurrent) e.currentTarget.style.borderColor = "#E3E6ED"; }}
+                            >
+                              <div style={{ fontSize: 13, fontWeight: 700, color: "#0B1220" }}>{f.label}</div>
+                              <div style={{ fontSize: 11, color: "#5B6476", marginTop: 2 }}>{f.sub}</div>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <div style={{ padding: "14px 26px", borderTop: "1px solid #E3E6ED", background: "#F7F8FB", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <div style={{ fontSize: 11, color: "#5B6476" }}>
+                Tip: role switcher lives bottom-right · Tweaks toggle in toolbar
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+
+window.DemoNav = DemoNav;
+</script>
+<!-- source: App.jsx -->
+<script type="text/babel">
+// Root app — role switcher + page router + tweaks.
+
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "role": "brlo",
+  "shellVariant": "hybrid",
+  "density": "airy",
+  "wsiVariant": "bars"
+}/*EDITMODE-END*/;
+
+const App = () => {
+  const [tweaks, setTweaks] = useState(() => {
+    try { return JSON.parse(localStorage.getItem("wd_platform_tweaks")) || TWEAK_DEFAULTS; }
+    catch { return TWEAK_DEFAULTS; }
+  });
+  const [showTweaks, setShowTweaks] = useState(false);
+  const [page, setPage] = useState(() => localStorage.getItem("wd_platform_page") || "dashboard");
+  const [cap, setCap] = useState("space");
+  const [eventOpen, setEventOpen] = useState(null);
+  const [showOnboarding, setShowOnboarding] = useState(() => localStorage.getItem("wd_demo_onboarding") === "1");
+  const [showHandoff, setShowHandoff] = useState(() => localStorage.getItem("wd_demo_handoff") === "1");
+  const [showExpand, setShowExpand] = useState(false);
+
+  const updateTweak = (k, v) => {
+    const n = { ...tweaks, [k]: v };
+    setTweaks(n);
+    localStorage.setItem("wd_platform_tweaks", JSON.stringify(n));
+    window.parent.postMessage({type: "__edit_mode_set_keys", edits: { [k]: v }}, "*");
+  };
+  const updatePage = (p) => { setPage(p); localStorage.setItem("wd_platform_page", p); setEventOpen(null); };
+
+  useEffect(() => {
+    const handler = (e) => {
+      if (e.data?.type === "__activate_edit_mode") setShowTweaks(true);
+      if (e.data?.type === "__deactivate_edit_mode") setShowTweaks(false);
+    };
+    window.addEventListener("message", handler);
+    window.parent.postMessage({type: "__edit_mode_available"}, "*");
+    return () => window.removeEventListener("message", handler);
+  }, []);
+
+  const isBRLO = tweaks.role === "brlo";
+  const currentNav = isBRLO ? BRLO_NAV : NAV[tweaks.role];
+  const validPages = currentNav ? currentNav.map(i => i.id) : ["dashboard"];
+  const safePage = validPages.includes(page) ? page : validPages[0];
+
+  useEffect(() => {
+    if (safePage !== page) updatePage(safePage);
+  }, [tweaks.role]);
+
+  const titleMap = {
+    curator: { dashboard: ["Dashboard", "Curator · Berlin · Neukölln"], create: ["Create Event", "Build brief + route to space and brand"], events: ["My Events", "Upcoming, past and drafts"], earnings: ["Earnings", "Reconciled monthly"], sponsors: ["Sponsors", "Brand matches in your feed"], settings: ["Settings", "Profile, payouts, preferences"] },
+    brand:   { feed: ["Sponsor Feed", "Live events matching your brand profile"], recall: ["Recall Studio", "AR activation + micro-experience"], insurance: ["Attention Insurance", "Guaranteed wEID pool"], report: ["Campaign Report", "Spring Beauty Drops · Apr 2026"], assets: ["Brand Assets", "Logos, packshots, 3D"], settings: ["Settings", "Brand profile"] },
+    space:   { calendar: ["Calendar", "Urban Spree · Friedrichshain"], requests: ["Requests", "Pending from curators"], events: ["Events", "Hosted history"], revenue: ["Revenue", "POS attribution"], warehouse: ["Flex Warehouse", "Brand storage income"], settings: ["Settings", "Space profile"] },
+    ops:     { qa: ["QA Queue", "Events awaiting review"], events: ["All Events", "Platform-wide"], entities: ["Entities", "Curators, spaces, brands"], wsi: ["wSI Monitor", "Signal-index health"], settings: ["Settings", "Platform"] },
+  };
+  const [title, sub] = !isBRLO ? (titleMap[tweaks.role]?.[safePage] || ["", ""]) : ["", ""];
+
+  const renderBRLO = () => (
+    <BRLOShell page={safePage} setPage={updatePage} cap={cap} setCap={setCap} tweaks={tweaks}>
+      {safePage === "dashboard" && <BRLODashboard setPage={updatePage} setCap={setCap} />}
+      {safePage === "inbox" && <BRLOInbox />}
+      {safePage === "calendar" && <SpaceCalendar />}
+      {safePage === "feed" && !eventOpen && <SponsorFeed onOpenEvent={setEventOpen} wsiVariant={tweaks.wsiVariant}/>}
+      {safePage === "feed" && eventOpen   && <EventDetail ev={eventOpen} onBack={() => setEventOpen(null)} wsiVariant={tweaks.wsiVariant}/>}
+      {safePage === "recall" && <RecallStudio />}
+      {safePage === "report" && <CampaignReport />}
+      {safePage === "profile" && <BRLOProfile />}
+      {safePage === "settings" && <Placeholder label="Settings" />}
+    </BRLOShell>
+  );
+
+  return (
+    <>
+      {isBRLO ? renderBRLO() : (
+        <Shell role={tweaks.role} page={safePage} setPage={updatePage} shell={tweaks.shellVariant} title={title} sub={sub}>
+          {tweaks.role === "curator" && safePage === "dashboard" && <CuratorDashboard setPage={updatePage} wsiVariant={tweaks.wsiVariant}/>}
+          {tweaks.role === "curator" && safePage === "create"    && <CreateEvent onCancel={() => updatePage("dashboard")} onDone={() => updatePage("events")}/>}
+          {tweaks.role === "curator" && safePage === "earnings"  && <Earnings/>}
+          {tweaks.role === "curator" && (safePage === "events" || safePage === "sponsors" || safePage === "settings") && <Placeholder label={titleMap.curator[safePage][0]} />}
+
+          {tweaks.role === "brand" && safePage === "feed" && !eventOpen && <SponsorFeed onOpenEvent={setEventOpen} wsiVariant={tweaks.wsiVariant}/>}
+          {tweaks.role === "brand" && safePage === "feed" && eventOpen   && <EventDetail ev={eventOpen} onBack={() => setEventOpen(null)} wsiVariant={tweaks.wsiVariant}/>}
+          {tweaks.role === "brand" && safePage === "recall" && <RecallStudio/>}
+          {tweaks.role === "brand" && safePage === "report" && <CampaignReport/>}
+          {tweaks.role === "brand" && (safePage === "insurance" || safePage === "assets" || safePage === "settings") && <Placeholder label={titleMap.brand[safePage][0]}/>}
+
+          {tweaks.role === "space" && safePage === "calendar" && <SpaceCalendar/>}
+          {tweaks.role === "space" && safePage !== "calendar" && <Placeholder label={titleMap.space[safePage][0]}/>}
+
+          {tweaks.role === "ops" && safePage === "qa" && <QAQueue wsiVariant={tweaks.wsiVariant}/>}
+          {tweaks.role === "ops" && safePage !== "qa" && <Placeholder label={titleMap.ops[safePage][0]}/>}
+        </Shell>
+      )}
+
+      {/* Role switcher — includes BRLO as a multi-cap persona */}
+      <div style={{
+        position: "fixed", bottom: 24, right: 24, zIndex: 100,
+        background: "#0B1220", borderRadius: 14, padding: 6,
+        boxShadow: "0 12px 32px rgba(0,0,0,0.25)",
+        display: "flex", gap: 2,
+      }}>
+        {[...ROLES, { id: "brlo", label: "BRLO", color: "#FF5501", isMulti: true }].map(r => (
+          <button key={r.id} onClick={() => updateTweak("role", r.id)}
+            style={{
+              padding: "8px 14px", border: "none",
+              background: tweaks.role === r.id ? "rgba(255,255,255,0.15)" : "transparent",
+              color: tweaks.role === r.id ? "#fff" : "rgba(255,255,255,0.5)",
+              borderRadius: 10, fontFamily: "Nunito", fontSize: 12, fontWeight: 700, cursor: "pointer",
+              display: "flex", alignItems: "center", gap: 6, position: "relative",
+            }}>
+            {r.isMulti ? (
+              <span style={{ display: "flex", width: 8, height: 8, borderRadius: 4, overflow: "hidden" }}>
+                <span style={{ flex: 1, background: "#7ED957" }} />
+                <span style={{ flex: 1, background: "#FF5501" }} />
+              </span>
+            ) : (
+              <span style={{ width: 8, height: 8, borderRadius: 4, background: r.color }}/>
+            )}
+            {r.label}
+            {r.isMulti && <span style={{ fontSize: 8, fontWeight: 800, padding: "1px 4px", borderRadius: 4, background: "rgba(255,255,255,0.2)", letterSpacing: "0.06em" }}>MULTI</span>}
+          </button>
+        ))}
+      </div>
+
+      {/* Tweaks toggle — only rendered when running standalone (no design-tool harness). */}
+      {window.parent === window && (
+        <button onClick={() => setShowTweaks(t => !t)} style={{
+          position: "fixed", bottom: 24, left: 24, zIndex: 100,
+          background: "#0B1220", color: "#fff", border: "none",
+          padding: "10px 14px", borderRadius: 12,
+          fontFamily: "Nunito", fontSize: 12, fontWeight: 700, cursor: "pointer",
+          boxShadow: "0 12px 32px rgba(0,0,0,0.25)",
+          display: "flex", alignItems: "center", gap: 8,
+        }}>
+          <Icon name="settings" size={14} /> Tweaks
+        </button>
+      )}
+
+      <DemoNav
+        tweaks={tweaks}
+        updateTweak={updateTweak}
+        updatePage={updatePage}
+        currentPage={safePage}
+        onShowOnboarding={() => setShowOnboarding(true)}
+        onShowHandoff={() => setShowHandoff(true)}
+      />
+
+      {showTweaks && <TweaksPanel tweaks={tweaks} update={updateTweak} onShowOnboarding={() => setShowOnboarding(true)} onShowExpand={() => setShowExpand(true)} onShowHandoff={() => setShowHandoff(true)} />}
+
+      {showOnboarding && <Onboarding onExit={() => { setShowOnboarding(false); localStorage.removeItem("wd_demo_onboarding"); }} />}
+      {showHandoff && isBRLO && <HandoffModal req={BRLO_INBOX[0]} onClose={() => { setShowHandoff(false); localStorage.removeItem("wd_demo_handoff"); }} onGoSponsor={() => { setShowHandoff(false); localStorage.removeItem("wd_demo_handoff"); updatePage("recall"); }} />}
+      {showExpand && <CapabilityExpand onClose={() => setShowExpand(false)} />}
+    </>
+  );
+};
+
+const TweaksPanel = ({ tweaks, update, onShowOnboarding, onShowExpand, onShowHandoff }) => (
+  <div style={{
+    position: "fixed", bottom: 72, left: 24, zIndex: 100, width: 280,
+    background: "#0B1220", borderRadius: 14, padding: 16,
+    boxShadow: "0 12px 32px rgba(0,0,0,0.35)", color: "#fff",
+  }}>
+    <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", color: "rgba(255,255,255,0.5)", marginBottom: 14 }}>TWEAKS</div>
+    <div style={{ marginBottom: 14 }}>
+      <div style={{ fontSize: 11, color: "rgba(255,255,255,0.6)", marginBottom: 6 }}>Demo flows</div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+        <button onClick={onShowOnboarding} style={{ padding: "8px 12px", border: "none", borderRadius: 8, background: "rgba(255,255,255,0.08)", color: "#fff", fontFamily: "Nunito", fontSize: 11, fontWeight: 700, cursor: "pointer", textAlign: "left" }}>▶ Onboarding wizard</button>
+        <button onClick={onShowHandoff} style={{ padding: "8px 12px", border: "none", borderRadius: 8, background: "rgba(255,255,255,0.08)", color: "#fff", fontFamily: "Nunito", fontSize: 11, fontWeight: 700, cursor: "pointer", textAlign: "left" }}>▶ Cross-cap handoff</button>
+        <button onClick={onShowExpand} style={{ padding: "8px 12px", border: "none", borderRadius: 8, background: "rgba(255,255,255,0.08)", color: "#fff", fontFamily: "Nunito", fontSize: 11, fontWeight: 700, cursor: "pointer", textAlign: "left" }}>▶ Add capability</button>
+      </div>
+    </div>
+    <div style={{ marginBottom: 14 }}>
+      <div style={{ fontSize: 11, color: "rgba(255,255,255,0.6)", marginBottom: 6 }}>Shell variant</div>
+      <div style={{ display: "flex", gap: 4 }}>
+        {[["light","Light"],["hybrid","Hybrid"]].map(([v, l]) => (
+          <button key={v} onClick={() => update("shellVariant", v)} style={{
+            flex: 1, padding: "8px 0", border: "none", borderRadius: 8,
+            background: tweaks.shellVariant === v ? "#0066FF" : "rgba(255,255,255,0.08)",
+            color: "#fff", fontFamily: "Nunito", fontSize: 12, fontWeight: 700, cursor: "pointer",
+          }}>{l}</button>
+        ))}
+      </div>
+    </div>
+    <div style={{ marginBottom: 14 }}>
+      <div style={{ fontSize: 11, color: "rgba(255,255,255,0.6)", marginBottom: 6 }}>wSI visualization</div>
+      <div style={{ display: "flex", gap: 4 }}>
+        {[["bars","Bars"],["radar","Radar"],["reasons","Reasons"]].map(([v, l]) => (
+          <button key={v} onClick={() => update("wsiVariant", v)} style={{
+            flex: 1, padding: "8px 0", border: "none", borderRadius: 8,
+            background: tweaks.wsiVariant === v ? "#0066FF" : "rgba(255,255,255,0.08)",
+            color: "#fff", fontFamily: "Nunito", fontSize: 11, fontWeight: 700, cursor: "pointer",
+          }}>{l}</button>
+        ))}
+      </div>
+    </div>
+  </div>
+);
+
+const Placeholder = ({ label }) => (
+  <>
+    <PageHeader title={label} sub="Screen stubbed."/>
+    <Card padding={48} style={{ textAlign: "center" }}>
+      <Icon name="layers" size={32} color="var(--wd-ink-4)" style={{ margin: "0 auto 14px" }}/>
+      <div style={{ fontSize: 15, fontWeight: 700, color: "var(--wd-ink)" }}>{label}</div>
+    </Card>
+  </>
+);
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script>
+
+</body>
+</html>

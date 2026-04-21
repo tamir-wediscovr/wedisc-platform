@@ -122,6 +122,20 @@ const App = () => {
         ))}
       </div>
 
+      {/* Tweaks toggle — only rendered when running standalone (no design-tool harness). */}
+      {window.parent === window && (
+        <button onClick={() => setShowTweaks(t => !t)} style={{
+          position: "fixed", bottom: 24, left: 24, zIndex: 100,
+          background: "#0B1220", color: "#fff", border: "none",
+          padding: "10px 14px", borderRadius: 12,
+          fontFamily: "Nunito", fontSize: 12, fontWeight: 700, cursor: "pointer",
+          boxShadow: "0 12px 32px rgba(0,0,0,0.25)",
+          display: "flex", alignItems: "center", gap: 8,
+        }}>
+          <Icon name="settings" size={14} /> Tweaks
+        </button>
+      )}
+
       <DemoNav
         tweaks={tweaks}
         updateTweak={updateTweak}
@@ -142,7 +156,7 @@ const App = () => {
 
 const TweaksPanel = ({ tweaks, update, onShowOnboarding, onShowExpand, onShowHandoff }) => (
   <div style={{
-    position: "fixed", bottom: 84, right: 24, zIndex: 100, width: 280,
+    position: "fixed", bottom: 72, left: 24, zIndex: 100, width: 280,
     background: "#0B1220", borderRadius: 14, padding: 16,
     boxShadow: "0 12px 32px rgba(0,0,0,0.35)", color: "#fff",
   }}>

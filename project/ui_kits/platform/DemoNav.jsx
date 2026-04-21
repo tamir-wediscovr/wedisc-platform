@@ -203,9 +203,6 @@ const DemoNav = ({ tweaks, updateTweak, updatePage, currentPage, onShowOnboardin
               <div style={{ fontSize: 11, color: "#5B6476" }}>
                 Tip: role switcher lives bottom-right · Tweaks toggle in toolbar
               </div>
-              <a href="../demo_arc.html" style={{ fontSize: 12, fontWeight: 700, color: "#0066FF", textDecoration: "none" }}>
-                ← Back to story arc page
-              </a>
             </div>
           </div>
         </div>
